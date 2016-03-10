@@ -61,7 +61,7 @@
 
                         <article id="page-content">
                             <h1 id="Getting-started-with-Lagom"><a class="section-marker" href="#Getting-started-with-Lagom">§</a>Getting started with Lagom</h1><p>This page shows how to create and run your first Lagom project.</p><h2 id="Creating-a-new-Lagom-project"><a class="section-marker" href="#Creating-a-new-Lagom-project">§</a>Creating a new Lagom project</h2><p>A Lagom system is typically made up of a set of sbt builds, each build providing multiple services. The easiest way to get started with a new Lagom system is to create a new project using the <code>lagom</code> Activator template:</p>
-<pre class="prettyprint"><code>$ activator new lagom-java my-first-system
+<pre class="prettyprint"><code>$ activator new my-first-system lagom-java
 </code></pre><p>This will create a new system with two services in it: <code>helloworld</code> and <code>hellostream</code>.</p><h2 id="Anatomy-of-a-Lagom-project"><a class="section-marker" href="#Anatomy-of-a-Lagom-project">§</a>Anatomy of a Lagom project</h2><p>The created project contains the following elements: </p>
 <pre class="prettyprint"><code>my-first-system          → Project root
  └ hellostream-api       → hellostream api project
