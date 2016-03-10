@@ -73,13 +73,15 @@
   <li>Tasks are fine-grained.</li>
   <li>Each task may return a value.</li>
   <li>The value returned by a task may be consumed by other tasks.</li>
-</ul><p>By contrast, typical build tools only offer coarse-grained tasks that communicate only by writing products to a filesystem. Tasks can&rsquo;t otherwise communicate and be composed with each other, and must as a result rely heavily on convention.</p><p>Here are examples of fine-grained tasks in an sbt build. There is a task that defines where source directories are located, which then passes those locations to another task that finds the source files in those directories, which then passes those files to the compiler, returning a list of output artifacts. That list of artifacts can then be consumed by other tasks that handle, for example, packaging and deployment.</p><p>Because these tasks are so fine-grained, they are highly programmable, composable, introspectable, and customizable. In turn, this enables Lagom features such as:</p>
+</ul><p>By contrast, typical build tools only offer coarse-grained tasks that communicate only by writing products to a filesystem. Tasks can&rsquo;t otherwise communicate and be composed with each other, and must as a result rely heavily on convention.</p><p>Here are examples of fine-grained tasks in a sbt build. There is a task that defines where source directories are located, which then passes those locations to another task that finds the source files in those directories, which then passes those files to the compiler, returning a list of output artifacts. That list of artifacts can then be consumed by other tasks that handle, for example, packaging and deployment.</p><p>Because these tasks are so fine-grained, they are highly programmable, composable, introspectable, and customizable. In turn, this enables Lagom features such as:</p>
 <ul>
   <li>Fast incremental recompilation</li>
   <li>Hot reload (so can you immediately see the effects of changes)</li>
-  <li>Start and stop multiple services together</li>
+  <li>Start and stop multiple services together (and in parallel)</li>
   <li>Run tests in a variety of scenarios</li>
-</ul><p>(TODO: are there other Lagom features that leverage sbt?)</p>
+  <li>Automatic injection of sensible configuration defaults (enabling a &ldquo;it just works&rdquo; experience)</li>
+  <li>Automatic enablement of plugins</li>
+</ul>
 <footer>
     <nav>
         <a href="Immutable.html"><strong>Next: </strong> Immutable Objects</a>
