@@ -39,12 +39,10 @@
                             <li><a href="api/java/index.html">Java</a></li>
                         
                         
-  <li><label>Writing persistent and clustered services</label></li>
- <li><a href="PersistentEntity.html">Persistent Entity</a></li>
- <li><a href="ReadSide.html">Persistent Read-Side</a></li>
- <li><a href="PubSub.html">Publish-Subscribe</a></li>
- <li><a href="Serialization.html">Serialization</a></li>
- <li><a href="Cluster.html">Cluster</a></li>
+  <li><label>Running Lagom in production</label></li>
+ <li><a href="Overview.html">Overview</a></li>
+ <li><a href="ConductR.html">Lightbend ConductR</a></li>
+ <li><a href="ReactivePlatform.html">ReactivePlatform</a></li>
 
   <li><label>Lagom reference guide</label></li>
  <li><a href="ReferenceGuide.html">Reference Guide</a></li>
@@ -72,18 +70,32 @@
                     <div class="small-12 large-10 large-centered columns">
 
                         <article id="page-content">
-                            <h1 id="Cluster"><a class="section-marker" href="#Cluster">§</a>Cluster</h1><p>Instances of the same service may run on multiple nodes, for scalability and redundancy. Nodes may be physical or virtual machines, grouped in a cluster.</p><p>The underlying clustering technology is <a href="http://doc.akka.io/docs/akka/2.4.2/java/cluster-usage.html">Akka Cluster</a>.</p><p>If instances of a service need to know about each other, they must join the same cluster. Within a cluster, services may use the <a href="PersistentEntity.html">Persistence</a> and <a href="PubSub.html">Publish-Subscribe</a> modules of Lagom.</p><h2 id="Cluster-composition"><a class="section-marker" href="#Cluster-composition">§</a>Cluster composition</h2><p>A cluster should only span nodes that are running the same service.</p><p>You could imagine using cluster features across different services, but we recommend against that, because it would couple the services too tightly. Different services should only interact with each other through each service&rsquo;s API.</p><h2 id="Joining"><a class="section-marker" href="#Joining">§</a>Joining</h2><p>A service instance joins a cluster when the service starts up.</p><h3 id="Joining-during-development"><a class="section-marker" href="#Joining-during-development">§</a>Joining during development</h3><p>In development you are typically only running the service on one cluster node. No explicit joining is necessary; the <a href="DevEnvironment.html">Lagom Development Environment</a> handles it automatically.</p><h3 id="Joining-via-ConductR"><a class="section-marker" href="#Joining-via-ConductR">§</a>Joining via ConductR</h3><p>In production, <a href="ConductR.html">Lightbend ConductR</a> automatically takes care of joining the nodes.</p><h3 id="Joining-without-ConductR"><a class="section-marker" href="#Joining-without-ConductR">§</a>Joining without ConductR</h3><p>If you are not using ConductR, you need to implement the joining yourself as follows.</p><p>First, define some initial contact points of the cluster, so-called seed nodes. You can define seed nodes in <code>application.conf</code>:</p>
-<pre class="prettyprint"><code>akka.cluster.seed-nodes = [
-  &quot;akka.tcp://MyService@host1:2552&quot;,
-  &quot;akka.tcp://MyService@host2:2552&quot;]
-</code></pre><p>Alternatively, this can be defined as Java system properties when starting the JVM:</p>
-<pre class="prettyprint"><code>-Dakka.cluster.seed-nodes.0=akka.tcp://MyService@host1:2552
--Dakka.cluster.seed-nodes.1=akka.tcp://MyService@host2:2552
-</code></pre><p>The node that is configured first in the list of <code>seed-nodes</code> is special. Only that node that will join itself. It is used for bootstrapping the cluster.</p><p>The reason for the special first seed node is to avoid forming separated islands when starting from an empty cluster. If the first seed node is restarted and there is an existing cluster it will try to join the other seed nodes, i.e. it will join the existing cluster.</p><p>You can read more about cluster joining in the <a href="http://doc.akka.io/docs/akka/2.4.2/java/cluster-usage.html#Joining_to_Seed_Nodes">Akka documentation</a>.</p><h2 id="Downing"><a class="section-marker" href="#Downing">§</a>Downing</h2><p>When operating a Lagom service cluster you must consider how to handle network partitions (a.k.a. split brain scenarios) and machine crashes (including JVM and hardware failures). This is crucial for correct behavior when using <a href="PersistentEntity.html">Persistent Entities</a>. Persistent entities must be single-writers, i.e. there must only be one active entity with a given entity identity. If the cluster is split in two halves and the wrong downing strategy is used there will be active entities with the the same identifiers in both clusters, writing to the same database. That will result in corrupt data.</p><p>The naïve approach is to remove an unreachable node from the cluster membership after a timeout. This works great for crashes and short transient network partitions, but not for long network partitions. Both sides of the network partition will see the other side as unreachable and after a while remove it from its cluster membership. Since this happens on both sides the result is that two separate disconnected clusters have been created. This approach is provided by the opt-in (off by default) auto-down feature in the OSS version of Akka Cluster.</p><p><strong>We strongly recommend against using the auto-down feature of Akka Cluster.</strong></p><p>A pre-packaged solution for the downing problem is provided by <a href="http://doc.akka.io/docs/akka/rp-16s01p02/scala/split-brain-resolver.html">Split Brain Resolver</a>, which is part of the <a href="http://www.lightbend.com/products/lightbend-reactive-platform">Lightbend Reactive Platform</a>. The <code>keep-majority</code> strategy is configured to be enabled by default if you use Lagom with the Reactive Platform.</p><p>See <a href="ReactivePlatform.html">Reactive Platform instructions</a> for how to enable Reactive Platform in the build of your project.</p><p>If you don&rsquo;t use RP, you should anyway carefully read the documentation of the <a href="http://doc.akka.io/docs/akka/rp-16s01p02/scala/split-brain-resolver.html">Split Brain Resolver</a> and make sure that the solution you are using handles the concerns described there.</p><h2 id="Leaving"><a class="section-marker" href="#Leaving">§</a>Leaving</h2><p>When using <a href="PersistentEntity.html">Persistent Entities</a> you can use <a href="api/java/com/lightbend/lagom/javadsl/persistence/PersistentEntityRegistry.html#gracefulShutdown">PersistentEntityRegistry.gracefulShutdown</a> to stop the persistent entities and leave the cluster in a graceful way. This is not mandatory but it can be good when you are doing a controlled shutdown of a service node. It will reduce the number of lost in-flight messages during the failover to another node.</p><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a>Dependency</h2><p>The clustering feature is already included if you are using the <a href="PersistentEntity.html#Dependency">persistence</a> or <a href="PubSub.html#Dependency">pubsub</a> modules.</p><p>If you want to enable it without those modules, add the following to your project&rsquo;s build:</p>
-<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslCluster</code></pre>
+                            <h1 id="Lightbend-Reactive-Platform"><a class="section-marker" href="#Lightbend-Reactive-Platform">§</a>Lightbend Reactive Platform</h1><p>We recommend that you use <a href="http://www.lightbend.com/products/lightbend-reactive-platform">Lightbend Reactive Platform</a> to take advantage of the <a href="http://doc.akka.io/docs/akka/rp-16s01p02/scala/split-brain-resolver.html">Split Brain Resolver</a> and the <a href="http://doc.akka.io/docs/akka/rp-16s01p02/common/diagnostics-recorder.html">Diagnostics Recorder</a>.</p><p>Read about the importance of the Split Brain Resolver in the <a href="Cluster.html#Downing">Cluster Downing</a> documentation.</p><p>To use Reactive Platform you need to adjust the build in your project.</p><p>1) Create a new file project/typesafe.properties (put this in <code>.gitignore</code> if the code will be released outside your organization):</p>
+<pre class="prettyprint"><code>typesafe.subscription=YOUR_SUBSCRIPTION_ID
+</code></pre><p>(<a href="http://www.lightbend.com/account/id">Click to obtain a subscription ID</a>)</p><p>2) Create a new file project/project/typesafe.sbt with the following content. (Note: It is <code>project/project</code> with two <code>project</code>.) The values of <code>rpVersion</code> and <code>rpUrl</code> are subject to change:</p>
+<pre class="prettyprint"><code>// Update this when a new patch of Reactive Platform is available
+val rpVersion = &quot;16s01p03&quot;
+
+// Update this when a major version of Reactive Platform is available
+val rpUrl = &quot;https://repo.typesafe.com/typesafe/for-subscribers-only/7B885384C2F0904E32AA8CEBDB634710AF3DC819&quot;
+
+addSbtPlugin(&quot;com.typesafe.rp&quot; % &quot;sbt-typesafe-rp&quot; % rpVersion)
+
+// The resolver name must start with typesafe-rp
+resolvers += &quot;typesafe-rp-mvn&quot; at rpUrl
+
+// The resolver name must start with typesafe-rp
+resolvers += Resolver.url(&quot;typesafe-rp-ivy&quot;, url(rpUrl))(Resolver.ivyStylePatterns)
+</code></pre><p>3) That is normally everything that is needed, but the current version of Reactive Platform does not include Play 2.5.0 yet, so we must adjust the build to not use the Play version that is included in Reactive Platform. In each project of the <code>build.sbt</code> the following setting must be added. That can be done in the <code>def project</code> helper method if you use that from the getting started build template.</p>
+<pre class="prettyprint"><code>// Play 2.5.0 is not part of RP yet
+.settings(rpOverrides := rpOverrides.value.filterNot(_.organization == &quot;com.typesafe.play&quot;)) 
+</code></pre><p>Similar must also be added to <code>project/plugins.sbt</code>:</p>
+<pre class="prettyprint"><code>// Play 2.5.0 is not part of RP yet
+rpOverrides := rpOverrides.value.filterNot(_.organization == &quot;com.typesafe.play&quot;)
+</code></pre>
 <footer>
     <nav>
-        <a href="Overview.html"><strong>Next: </strong> Running Lagom in production</a>
+        <a href="Logging.html"><strong>Next: </strong> Logging</a>
     </nav>
 </footer>
                         </article>

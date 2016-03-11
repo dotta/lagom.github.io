@@ -42,6 +42,7 @@
   <li><label>Running Lagom in production</label></li>
  <li><a href="Overview.html">Overview</a></li>
  <li><a href="ConductR.html">Lightbend ConductR</a></li>
+ <li><a href="ReactivePlatform.html">ReactivePlatform</a></li>
 
   <li><label>Lagom reference guide</label></li>
  <li><a href="ReferenceGuide.html">Reference Guide</a></li>
@@ -97,7 +98,7 @@
 </code></pre><p>Upon loading you then run cassandra at the scale that you require. For convenience we recommend that you start with one Cassandra cluster per root sbt project, which of course can contain many Lagom projects (and therefore services). Bounded contexts are always maintained via separate key-spaces, and so having one Cassandra cluster is viable for supporting many microservices. The actual number of Cassandra clusters required will be the <em>Lagom amount</em> i.e. &ldquo;just the right amount&rdquo; for your system. For more information on configuring Cassandra for ConductR please visit <a href="https://github.com/typesafehub/conductr-cassandra#conductr-cassandra">the bundle&rsquo;s website</a>.</p><h2 id="For-more-information"><a class="section-marker" href="#For-more-information">§</a>For more information</h2><p>For more information on ConductR please visit its <a href="https://conductr.lightbend.com/">documentation site</a>.</p>
 <footer>
     <nav>
-        <a href="Logging.html"><strong>Next: </strong> Logging</a>
+        <a href="ReactivePlatform.html"><strong>Next: </strong> ReactivePlatform</a>
     </nav>
 </footer>
                         </article>
