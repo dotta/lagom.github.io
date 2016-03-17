@@ -18,4 +18,5 @@ com.lightbend.lagom.javadsl.server
 com.lightbend.lagom.javadsl.server.status
 com.lightbend.lagom.javadsl.testkit
 com.lightbend.lagom.play
+com.lightbend.lagom.sbt.scripted
 com.lightbend.lagom.serialization
