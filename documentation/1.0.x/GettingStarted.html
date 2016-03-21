@@ -62,7 +62,7 @@
                         <article id="page-content">
                             <h1 id="Getting-started-with-Lagom"><a class="section-marker" href="#Getting-started-with-Lagom">§</a>Getting started with Lagom</h1><p>This page shows how to create and run your first Lagom project.</p><h2 id="Creating-a-new-Lagom-project"><a class="section-marker" href="#Creating-a-new-Lagom-project">§</a>Creating a new Lagom project</h2><p>A Lagom system is typically made up of a set of sbt builds, each build providing multiple services. The easiest way to get started with a new Lagom system is to create a new project using the <code>lagom</code> Activator template:</p>
 <pre class="prettyprint"><code>$ activator new my-first-system lagom-java
-</code></pre><p>This will create a new system with two services in it: <code>helloworld</code> and <code>hellostream</code>.</p><h2 id="Anatomy-of-a-Lagom-project"><a class="section-marker" href="#Anatomy-of-a-Lagom-project">§</a>Anatomy of a Lagom project</h2><p>The created project contains the following elements: </p>
+</code></pre><p>This will create a new system with two services in it: <code>helloworld</code> and <code>hellostream</code>.</p><h2 id="Anatomy-of-a-Lagom-project"><a class="section-marker" href="#Anatomy-of-a-Lagom-project">§</a>Anatomy of a Lagom project</h2><p>The created project contains the following elements:</p>
 <pre class="prettyprint"><code>my-first-system          → Project root
  └ hellostream-api       → hellostream api project
  └ hellostream-impl      → hellostream implementation project
@@ -76,8 +76,10 @@
 <ul>
   <li>Notice how each service is broken up into two projects: api and implementation. The api project contains a service interface through which consumers may interact with the service. While the implementation project contains the actual service implementation.</li>
   <li>The <code>project</code> folder contains sbt specific files.</li>
-  <li><p>The <code>build.sbt</code> file, which contains all information necessary to build, run, and deploy your services.<br/>`</p><h2 id="Understanding-services-projects"><a class="section-marker" href="#Understanding-services-projects">§</a>Understanding services projects</h2></li>
-  <li><p>The service interface is always placed in the api project. For instance, the service interface for the <code>helloworld</code> service can be found in the <code>helloworld-api</code> project (look for the <code>HelloService.java</code> source file).</p></li>
+  <li>The <code>build.sbt</code> file, which contains all information necessary to build, run, and deploy your services.</li>
+</ul><h2 id="Understanding-services-projects"><a class="section-marker" href="#Understanding-services-projects">§</a>Understanding services projects</h2>
+<ul>
+  <li>The service interface is always placed in the api project. For instance, the service interface for the <code>helloworld</code> service can be found in the <code>helloworld-api</code> project (look for the <code>HelloService.java</code> source file).</li>
 </ul>
 <pre class="prettyprint"><code class="language-java">public interface HelloService extends Service {
   @Override
