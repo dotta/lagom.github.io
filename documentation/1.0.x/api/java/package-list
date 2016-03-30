@@ -1,3 +1,4 @@
+com.lightbend.lagom.core
 com.lightbend.lagom.discovery
 com.lightbend.lagom.discovery.impl
 com.lightbend.lagom.gateway
@@ -18,5 +19,10 @@ com.lightbend.lagom.javadsl.server
 com.lightbend.lagom.javadsl.server.status
 com.lightbend.lagom.javadsl.testkit
 com.lightbend.lagom.play
+com.lightbend.lagom.sbt
+com.lightbend.lagom.sbt.core
+com.lightbend.lagom.sbt.run
 com.lightbend.lagom.sbt.scripted
+com.lightbend.lagom.sbt.server
 com.lightbend.lagom.serialization
+play.core.server
