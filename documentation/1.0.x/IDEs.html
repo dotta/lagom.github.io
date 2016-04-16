@@ -61,7 +61,7 @@
 
                         <article id="page-content">
                             <h1 id="Import-a-Lagom-build-in-your-IDE"><a class="section-marker" href="#Import-a-Lagom-build-in-your-IDE">§</a>Import a Lagom build in your IDE</h1><p>Here you will learn how to import projects defined in a Lagom build into your preferred IDE.</p><h2 id="Eclipse"><a class="section-marker" href="#Eclipse">§</a>Eclipse</h2><p><a href="https://github.com/typesafehub/sbteclipse">sbt-eclipse</a> is needed to generate the Eclipse project files, which are required to import all projects defined in your Lagom build into Eclipse.</p><p>If your Lagom build file is in directory <code>helloworld</code>, create a <code>project/eclipse.sbt</code> with the following content:</p>
-<pre class="prettyprint"><code>addSbtPlugin(&quot;com.typesafe.sbteclipse&quot; % &quot;sbteclipse-plugin&quot; % &quot;3.0.1&quot;)
+<pre class="prettyprint"><code>addSbtPlugin(&quot;com.typesafe.sbteclipse&quot; % &quot;sbteclipse-plugin&quot; % &quot;3.0.0&quot;)
 </code></pre><p>Save the file. Now, open the terminal, and <code>cd</code> to the <code>helloworld</code> directory, and type <code>activator</code>:</p>
 <pre class="prettyprint"><code>$ cd helloworld
 $ activator
