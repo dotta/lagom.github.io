@@ -97,7 +97,9 @@ public class SimpleTest {
     assertFalse(str.isEmpty());
   }
 
-}</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a>How to test one service</h2><p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/java/index.html?com/lightbend/lagom/javadsl/testkit/ServiceTest.html">ServiceTest</a>.</p>
+}</code></pre><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a>Dependency</h2><p>To use this feature add the following in your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslTestKit</code></pre><p>When using Cassandra the tests must be forked, which is enabled by adding the following in your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">.settings(lagomForkedTestSettings: _*)</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a>How to test one service</h2><p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/java/index.html?com/lightbend/lagom/javadsl/testkit/ServiceTest.html">ServiceTest</a>.</p>
 <pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
@@ -213,9 +215,7 @@ public class EchoServiceTest {
     });
   }
 
-}</code></pre><p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-PersistentEntity"><a class="section-marker" href="#How-to-test-PersistentEntity">§</a>How to test PersistentEntity</h2><p><a href="PersistentEntity.html">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/java/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p><p>This is described in the documentation of <a href="PersistentEntity.html#Unit-Testing">Persistent Entity</a></p><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a>Dependency</h2><p>To use this feature add the following in your project&rsquo;s build:</p>
-<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslTestKit</code></pre><p>When using Cassandra the tests must be forked, which is enabled by adding the following in your project&rsquo;s build:</p>
-<pre class="prettyprint"><code class="language-sbt">.settings(lagomForkedTestSettings: _*)</code></pre>
+}</code></pre><p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-PersistentEntity"><a class="section-marker" href="#How-to-test-PersistentEntity">§</a>How to test PersistentEntity</h2><p><a href="PersistentEntity.html">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/java/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p><p>This is described in the documentation of <a href="PersistentEntity.html#Unit-Testing">Persistent Entity</a></p>
 <footer>
     <nav>
         <a href="MessageSerializers.html"><strong>Next: </strong> Message serializers</a>
