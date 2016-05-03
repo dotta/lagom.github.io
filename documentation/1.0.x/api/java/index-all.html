@@ -2833,7 +2833,9 @@
 <div class="block">Replace all the ACLs with the given ACL sequence.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllCalls-org.pcollections.PSequence-">replaceAllCalls(PSequence&lt;Descriptor.Call&lt;?, ?, ?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Replace all the service calls provided by this descriptor with the the given service calls.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/MessageHeader.html#replaceAllHeaders-org.pcollections.PMap-">replaceAllHeaders(PMap&lt;String, PSequence&lt;String&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/MessageHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageHeader</a></dt>
 <dd>
 <div class="block">Return a copy of this message header with the headers replaced by the given map of headers.</div>
@@ -2843,9 +2845,13 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html#replaceAllHeaders-org.pcollections.PMap-">replaceAllHeaders(PMap&lt;String, PSequence&lt;String&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllIdSerializers-org.pcollections.PMap-">replaceAllIdSerializers(PMap&lt;Type, IdSerializer&lt;?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Replace all the id serializers registered with this descriptor with the the given id serializers.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllMessageSerializers-org.pcollections.PMap-">replaceAllMessageSerializers(PMap&lt;Type, MessageSerializer&lt;?, ?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Replace all the message serializers registered with this descriptor with the the given message serializers.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html#reply-R-">reply(R)</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.ReadOnlyCommandContext</a></dt>
 <dd>
 <div class="block">Send reply to a command.</div>
@@ -3708,17 +3714,33 @@
  configured.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with(Class&lt;T&gt;, IdSerializer&lt;T&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with(Type, IdSerializer&lt;?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with(Class&lt;T&gt;, MessageSerializer&lt;T, ?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Provide a custom MessageSerializer for the given message type.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with(Type, MessageSerializer&lt;?, ?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Provide a custom MessageSerializer for the given message type.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.Descriptor.Call...-">with(Descriptor.Call&lt;?, ?, ?&gt;...)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Add the given service calls to this service.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.deser.ExceptionSerializer-">with(ExceptionSerializer)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Use the given exception serializer to serialize and deserialized exceptions handled by this service.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.deser.SerializerFactory-">with(SerializerFactory)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dd>
+<div class="block">Use the given serializer factory with this service.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.ServiceAcl...-">with(ServiceAcl...)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
 <div class="block">Add the given manual ACLs.</div>
