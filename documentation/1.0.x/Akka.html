@@ -119,8 +119,8 @@ public class WorkerServiceImpl implements WorkerService {
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, Job, JobAccepted&gt; doWork() {
-    return (id, job) -&gt; {
+  public ServiceCall&lt;Job, JobAccepted&gt; doWork() {
+    return job -&gt; {
       // send the job to a worker, via the consistent hashing router
       CompletionStage&lt;JobAccepted&gt; reply = ask(workerRouter, job, Timeout.apply(
           5, TimeUnit.SECONDS))
@@ -260,15 +260,15 @@ public class Worker2Module extends AbstractModule
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, NotUsed, Source&lt;JobStatus, ?&gt;&gt; status() {
-    return (id, req) -&gt; {
+  public ServiceCall&lt;NotUsed, Source&lt;JobStatus, ?&gt;&gt; status() {
+    return req -&gt; {
       return CompletableFuture.completedFuture(topic.subscriber());
     };
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, Job, JobAccepted&gt; doWork() {
-    return (id, job) -&gt; {
+  public ServiceCall&lt;Job, JobAccepted&gt; doWork() {
+    return job -&gt; {
       // send the job to a worker, via the consistent hashing router
       CompletionStage&lt;JobAccepted&gt; reply = ask(workerRouter, job, Timeout.apply(
           5, TimeUnit.SECONDS))

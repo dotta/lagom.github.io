@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":18,"i1":18,"i2":18,"i3":6,"i4":18,"i5":18};
+var methods = {"i0":18,"i1":18,"i2":18,"i3":6,"i4":18};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -91,7 +91,7 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">com.lightbend.lagom.javadsl.api</div>
-<h2 title="Interface ServiceCall" class="title">Interface ServiceCall&lt;Id,Request,Response&gt;</h2>
+<h2 title="Interface ServiceCall" class="title">Interface ServiceCall&lt;Request,Response&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Subinterfaces:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a>&lt;Id,Request,Response&gt;, <a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a>&lt;Id,Request,Response&gt;, <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;Id,Request,Response&gt;, <a href="../../../../../com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a>&lt;Id,Request,Response&gt;</dd>
+<dd><a href="../../../../../com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a>&lt;Request,Response&gt;, <a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a>&lt;Request,Response&gt;, <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;Request,Response&gt;</dd>
 </dl>
 <dl>
 <dt>Functional Interface:</dt>
@@ -108,11 +108,8 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@FunctionalInterface
-public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&gt;</span></pre>
-<div class="block">A service call for an entity with a particular id.
-
- The entity id corresponds to dynamic parts of a path. If <code>NotUsed</code>, that implies
- it will be for a static path.
+public interface <span class="typeNameLabel">ServiceCall&lt;Request,Response&gt;</span></pre>
+<div class="block">A service call for an entity.
 
  A service call has a request and a response entity. Either entity may be NotUsed, if there is no entity associated
  with the call. They may also be an Akka streams Source, in situations where the endpoint serves a stream. In all
@@ -137,13 +134,13 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;</code></td>
+<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a></span>(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</code>
 <div class="block">Make any modifications necessary to the request header.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>default &lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,T&gt;</code></td>
+<td class="colFirst"><code>default &lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a></span>(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>,T&gt;&nbsp;handler)</code>
 <div class="block">Transform the response using the given function that takes the response header and the response.</div>
 </td>
@@ -156,19 +153,12 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>&nbsp;id,
-      <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</code>
 <div class="block">Invoke the service call.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>default java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</code>
-<div class="block">Invoke the service call with a unit id argument.</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#withResponseHeader--">withResponseHeader</a></span>()</code>
 <div class="block">Allow handling of the response header.</div>
 </td>
@@ -188,26 +178,6 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="invoke-java.lang.Object-java.lang.Object-">
-<!--   -->
-</a><a name="invoke-Id-Request-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>invoke</h4>
-<pre>java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>&nbsp;id,
-                                                      <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</pre>
-<div class="block">Invoke the service call.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>id</code> - The id of the entity.</dd>
-<dd><code>request</code> - The request entity.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>A future of the response entity.</dd>
-</dl>
-</li>
-</ul>
 <a name="invoke-java.lang.Object-">
 <!--   -->
 </a><a name="invoke-Request-">
@@ -216,10 +186,8 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <ul class="blockList">
 <li class="blockList">
 <h4>invoke</h4>
-<pre>default&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</pre>
-<div class="block">Invoke the service call with a unit id argument.
-
- This should only be used when the id is unit.</div>
+<pre>java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>&nbsp;request)</pre>
+<div class="block">Invoke the service call.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>request</code> - The request entity.</dd>
@@ -237,7 +205,7 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <pre>default&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;invoke()</pre>
 <div class="block">Invoke the service call with unit id argument and a unit request message.
 
- This should only be used when the id and the request message are both unit.</div>
+ This should only be used when the request message is NotUsed.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A future of the response entity.</dd>
@@ -250,7 +218,7 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <ul class="blockList">
 <li class="blockList">
 <h4>handleRequestHeader</h4>
-<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;handleRequestHeader(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</pre>
+<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&nbsp;handleRequestHeader(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</pre>
 <div class="block">Make any modifications necessary to the request header.
 
  For client service calls, this gives clients an opportunity to add custom headers and/or modify the request in
@@ -276,7 +244,7 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <ul class="blockList">
 <li class="blockList">
 <h4>handleResponseHeader</h4>
-<pre>default&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,T&gt;&nbsp;handleResponseHeader(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>,T&gt;&nbsp;handler)</pre>
+<pre>default&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,T&gt;&nbsp;handleResponseHeader(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>,T&gt;&nbsp;handler)</pre>
 <div class="block">Transform the response using the given function that takes the response header and the response.
 
  For client service calls, this gives clients an opportunity to inspect the response headers and status code.
@@ -302,7 +270,7 @@ public interface <span class="typeNameLabel">ServiceCall&lt;Id,Request,Response&
 <ul class="blockListLast">
 <li class="blockList">
 <h4>withResponseHeader</h4>
-<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&gt;&nbsp;withResponseHeader()</pre>
+<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt;&gt;&nbsp;withResponseHeader()</pre>
 <div class="block">Allow handling of the response header.
 
  This converts the service call to one that returns both the response header and the response message.

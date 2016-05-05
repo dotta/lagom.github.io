@@ -120,8 +120,8 @@ public class HelloServiceTest {
 }</code></pre><p>Dependencies to other services must be replaced by stub or mock implementations by overriding the bindings of the <code>GuiceApplicationBuilder</code> in the <code>Setup</code>. If we are writing a test for the <code>HelloService</code> and that has a dependency to a <code>GreetingService</code> we must create an implementation of the <code>GreetingService</code> that can be used for the test without running the real <code>GreetingService</code>. Something like this:</p>
 <pre class="prettyprint"><code class="language-java">static class GreetingStub implements GreetingService {
   @Override
-  public ServiceCall&lt;NotUsed, String, String&gt; greeting() {
-    return (id, req) -&gt; CompletableFuture.completedFuture(&quot;Hello&quot;);
+  public ServiceCall&lt;String, String&gt; greeting() {
+    return req -&gt; CompletableFuture.completedFuture(&quot;Hello&quot;);
   }
 }
 
@@ -174,11 +174,11 @@ public class AdvancedHelloServiceTest {
 }</code></pre><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a>How to test several services</h2><p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a>How to test streamed request/response</h2><p>Let&rsquo;s say we have a service that have streaming request and/or response parameters. For example an <code>EchoService</code> like this:</p>
 <pre class="prettyprint"><code class="language-java">public interface EchoService extends Service {
 
-  ServiceCall&lt;NotUsed, Source&lt;String, NotUsed&gt;, Source&lt;String, NotUsed&gt;&gt; echo();
+  ServiceCall&lt;Source&lt;String, NotUsed&gt;, Source&lt;String, NotUsed&gt;&gt; echo();
 
   default Descriptor descriptor() {
     return named(&quot;echo&quot;).with(
-      namedCall(&quot;echo&quot;, echo())
+      namedCall(&quot;echo&quot;, this::echo)
     );
   }
 }</code></pre><p>When writing tests for that the <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a> is very useful. We use the Streams TestKit together with the Lagom <code>ServiceTest</code> utilities:</p>

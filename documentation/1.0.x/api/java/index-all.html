@@ -147,6 +147,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/run/RunSupport.html#allProblems-scala.collection.Seq-">allProblems(Seq&lt;Incomplete&gt;)</a></span> - Static method in class com.lightbend.lagom.sbt.run.<a href="com/lightbend/lagom/sbt/run/RunSupport.html" title="class in com.lightbend.lagom.sbt.run">RunSupport</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="api/package-summary.html">api</a> - package api</dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ServiceTest.TestServer.html#app--">app()</a></span> - Method in class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ServiceTest.TestServer.html" title="class in com.lightbend.lagom.javadsl.testkit">ServiceTest.TestServer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/UnmanagedServices$.html#apply-java.util.Map-">apply(Map&lt;String, String&gt;)</a></span> - Method in class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/UnmanagedServices$.html" title="class in com.lightbend.lagom.discovery">UnmanagedServices$</a></dt>
@@ -231,6 +233,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.Response.html#body--">body()</a></span> - Method in class com.lightbend.lagom.sbt.scripted.<a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.Response.html" title="class in com.lightbend.lagom.sbt.scripted">ScriptedTools.Response</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#BOOLEAN">BOOLEAN</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
+<dd>
+<div class="block">A Boolean id serializer.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.EventHandlersBuilder.html#build--">build()</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.cassandra.<a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.EventHandlersBuilder.html" title="class in com.lightbend.lagom.javadsl.persistence.cassandra">CassandraReadSideProcessor.EventHandlersBuilder</a></dt>
 <dd>
 <div class="block">When all event handlers have been defined the immutable
@@ -278,11 +284,19 @@
 </a>
 <h2 class="title">C</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.ServiceCall-">call(ServiceCall&lt;NotUsed, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#call-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">call(ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#call-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">call(ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#call-akka.japi.function.Creator-">call(Creator&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a service call descriptor.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.Descriptor.CallId-com.lightbend.lagom.javadsl.api.ServiceCall-">call(Descriptor.CallId, ServiceCall&lt;Id, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#call-java.lang.reflect.Method-">call(Method)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.Descriptor.CallId-java.lang.Object-">call(Descriptor.CallId, Object)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a service call descriptor.</div>
 </dd>
@@ -384,8 +398,6 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a> - package com.lightbend.lagom.javadsl.api.deser</dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/paging/package-summary.html">com.lightbend.lagom.javadsl.api.paging</a> - package com.lightbend.lagom.javadsl.api.paging</dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/security/package-summary.html">com.lightbend.lagom.javadsl.api.security</a> - package com.lightbend.lagom.javadsl.api.security</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/transport/package-summary.html">com.lightbend.lagom.javadsl.api.transport</a> - package com.lightbend.lagom.javadsl.api.transport</dt>
@@ -479,11 +491,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/LagomImport.html#component-java.lang.String-">component(String)</a></span> - Static method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/LagomImport.html" title="class in com.lightbend.lagom.sbt">LagomImport</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#compose-java.util.function.Function-">compose(Function&lt;RequestHeader, ? extends ServerServiceCall&lt;Id, Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#compose-java.util.function.Function-">compose(Function&lt;RequestHeader, ? extends ServerServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
 <dd>
 <div class="block">Compose a header service call.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#composeAsync-java.util.function.Function-">composeAsync(Function&lt;RequestHeader, CompletionStage&lt;? extends ServerServiceCall&lt;Id, Request, Response&gt;&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#composeAsync-java.util.function.Function-">composeAsync(Function&lt;RequestHeader, CompletionStage&lt;? extends ServerServiceCall&lt;Request, Response&gt;&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
 <dd>
 <div class="block">Compose a header service call asynchronously.</div>
 </dd>
@@ -526,54 +538,6 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/Latency.html#copyOf-com.lightbend.lagom.javadsl.server.status.AbstractLatency-">copyOf(AbstractLatency)</a></span> - Static method in class com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/Latency.html" title="class in com.lightbend.lagom.javadsl.server.status">Latency</a></dt>
 <dd>
 <div class="block">Creates an immutable copy of a <a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html" title="interface in com.lightbend.lagom.javadsl.server.status"><code>AbstractLatency</code></a> value.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-java.util.function.Function-java.util.function.Function-">create(String, Function&lt;Arg1, Id&gt;, Function&lt;Id, Arg1&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-java.util.function.BiFunction-java.util.function.Function-">create(String, BiFunction&lt;Arg1, Arg2, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function3-java.util.function.Function-">create(String, Function3&lt;Arg1, Arg2, Arg3, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function4-java.util.function.Function-">create(String, Function4&lt;Arg1, Arg2, Arg3, Arg4, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function5-java.util.function.Function-">create(String, Function5&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function6-java.util.function.Function-">create(String, Function6&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function7-java.util.function.Function-">create(String, Function7&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function8-java.util.function.Function-">create(String, Function8&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function9-java.util.function.Function-">create(String, Function9&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function10-java.util.function.Function-">create(String, Function10&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function11-java.util.function.Function-">create(String, Function11&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function12-java.util.function.Function-">create(String, Function12&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function13-java.util.function.Function-">create(String, Function13&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function14-java.util.function.Function-">create(String, Function14&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function15-java.util.function.Function-">create(String, Function15&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function16-java.util.function.Function-">create(String, Function16&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function17-java.util.function.Function-">create(String, Function17&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function18-java.util.function.Function-">create(String, Function18&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function19-java.util.function.Function-">create(String, Function19&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function20-java.util.function.Function-">create(String, Function20&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Arg20, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function21-java.util.function.Function-">create(String, Function21&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Arg20, Arg21, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#create-java.lang.String-akka.japi.function.Function22-java.util.function.Function-">create(String, Function22&lt;Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Arg20, Arg21, Arg22, Id&gt;, Function&lt;Id, List&lt;Object&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#createSinglePathParam-java.lang.String-java.util.function.Function-java.util.function.Function-">createSinglePathParam(String, Function&lt;String, Id&gt;, Function&lt;Id, String&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>
-<div class="block">Create an IdSerializer from the given serialize and deserialize functions.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/core/LagomVersion$.html#current--">current()</a></span> - Method in class com.lightbend.lagom.core.<a href="com/lightbend/lagom/core/LagomVersion$.html" title="class in com.lightbend.lagom.core">LagomVersion$</a></dt>
 <dd>&nbsp;</dd>
@@ -629,6 +593,8 @@
 <dd>
 <div class="block">A description of this close code.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="api/FooService.html#descriptor--">descriptor()</a></span> - Method in interface api.<a href="api/FooService.html" title="interface in api">FooService</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">Descriptor</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
 <dd>
 <div class="block">Describes a service.</div>
@@ -639,7 +605,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/MetricsService.html#descriptor--">descriptor()</a></span> - Method in interface com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/MetricsService.html" title="interface in com.lightbend.lagom.javadsl.server.status">MetricsService</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">Descriptor.Call</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt; - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">Descriptor.Call</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt; - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
 <dd>
 <div class="block">Describes a service call.</div>
 </dd>
@@ -661,6 +627,10 @@
 <dd>
 <div class="block">A REST call ID.</div>
 </dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">Descriptor.ServiceCallHolder</span></a> - Interface in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>
+<div class="block">Holds the service call itself.</div>
+</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/deser/DeserializationException.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">DeserializationException</span></a> - Exception in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
 <dd>
 <div class="block">Exception thrown when there is a problem deserializing a message.</div>
@@ -673,13 +643,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html#deserialize-com.lightbend.lagom.javadsl.api.deser.RawExceptionMessage-">deserialize(RawExceptionMessage)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">ExceptionSerializer</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html#deserialize-com.lightbend.lagom.javadsl.api.deser.RawId-">deserialize(RawId)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a></dt>
-<dd>
-<div class="block">Deserialize the <code>rawId</code> into an ID.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializer.NegotiatedDeserializer.html#deserialize-WireFormat-">deserialize(WireFormat)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializer.NegotiatedDeserializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer.NegotiatedDeserializer</a></dt>
 <dd>
 <div class="block">Deserialize the given wire format.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html#deserialize-org.pcollections.PSequence-">deserialize(PSequence&lt;String&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a></dt>
+<dd>
+<div class="block">Deserialize the <code>parameters</code> into a deserialized parameter.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/jackson/JacksonExceptionSerializer.html#deserialize-com.lightbend.lagom.javadsl.api.deser.RawExceptionMessage-">deserialize(RawExceptionMessage)</a></span> - Method in class com.lightbend.lagom.javadsl.jackson.<a href="com/lightbend/lagom/javadsl/jackson/JacksonExceptionSerializer.html" title="class in com.lightbend.lagom.javadsl.jackson">JacksonExceptionSerializer</a></dt>
 <dd>&nbsp;</dd>
@@ -714,10 +684,6 @@
 </a>
 <h2 class="title">E</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#EMPTY">EMPTY</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">An empty RawId.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.html#emptyStatements--">emptyStatements()</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.cassandra.<a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.html" title="class in com.lightbend.lagom.javadsl.persistence.cassandra">CassandraReadSideProcessor</a></dt>
 <dd>
 <div class="block">Convenience method to create an already completed <code>CompletionStage</code>
@@ -740,14 +706,6 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.PathCallId</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.RestCallId</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
@@ -885,6 +843,20 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/run/Reloader.html#findSource-java.lang.String-java.lang.Integer-">findSource(String, Integer)</a></span> - Method in class com.lightbend.lagom.sbt.run.<a href="com/lightbend/lagom/sbt/run/Reloader.html" title="class in com.lightbend.lagom.sbt.run">Reloader</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="api/FooService.html#foo--">foo()</a></span> - Method in interface api.<a href="api/FooService.html" title="interface in api">FooService</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="impl/FooServiceImpl.html#foo--">foo()</a></span> - Method in class impl.<a href="impl/FooServiceImpl.html" title="class in impl">FooServiceImpl</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="impl/FooModule.html" title="class in impl"><span class="typeNameLink">FooModule</span></a> - Class in <a href="impl/package-summary.html">impl</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="impl/FooModule.html#FooModule--">FooModule()</a></span> - Constructor for class impl.<a href="impl/FooModule.html" title="class in impl">FooModule</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="api/FooService.html" title="interface in api"><span class="typeNameLink">FooService</span></a> - Interface in <a href="api/package-summary.html">api</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="impl/FooServiceImpl.html" title="class in impl"><span class="typeNameLink">FooServiceImpl</span></a> - Class in <a href="impl/package-summary.html">impl</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="impl/FooServiceImpl.html#FooServiceImpl--">FooServiceImpl()</a></span> - Constructor for class impl.<a href="impl/FooServiceImpl.html" title="class in impl">FooServiceImpl</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/transport/Forbidden.html" title="class in com.lightbend.lagom.javadsl.api.transport"><span class="typeNameLink">Forbidden</span></a> - Exception in <a href="com/lightbend/lagom/javadsl/api/transport/package-summary.html">com.lightbend.lagom.javadsl.api.transport</a></dt>
 <dd>
 <div class="block">Exception thrown when a service call is forbidden.</div>
@@ -926,10 +898,6 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html#fromHttp-int-">fromHttp(int)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html" title="class in com.lightbend.lagom.javadsl.api.transport">TransportErrorCode</a></dt>
 <dd>
 <div class="block">Get a transport error code from the given HTTP error code.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#fromPathValues-org.pcollections.PSequence-">fromPathValues(PSequence&lt;String&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Create a new raw ID from the given path values and empty query parameters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html#fromWebSocket-int-">fromWebSocket(int)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html" title="class in com.lightbend.lagom.javadsl.api.transport">TransportErrorCode</a></dt>
 <dd>
@@ -990,6 +958,10 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html#getMedian--">getMedian()</a></span> - Method in interface com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html" title="interface in com.lightbend.lagom.javadsl.server.status">AbstractLatency</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/Latency.html#getMedian--">getMedian()</a></span> - Method in class com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/Latency.html" title="class in com.lightbend.lagom.javadsl.server.status">Latency</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html#getMethodWithName-java.lang.Class-java.lang.String-">getMethodWithName(Class&lt;?&gt;, String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html#getMethodWithName-java.lang.Class-java.lang.String-">getMethodWithName(Class&lt;?&gt;, String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html#getMin--">getMin()</a></span> - Method in interface com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html" title="interface in com.lightbend.lagom.javadsl.server.status">AbstractLatency</a></dt>
 <dd>&nbsp;</dd>
@@ -1104,14 +1076,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.RestCallId</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html#hashCode--">hashCode()</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageProtocol</a></dt>
@@ -1142,7 +1106,7 @@
 <dd>
 <div class="block">Get the headers for the message.</div>
 </dd>
-<dt><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">HeaderServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="type parameter in HeaderServiceCall">Id</a>,<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="type parameter in HeaderServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="type parameter in HeaderServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">HeaderServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="type parameter in HeaderServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="type parameter in HeaderServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
 <dd>
 <div class="block">A service call that can handle headers.</div>
 </dd>
@@ -1168,25 +1132,9 @@
 <dd>
 <div class="block">Initializes the value for the <a href="com/lightbend/lagom/javadsl/server/status/AbstractCircuitBreakerStatus.html#getId--"><code>id</code></a> attribute.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#idSerializer--">idSerializer()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
-<dd>
-<div class="block">Get the ID serializer.</div>
-</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">IdSerializer</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="type parameter in IdSerializer">Id</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
-<dd>
-<div class="block">An ID serializer is responsible for serializing and deserializing IDs from URL paths.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#idSerializers--">idSerializers()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">IdSerializers</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
-<dd>
-<div class="block">Id Serializers.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html#idType--">idType()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a></dt>
-<dd>
-<div class="block">Get the type of the ID.</div>
-</dd>
 <dt><a href="com/lightbend/lagom/javadsl/immutable/ImmutableStyle.html" title="annotation in com.lightbend.lagom.javadsl.immutable"><span class="typeNameLink">ImmutableStyle</span></a> - Annotation Type in <a href="com/lightbend/lagom/javadsl/immutable/package-summary.html">com.lightbend.lagom.javadsl.immutable</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="impl/package-summary.html">impl</a> - package impl</dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/PortAssigner.PortRange.html#includes-int-">includes(int)</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/PortAssigner.PortRange.html" title="class in com.lightbend.lagom.sbt">PortAssigner.PortRange</a></dt>
 <dd>&nbsp;</dd>
@@ -1202,7 +1150,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.InstanceServiceBinding.html#InstanceServiceBinding-java.lang.Class-T-">InstanceServiceBinding(Class&lt;T&gt;, T)</a></span> - Constructor for class com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.InstanceServiceBinding.html" title="class in com.lightbend.lagom.javadsl.server">ServiceGuiceSupport.InstanceServiceBinding</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#INTEGER">INTEGER</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#INTEGER">INTEGER</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
 <dd>
 <div class="block">An Integer id serializer.</div>
 </dd>
@@ -1241,31 +1189,27 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.InvalidCommandException$.html#InvalidCommandException:D--">InvalidCommandException$()</a></span> - Constructor for class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.InvalidCommandException$.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.InvalidCommandException$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-">invoke(Id, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a></dt>
-<dd>
-<div class="block">Invoke the service call.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke(Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a></dt>
 <dd>
-<div class="block">Invoke the service call with a unit id argument.</div>
+<div class="block">Invoke the service call.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke--">invoke()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a></dt>
 <dd>
 <div class="block">Invoke the service call with unit id argument and a unit request message.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#invoke-Id-Request-">invoke(Id, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#invoke-Request-">invoke(Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Id-Request-">invoke(Id, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Request-">invoke(Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Id-java.util.function.Function-">invoke(Id, Function&lt;ServiceCall&lt;Id, Request, Response&gt;, EssentialAction&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-java.util.function.Function-">invoke(Function&lt;ServiceCall&lt;Request, Response&gt;, EssentialAction&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">PlayServiceCall</a></dt>
 <dd>
 <div class="block">Low level hook for implementing service calls directly in Play.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-">invokeWithHeaders(RequestHeader, Id, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-">invokeWithHeaders(RequestHeader, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
 <dd>
 <div class="block">Invoke the given action with the request and response headers.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-">invokeWithHeaders(RequestHeader, Id, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-">invokeWithHeaders(RequestHeader, Request)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a></dt>
 <dd>
 <div class="block">Invoke the given action with the request and response headers.</div>
 </dd>
@@ -1547,6 +1491,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html#lagomRun--">lagomRun()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html" title="class in com.lightbend.lagom.sbt">LagomPlugin.autoImport$</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.autoImport$.html#lagomSbtScriptedLibrary--">lagomSbtScriptedLibrary()</a></span> - Method in class com.lightbend.lagom.sbt.scripted.<a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.autoImport$.html" title="class in com.lightbend.lagom.sbt.scripted">ScriptedTools.autoImport$</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html#lagomServiceGatewayPort--">lagomServiceGatewayPort()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html" title="class in com.lightbend.lagom.sbt">LagomPlugin.autoImport$</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html#lagomServiceLocatorEnabled--">lagomServiceLocatorEnabled()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/LagomPlugin.autoImport$.html" title="class in com.lightbend.lagom.sbt">LagomPlugin.autoImport$</a></dt>
@@ -1605,11 +1551,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/NonBlockingInteractionMode.NullLogger$.html#log-scala.Enumeration.Value-scala.Function0-">log(Enumeration.Value, Function0&lt;String&gt;)</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/NonBlockingInteractionMode.NullLogger$.html" title="class in com.lightbend.lagom.sbt">NonBlockingInteractionMode.NullLogger$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#LONG">LONG</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#LONG">LONG</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
 <dd>
 <div class="block">A Long id serializer.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#lookup--">lookup()</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#lookup-java.lang.String-">lookup(String)</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Lookup.html#Lookup-java.lang.String-">Lookup(String)</a></span> - Constructor for class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Lookup.html" title="class in com.lightbend.lagom.discovery">ServiceRegistryActor.Lookup</a></dt>
 <dd>&nbsp;</dd>
@@ -1723,6 +1669,8 @@
 <dd>
 <div class="block">The HTTP method for the call.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html#method--">method()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport.ScalaMethodCall</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#method--">method()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/transport/Method.html" title="class in com.lightbend.lagom.javadsl.api.transport"><span class="typeNameLink">Method</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/transport/package-summary.html">com.lightbend.lagom.javadsl.api.transport</a></dt>
@@ -1737,10 +1685,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#methodAndPath-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-">methodAndPath(Method, String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html#methodName--">methodName()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a></dt>
-<dd>
-<div class="block">Get the name of the method that defines the call.</div>
-</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html#methodForImpl-scala.reflect.macros.blackbox.Context-scala.reflect.api.Exprs.Expr-scala.reflect.api.TypeTags.WeakTypeTag-">methodForImpl(Context, Exprs.Expr&lt;Object&gt;, TypeTags.WeakTypeTag&lt;T&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html#methodForImpl-scala.reflect.macros.blackbox.Context-scala.reflect.api.Exprs.Expr-scala.reflect.api.TypeTags.WeakTypeTag-">methodForImpl(Context, Exprs.Expr&lt;Object&gt;, TypeTags.WeakTypeTag&lt;T&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html#MethodNotAllowed">MethodNotAllowed</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html" title="class in com.lightbend.lagom.javadsl.api.transport">TransportErrorCode</a></dt>
 <dd>
 <div class="block">The method being used is not allowed.</div>
@@ -1798,6 +1746,18 @@
 <div class="block">Static reference to the singleton instance of this Scala object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/gateway/ServiceGatewayConfig$.html#MODULE:D">MODULE$</a></span> - Static variable in class com.lightbend.lagom.gateway.<a href="com/lightbend/lagom/gateway/ServiceGatewayConfig$.html" title="class in com.lightbend.lagom.gateway">ServiceGatewayConfig$</a></dt>
+<dd>
+<div class="block">Static reference to the singleton instance of this Scala object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#MODULE:D">MODULE$</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>
+<div class="block">Static reference to the singleton instance of this Scala object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html#MODULE:D">MODULE$</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport$</a></dt>
+<dd>
+<div class="block">Static reference to the singleton instance of this Scala object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html#MODULE:D">MODULE$</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport.ScalaMethodCall$</a></dt>
 <dd>
 <div class="block">Static reference to the singleton instance of this Scala object.</div>
 </dd>
@@ -2051,10 +2011,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionMessage.html#name--">name()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/ExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">ExceptionMessage</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#name--">name()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>
-<div class="block">Get the name of the path parameter.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/Method.html#name--">name()</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/Method.html" title="class in com.lightbend.lagom.javadsl.api.transport">Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraContactPoint.html#name--">name()</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.cassandra.<a href="com/lightbend/lagom/javadsl/persistence/cassandra/CassandraContactPoint.html" title="class in com.lightbend.lagom.javadsl.persistence.cassandra">CassandraContactPoint</a></dt>
@@ -2063,11 +2019,23 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/PortAssigner.ProjectName.html#name--">name()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/PortAssigner.ProjectName.html" title="class in com.lightbend.lagom.sbt">PortAssigner.ProjectName</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#named-java.lang.String-">named(String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#named-java.lang.String-">named(String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#named-java.lang.String-">named(String)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a descriptor for a service with the given name.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">namedCall(String, ServiceCall&lt;NotUsed, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#namedCall-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">namedCall(String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#namedCall-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">namedCall(String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-akka.japi.function.Creator-">namedCall(String, Creator&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given name.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-java.lang.reflect.Method-">namedCall(String, Method)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a service call descriptor, identified by the given name.</div>
 </dd>
@@ -2115,10 +2083,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.NoSerializer$.html#NoSerializer:D--">NoSerializer$()</a></span> - Constructor for class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.NoSerializer$.html" title="class in com.lightbend.lagom.javadsl.testkit">PersistentEntityTestDriver.NoSerializer$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#NOT_USED">NOT_USED</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>
-<div class="block">A unit id serializer.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializers.html#NOT_USED">NOT_USED</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">MessageSerializers</a></dt>
 <dd>
 <div class="block">A serializer for <code>NotUsed</code> (empty) messages.</div>
@@ -2167,10 +2131,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/NonBlockingInteractionMode.NullLogger$.html#NullLogger:D--">NullLogger$()</a></span> - Constructor for class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/NonBlockingInteractionMode.NullLogger$.html" title="class in com.lightbend.lagom.sbt">NonBlockingInteractionMode.NullLogger$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html#numPathParamsHint--">numPathParamsHint()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a></dt>
-<dd>
-<div class="block">A hint of the number of path parameters that this id serializer serializes.</div>
-</dd>
 </dl>
 <a name="I:O">
 <!--   -->
@@ -2189,26 +2149,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.NotEqualAfterSerialization.html#objBefore--">objBefore()</a></span> - Method in class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.NotEqualAfterSerialization.html" title="class in com.lightbend.lagom.javadsl.testkit">PersistentEntityTestDriver.NotEqualAfterSerialization</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#of-org.pcollections.PSequence-org.pcollections.PMap-">of(PSequence&lt;RawId.PathParam&gt;, PMap&lt;String, PSequence&lt;String&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Create a new raw ID from the given path parameters and query parameters.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#of-org.pcollections.PSequence-">of(PSequence&lt;RawId.PathParam&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Create a new raw ID from the given path parameters and empty query parameters.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#of-org.pcollections.PMap-">of(PMap&lt;String, PSequence&lt;String&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Create a new raw ID from the given query parameters and empty path parameters.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#of-java.lang.String-">of(String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>
-<div class="block">Create a path parameter of the given value.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#of-java.lang.String-java.lang.String-">of(String, String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>
-<div class="block">Create a path parameter with the given name and value.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/AggregateEventTag$.html#of-java.lang.Class-">of(Class&lt;Event&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/AggregateEventTag$.html" title="class in com.lightbend.lagom.javadsl.persistence">AggregateEventTag$</a></dt>
 <dd>
 <div class="block">Convenience factory method of <a href="com/lightbend/lagom/javadsl/persistence/AggregateEventTag.html" title="class in com.lightbend.lagom.javadsl.persistence"><code>AggregateEventTag</code></a> that uses the
@@ -2235,13 +2175,21 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/pubsub/TopicId.html#of-java.lang.Class-java.lang.String-">of(Class&lt;T&gt;, String)</a></span> - Static method in class com.lightbend.lagom.javadsl.pubsub.<a href="com/lightbend/lagom/javadsl/pubsub/TopicId.html" title="class in com.lightbend.lagom.javadsl.pubsub">TopicId</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#of-com.lightbend.lagom.javadsl.server.HeaderServiceCall-">of(HeaderServiceCall&lt;Id, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html#of-com.lightbend.lagom.javadsl.server.HeaderServiceCall-">of(HeaderServiceCall&lt;Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a></dt>
 <dd>
 <div class="block">Convenience method for providing a <a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><code>HeaderServiceCall</code></a> when a method accepts a less specific type, eg
  <a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><code>ServerServiceCall</code></a>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html#OK">OK</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#OPTIONAL">OPTIONAL</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
+<dd>
+<div class="block">A generic (unresolved) optional serializer.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#optional-java.lang.String-java.util.function.Function-java.util.function.Function-">optional(String, Function&lt;String, Param&gt;, Function&lt;Param, String&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
+<dd>
+<div class="block">Create a PathParamSerializer for optional parameters.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/Method.html#OPTIONS">OPTIONS</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/Method.html" title="class in com.lightbend.lagom.javadsl.api.transport">Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/PortAssigner.ProjectName.OrderingProjectName$.html#OrderingProjectName:D--">OrderingProjectName$()</a></span> - Constructor for class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/PortAssigner.ProjectName.OrderingProjectName$.html" title="class in com.lightbend.lagom.sbt">PortAssigner.ProjectName.OrderingProjectName$</a></dt>
@@ -2262,42 +2210,81 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#PAGE">PAGE</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>
-<div class="block">A page serializer.</div>
-</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging"><span class="typeNameLink">Page</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/paging/package-summary.html">com.lightbend.lagom.javadsl.api.paging</a></dt>
-<dd>
-<div class="block">A page object, use to capture paging information.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#Page-java.util.Optional-java.util.Optional-">Page(Optional&lt;Integer&gt;, Optional&lt;Integer&gt;)</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#pageNo--">pageNo()</a></span> - Method in class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#pageSize--">pageSize()</a></span> - Method in class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/Method.html#PATCH">PATCH</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/Method.html" title="class in com.lightbend.lagom.javadsl.api.transport">Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Route.html#path--">path()</a></span> - Method in class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Route.html" title="class in com.lightbend.lagom.discovery">ServiceRegistryActor.Route</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#path-java.lang.String-">path(String)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">pathCall(String, ServiceCall&lt;Id, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#pathCall-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">pathCall(String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#pathCall-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">pathCall(String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Creator-">pathCall(String, Creator&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function-">pathCall(String, Function&lt;A, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function2-">pathCall(String, Function2&lt;A, B, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function3-">pathCall(String, Function3&lt;A, B, C, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function4-">pathCall(String, Function4&lt;A, B, C, D, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function5-">pathCall(String, Function5&lt;A, B, C, D, E, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function6-">pathCall(String, Function6&lt;A, B, C, D, E, F, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function7-">pathCall(String, Function7&lt;A, B, C, D, E, F, G, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function8-">pathCall(String, Function8&lt;A, B, C, D, E, F, G, H, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function9-">pathCall(String, Function9&lt;A, B, C, D, E, F, G, H, I, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function10-">pathCall(String, Function10&lt;A, B, C, D, E, F, G, H, I, J, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function11-">pathCall(String, Function11&lt;A, B, C, D, E, F, G, H, I, J, K, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a service call descriptor, identified by the given path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-java.lang.reflect.Method-">pathCall(String, Method)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a service call descriptor, identified by the given path pattern.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html#PathCallId-java.lang.String-">PathCallId(String)</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.PathCallId</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#pathParam-java.lang.String-">pathParam(String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">PathParamSerializer</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="type parameter in PathParamSerializer">Param</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
 <dd>
-<div class="block">Get the path parameter with the given <code>name</code>.</div>
+<div class="block">A path param serializer is responsible for serializing and deserializing parameters that are extracted from and
+ formatted into paths.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#pathParams--">pathParams()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Get the path parameters for the ID.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#pathParams--">pathParams()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#pathParamSerializers--">pathParamSerializers()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">PathParamSerializers</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
+<dd>
+<div class="block">Id Serializers.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html#pathPattern--">pathPattern()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.PathCallId</a></dt>
 <dd>
 <div class="block">Get the path pattern.</div>
@@ -2513,7 +2500,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/play/PlayRegisterWithServiceRegistry.html#PlayRegisterWithServiceRegistry-play.api.Configuration-com.lightbend.lagom.javadsl.api.ServiceInfo-com.lightbend.lagom.internal.registry.ServiceRegistry-play.api.inject.ApplicationLifecycle-">PlayRegisterWithServiceRegistry(Configuration, ServiceInfo, ServiceRegistry, ApplicationLifecycle)</a></span> - Constructor for class com.lightbend.lagom.play.<a href="com/lightbend/lagom/play/PlayRegisterWithServiceRegistry.html" title="class in com.lightbend.lagom.play">PlayRegisterWithServiceRegistry</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">PlayServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>,<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">PlayServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
 <dd>
 <div class="block">An ID service call implementation that allows plugging directly into Play's request handling.</div>
 </dd>
@@ -2692,16 +2679,6 @@
 <dl>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/pubsub/TopicId.html#qualifier--">qualifier()</a></span> - Method in class com.lightbend.lagom.javadsl.pubsub.<a href="com/lightbend/lagom/javadsl/pubsub/TopicId.html" title="class in com.lightbend.lagom.javadsl.pubsub">TopicId</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#queryParam-java.lang.String-">queryParam(String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Get a query string parameter with the given <code>name</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#queryParams--">queryParams()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Get the query parameters for the ID.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#queryParams--">queryParams()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a name="I:R">
 <!--   -->
@@ -2715,18 +2692,6 @@
 <div class="block">A serialized exception message.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html#RawExceptionMessage-com.lightbend.lagom.javadsl.api.transport.TransportErrorCode-com.lightbend.lagom.javadsl.api.transport.MessageProtocol-akka.util.ByteString-">RawExceptionMessage(TransportErrorCode, MessageProtocol, ByteString)</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">RawId</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
-<dd>
-<div class="block">A raw ID.</div>
-</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">RawId.PathParam</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
-<dd>
-<div class="block">A path parameter.</div>
-</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser"><span class="typeNameLink">RawIdDescriptor</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/deser/package-summary.html">com.lightbend.lagom.javadsl.api.deser</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#RawIdDescriptor-org.pcollections.PSequence-org.pcollections.PSequence-">RawIdDescriptor(PSequence&lt;String&gt;, PSequence&lt;String&gt;)</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html#ReadOnlyCommandContext--">ReadOnlyCommandContext()</a></span> - Constructor for class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.ReadOnlyCommandContext</a></dt>
 <dd>&nbsp;</dd>
@@ -2750,7 +2715,7 @@
 <dd>
 <div class="block">Get a <a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html" title="class in com.lightbend.lagom.javadsl.pubsub"><code>PubSubRef</code></a> for a given topic.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#register--">register()</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#register-java.lang.String-">register(String)</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Register.html#Register-java.lang.String-com.lightbend.lagom.internal.registry.ServiceRegistryService-">Register(String, ServiceRegistryService)</a></span> - Constructor for class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Register.html" title="class in com.lightbend.lagom.discovery">ServiceRegistryActor.Register</a></dt>
 <dd>&nbsp;</dd>
@@ -2826,13 +2791,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Remove$.html#Remove:D--">Remove$()</a></span> - Constructor for class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/ServiceRegistryActor.Remove$.html" title="class in com.lightbend.lagom.discovery">ServiceRegistryActor.Remove$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#removeNext--">removeNext()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllAcls-org.pcollections.PSequence-">replaceAllAcls(PSequence&lt;ServiceAcl&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
 <div class="block">Replace all the ACLs with the given ACL sequence.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllCalls-org.pcollections.PSequence-">replaceAllCalls(PSequence&lt;Descriptor.Call&lt;?, ?, ?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllCalls-org.pcollections.PSequence-">replaceAllCalls(PSequence&lt;Descriptor.Call&lt;?, ?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
 <div class="block">Replace all the service calls provided by this descriptor with the the given service calls.</div>
 </dd>
@@ -2844,13 +2807,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html#replaceAllHeaders-org.pcollections.PMap-">replaceAllHeaders(PMap&lt;String, PSequence&lt;String&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllIdSerializers-org.pcollections.PMap-">replaceAllIdSerializers(PMap&lt;Type, IdSerializer&lt;?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
-<dd>
-<div class="block">Replace all the id serializers registered with this descriptor with the the given id serializers.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllMessageSerializers-org.pcollections.PMap-">replaceAllMessageSerializers(PMap&lt;Type, MessageSerializer&lt;?, ?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
 <div class="block">Replace all the message serializers registered with this descriptor with the the given message serializers.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllPathParamSerializers-org.pcollections.PMap-">replaceAllPathParamSerializers(PMap&lt;Type, PathParamSerializer&lt;?&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dd>
+<div class="block">Replace all the path param serializers registered with this descriptor with the the given path param serializers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html#reply-R-">reply(R)</a></span> - Method in class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/PersistentEntity.ReadOnlyCommandContext.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.ReadOnlyCommandContext</a></dt>
 <dd>
@@ -2870,9 +2833,9 @@
 <dd>
 <div class="block">Get the request message serializer.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html#requestType--">requestType()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#required-java.lang.String-java.util.function.Function-java.util.function.Function-">required(String, Function&lt;String, Param&gt;, Function&lt;Param, String&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
 <dd>
-<div class="block">Get the type of the request.</div>
+<div class="block">Create a PathParamSerializer for required parameters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/Lagom$.html#requires--">requires()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/Lagom$.html" title="class in com.lightbend.lagom.sbt">Lagom$</a></dt>
 <dd>&nbsp;</dd>
@@ -2920,11 +2883,59 @@
 <dd>
 <div class="block">Get the response message serializer.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html#responseType--">responseType()</a></span> - Method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">restCall(Method, String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-com.lightbend.lagom.javadsl.api.ScalaServiceSupport.ScalaMethodCall-">restCall(Method, String, ScalaServiceSupport.ScalaMethodCall&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Creator-">restCall(Method, String, Creator&lt;ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
-<div class="block">Get the type of the response.</div>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">restCall(Method, String, ServiceCall&lt;Id, Request, Response&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function-">restCall(Method, String, Function&lt;A, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function2-">restCall(Method, String, Function2&lt;A, B, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function3-">restCall(Method, String, Function3&lt;A, B, C, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function4-">restCall(Method, String, Function4&lt;A, B, C, D, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function5-">restCall(Method, String, Function5&lt;A, B, C, D, E, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function6-">restCall(Method, String, Function6&lt;A, B, C, D, E, F, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function7-">restCall(Method, String, Function7&lt;A, B, C, D, E, F, G, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function8-">restCall(Method, String, Function8&lt;A, B, C, D, E, F, G, H, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function9-">restCall(Method, String, Function9&lt;A, B, C, D, E, F, G, H, I, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function10-">restCall(Method, String, Function10&lt;A, B, C, D, E, F, G, H, I, J, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function11-">restCall(Method, String, Function11&lt;A, B, C, D, E, F, G, H, I, J, K, ServiceCall&lt;Request, Response&gt;&gt;)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
+<dd>
+<div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-java.lang.reflect.Method-">restCall(Method, String, Method)</a></span> - Static method in interface com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></dt>
 <dd>
 <div class="block">Create a REST service call descriptor, identified by the given HTTP method and path pattern.</div>
 </dd>
@@ -2962,6 +2973,34 @@
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html#ScalaMethodCall-java.lang.reflect.Method-">ScalaMethodCall(Method)</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport.ScalaMethodCall</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html#ScalaMethodCall:D--">ScalaMethodCall$()</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport.ScalaMethodCall$</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaService</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>
+<div class="block">Support for implementing javadsl service calls with Scala.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService.html#ScalaService--">ScalaService()</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaService$</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>
+<div class="block">Support for implementing javadsl service calls with Scala.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html#ScalaService:D--">ScalaService$()</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaService$</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaServiceSupport</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html#ScalaServiceSupport--">ScalaServiceSupport()</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaServiceSupport$</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html#ScalaServiceSupport:D--">ScalaServiceSupport$()</a></span> - Constructor for class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api">ScalaServiceSupport$</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaServiceSupport.ScalaMethodCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html" title="type parameter in ScalaServiceSupport.ScalaMethodCall">T</a>&gt; - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ScalaServiceSupport.ScalaMethodCall$</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.html" title="class in com.lightbend.lagom.sbt.scripted"><span class="typeNameLink">ScriptedTools</span></a> - Class in <a href="com/lightbend/lagom/sbt/scripted/package-summary.html">com.lightbend.lagom.sbt.scripted</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.html#ScriptedTools--">ScriptedTools()</a></span> - Constructor for class com.lightbend.lagom.sbt.scripted.<a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.html" title="class in com.lightbend.lagom.sbt.scripted">ScriptedTools</a></dt>
@@ -3024,13 +3063,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html#serialize-java.lang.Throwable-java.util.Collection-">serialize(Throwable, Collection&lt;MessageProtocol&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">ExceptionSerializer</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html#serialize-Id-">serialize(Id)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a></dt>
-<dd>
-<div class="block">Serialize the given <code>id</code> into a list of path parameters.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializer.NegotiatedSerializer.html#serialize-MessageEntity-">serialize(MessageEntity)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializer.NegotiatedSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer.NegotiatedSerializer</a></dt>
 <dd>
 <div class="block">Serialize the given message entity.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html#serialize-Param-">serialize(Param)</a></span> - Method in interface com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a></dt>
+<dd>
+<div class="block">Serialize the given <code>parameter</code> into path parameters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/jackson/JacksonExceptionSerializer.html#serialize-java.lang.Throwable-java.util.Collection-">serialize(Throwable, Collection&lt;MessageProtocol&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.jackson.<a href="com/lightbend/lagom/javadsl/jackson/JacksonExceptionSerializer.html" title="class in com.lightbend.lagom.javadsl.jackson">JacksonExceptionSerializer</a></dt>
 <dd>&nbsp;</dd>
@@ -3064,7 +3103,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/sbt/run/Servers.ServiceLocator$.html" title="class in com.lightbend.lagom.sbt.run"><span class="typeNameLink">Servers.ServiceLocator$</span></a> - Class in <a href="com/lightbend/lagom/sbt/run/package-summary.html">com.lightbend.lagom.sbt.run</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">ServerServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><span class="typeNameLink">ServerServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/server/package-summary.html">com.lightbend.lagom.javadsl.server</a></dt>
 <dd>
 <div class="block">A server implementation of a service call.</div>
 </dd>
@@ -3076,10 +3115,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.InstanceServiceBinding.html#service--">service()</a></span> - Method in class com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.InstanceServiceBinding.html" title="class in com.lightbend.lagom.javadsl.server">ServiceGuiceSupport.InstanceServiceBinding</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">Service.SelfDescribingServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Id</a>,<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
-<dd>
-<div class="block">A self describing service call.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryModule.html#SERVICE_REGISTRY_ACTOR">SERVICE_REGISTRY_ACTOR</a></span> - Static variable in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryModule.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryModule</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ServiceAcl</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
@@ -3094,13 +3129,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.html#serviceBinding-java.lang.Class-T-">serviceBinding(Class&lt;T&gt;, T)</a></span> - Method in interface com.lightbend.lagom.javadsl.server.<a href="com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.html" title="interface in com.lightbend.lagom.javadsl.server">ServiceGuiceSupport</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#serviceCall--">serviceCall()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
+<dt><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
 <dd>
-<div class="block">Get the service call itself.</div>
+<div class="block">A service call for an entity.</div>
 </dd>
-<dt><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api"><span class="typeNameLink">ServiceCall</span></a>&lt;<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Id</a>,<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Request</a>,<a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="type parameter in ServiceCall">Response</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/api/package-summary.html">com.lightbend.lagom.javadsl.api</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#serviceCallHolder--">serviceCallHolder()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
 <dd>
-<div class="block">A service call for an entity with a particular id.</div>
+<div class="block">A holder for the service call.</div>
 </dd>
 <dt><a href="com/lightbend/lagom/javadsl/client/ServiceClientGuiceSupport.html" title="interface in com.lightbend.lagom.javadsl.client"><span class="typeNameLink">ServiceClientGuiceSupport</span></a> - Interface in <a href="com/lightbend/lagom/javadsl/client/package-summary.html">com.lightbend.lagom.javadsl.client</a></dt>
 <dd>&nbsp;</dd>
@@ -3336,13 +3371,13 @@
 <dd>
 <div class="block">A strict message serializer, for messages that fit and are worked with strictly in memory.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html#STRING">STRING</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">IdSerializers</a></dt>
-<dd>
-<div class="block">A String id serializer.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializers.html#STRING">STRING</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/MessageSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">MessageSerializers</a></dt>
 <dd>
 <div class="block">A serializer for plain text messages.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html#STRING">STRING</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser">PathParamSerializers</a></dt>
+<dd>
+<div class="block">A String id serializer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html#subscriber--">subscriber()</a></span> - Method in class com.lightbend.lagom.javadsl.pubsub.<a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html" title="class in com.lightbend.lagom.javadsl.pubsub">PubSubRef</a></dt>
 <dd>
@@ -3441,14 +3476,6 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.RestCallId</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionMessage.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/ExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">ExceptionMessage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawIdDescriptor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/paging/Page.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.paging.<a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html#toString--">toString()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api">ServiceAcl</a></dt>
 <dd>&nbsp;</dd>
@@ -3632,7 +3659,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/UnmanagedServices$.html#UnmanagedServices:D--">UnmanagedServices$()</a></span> - Constructor for class com.lightbend.lagom.discovery.<a href="com/lightbend/lagom/discovery/UnmanagedServices$.html" title="class in com.lightbend.lagom.discovery">UnmanagedServices$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#unregister--">unregister()</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html#unregister-java.lang.String-">unregister(String)</a></span> - Method in class com.lightbend.lagom.discovery.impl.<a href="com/lightbend/lagom/discovery/impl/ServiceRegistryImpl.html" title="class in com.lightbend.lagom.discovery.impl">ServiceRegistryImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html#UnsupportedData">UnsupportedData</a></span> - Static variable in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/TransportErrorCode.html" title="class in com.lightbend.lagom.javadsl.api.transport">TransportErrorCode</a></dt>
 <dd>
@@ -3684,10 +3711,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.autoImport$.html#validateRequest--">validateRequest()</a></span> - Method in class com.lightbend.lagom.sbt.scripted.<a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.autoImport$.html" title="class in com.lightbend.lagom.sbt.scripted">ScriptedTools.autoImport$</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html#value--">value()</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId.PathParam</a></dt>
-<dd>
-<div class="block">Get the value of the path parameter.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/sbt/PortAssigner.Port.html#value--">value()</a></span> - Method in class com.lightbend.lagom.sbt.<a href="com/lightbend/lagom/sbt/PortAssigner.Port.html" title="class in com.lightbend.lagom.sbt">PortAssigner.Port</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html#version--">version()</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageProtocol</a></dt>
@@ -3704,22 +3727,26 @@
 <dd>
 <div class="block">The WebSocket close code for this error.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with(IdSerializer&lt;Id&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.Descriptor.CallId-">with(Descriptor.CallId)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
 <dd>
-<div class="block">Return a copy of this call descriptor with the given ID serializer configured.</div>
+<div class="block">Return a copy of this call descriptor with the given service call ID configured.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.ServiceCall-">with(ServiceCall&lt;Id, Request, Response&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.Descriptor.ServiceCallHolder-">with(Descriptor.ServiceCallHolder)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
+<dd>
+<div class="block">Return a copy of this call descriptor with the given service call holder configured.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.ServiceCall-">with(ServiceCall&lt;Request, Response&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
 <dd>
 <div class="block">Return a copy of this call descriptor with the given service call
  configured.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with(Class&lt;T&gt;, IdSerializer&lt;T&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">with(Class&lt;T&gt;, PathParamSerializer&lt;T&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with(Type, IdSerializer&lt;?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">with(Type, PathParamSerializer&lt;?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with(Class&lt;T&gt;, MessageSerializer&lt;T, ?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
@@ -3729,7 +3756,7 @@
 <dd>
 <div class="block">Provide a custom MessageSerializer for the given message type.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.Descriptor.Call...-">with(Descriptor.Call&lt;?, ?, ?&gt;...)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.Descriptor.Call...-">with(Descriptor.Call&lt;?, ?&gt;...)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>
 <div class="block">Add the given service calls to this service.</div>
 </dd>
@@ -3827,14 +3854,6 @@
 <dd>
 <div class="block">Copy the current immutable object by setting a value for the <a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html#getMin--"><code>min</code></a> attribute.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#withPathParam-java.lang.String-java.lang.String-">withPathParam(String, String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Add the given path parameter.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#withPathValue-java.lang.String-">withPathValue(String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Add the given path parameter value.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/server/status/Latency.html#withPercentile98th-double-">withPercentile98th(double)</a></span> - Method in class com.lightbend.lagom.javadsl.server.status.<a href="com/lightbend/lagom/javadsl/server/status/Latency.html" title="class in com.lightbend.lagom.javadsl.server.status">Latency</a></dt>
 <dd>
 <div class="block">Copy the current immutable object by setting a value for the <a href="com/lightbend/lagom/javadsl/server/status/AbstractLatency.html#getPercentile98th--"><code>percentile98th</code></a> attribute.</div>
@@ -3865,18 +3884,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.html#withProtocolNegotiationStrategy-com.lightbend.lagom.javadsl.api.transport.HeaderTransformer-">withProtocolNegotiationStrategy(HeaderTransformer)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#withQueryParam-java.lang.String-org.pcollections.PSequence-">withQueryParam(String, PSequence&lt;String&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Add the given query parameter.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#withQueryParam-java.lang.String-java.util.Optional-">withQueryParam(String, Optional&lt;String&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Add the given query parameter.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html#withQueryParam-java.lang.String-java.lang.String-">withQueryParam(String, String)</a></span> - Method in class com.lightbend.lagom.javadsl.api.deser.<a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawId</a></dt>
-<dd>
-<div class="block">Add the given query parameter.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html#withRequestSerializer-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">withRequestSerializer(MessageSerializer&lt;Request, ?&gt;)</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a></dt>
 <dd>
 <div class="block">Return a copy of this call descriptor with the given request message

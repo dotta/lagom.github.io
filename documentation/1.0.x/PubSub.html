@@ -76,15 +76,15 @@
 <pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslPubSub</code></pre><h2 id="Usage-from-Service-Implementation"><a class="section-marker" href="#Usage-from-Service-Implementation">§</a>Usage from Service Implementation</h2><p>Let&rsquo;s look at an example of a service that publishes temperature measurements of hardware devices. A device can submit its current temperature and interested parties can get a stream of the temperature samples.</p><p>The service API is defined as:</p>
 <pre class="prettyprint"><code class="language-java">public interface SensorService extends Service {
 
-  ServiceCall&lt;String, Temperature, NotUsed&gt; registerTemperature();
+  ServiceCall&lt;Temperature, NotUsed&gt; registerTemperature(String id);
 
-  ServiceCall&lt;String, NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream();
+  ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id);
 
   @Override
   default Descriptor descriptor() {
     return named(&quot;/sensorservice&quot;).with(
-      pathCall(&quot;/device/:id/temperature&quot;, registerTemperature()),
-      pathCall(&quot;/device/:id/temperature/stream&quot;, temperatureStream())
+      pathCall(&quot;/device/:id/temperature&quot;, this::registerTemperature),
+      pathCall(&quot;/device/:id/temperature/stream&quot;, this::temperatureStream)
     );
   }
 }</code></pre><p>The implementation of this interface looks like:</p>
@@ -107,8 +107,8 @@ public class SensorServiceImpl implements SensorService {
   }
 
   @Override
-  public ServiceCall&lt;String, Temperature, NotUsed&gt; registerTemperature() {
-    return (id, temperature) -&gt; {
+  public ServiceCall&lt;Temperature, NotUsed&gt; registerTemperature(String id) {
+    return temperature -&gt; {
       final PubSubRef&lt;Temperature&gt; topic =
           pubSub.refFor(TopicId.of(Temperature.class, id));
       topic.publish(temperature);
@@ -117,8 +117,8 @@ public class SensorServiceImpl implements SensorService {
   }
 
   @Override
-  public ServiceCall&lt;String, NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream() {
-    return (id, request) -&gt; {
+  public ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id) {
+    return request -&gt; {
       final PubSubRef&lt;Temperature&gt; topic =
           pubSub.refFor(TopicId.of(Temperature.class, id));
       return CompletableFuture.completedFuture(topic.subscriber());
@@ -147,8 +147,8 @@ public class SensorServiceImpl2 implements SensorService2 {
   }
 
   @Override
-  public ServiceCall&lt;String, Source&lt;Temperature, ?&gt;, NotUsed&gt; registerTemperatures() {
-    return (id, request) -&gt; {
+  public ServiceCall&lt;Source&lt;Temperature, ?&gt;, NotUsed&gt; registerTemperatures(String id) {
+    return request -&gt; {
       final PubSubRef&lt;Temperature&gt; topic =
           pubSub.refFor(TopicId.of(Temperature.class, id));
       request.runWith(topic.publisher(), materializer);
@@ -157,8 +157,8 @@ public class SensorServiceImpl2 implements SensorService2 {
   }
 
   @Override
-  public ServiceCall&lt;String, NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream() {
-    return (id, request) -&gt; {
+  public ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id) {
+    return request -&gt; {
       final PubSubRef&lt;Temperature&gt; topic =
           pubSub.refFor(TopicId.of(Temperature.class, id));
       return CompletableFuture.completedFuture(topic.subscriber());
@@ -196,8 +196,8 @@ public class BlogServiceImpl4 implements BlogService4 {
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, NotUsed, Source&lt;PostPublished, ?&gt;&gt; getNewPosts() {
-    return (id, request) -&gt;
+  public ServiceCall&lt;NotUsed, Source&lt;PostPublished, ?&gt;&gt; getNewPosts() {
+    return request -&gt;
       CompletableFuture.completedFuture(publishedTopic.subscriber());
   }
 }</code></pre><h2 id="Limitations"><a class="section-marker" href="#Limitations">§</a>Limitations</h2><p>It is only possible to publish and subscribe within a single service. It is not possible to publish messages in one service and subscribe to them in another service. We will probably provide publish-subscribe across services in a future release of Lagom.</p><p>Published messages may be lost. For example in case of networks problems messages might not be delivered to all subscribers. We might provide publish-subscribe with at-least-once delivery in a future release of Lagom.</p><p>The registry of subscribers is eventually consistent, i.e. new subscribers are not immediately visible at other nodes, but typically the information will be fully replicated to all other nodes after a few seconds.</p><h2 id="Serialization"><a class="section-marker" href="#Serialization">§</a>Serialization</h2><p>The published messages must be serializable since they will be sent across the nodes in the cluster of the service. JSON is the recommended serialization format for these messages. The <a href="Serialization.html">Serialization</a> section describes how to add Jackson serialization support to such message classes.</p><h2 id="Underlying-Implementation"><a class="section-marker" href="#Underlying-Implementation">§</a>Underlying Implementation</h2><p>It is implemented with <a href="http://doc.akka.io/docs/akka/2.4.4/java/distributed-pub-sub.html">Akka Distributed Publish Subscribe</a>.</p>

@@ -91,8 +91,8 @@ public class BlogServiceImpl2 implements BlogService2 {
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, NotUsed, Source&lt;PostSummary, ?&gt;&gt; getPostSummaries() {
-    return (id, request) -&gt; {
+  public ServiceCall&lt;NotUsed, Source&lt;PostSummary, ?&gt;&gt; getPostSummaries() {
+    return request -&gt; {
       Source&lt;PostSummary, ?&gt; summaries = cassandraSession.select(
           &quot;SELECT id, title FROM postsummary;&quot;).map(row -&gt;
             PostSummary.of(row.getString(&quot;id&quot;), row.getString(&quot;title&quot;)));
@@ -233,14 +233,14 @@ private CompletionStage&lt;List&lt;BoundStatement&gt;&gt; processPostAdded(PostA
   BoundStatement bindWriteTitleOffset = writeOffset.bind(offset);
   return completedStatements(Arrays.asList(bindWriteTitle, bindWriteTitleOffset));
 }</code></pre><p>In this example we add one row to the <code>blogsummary</code> table and update the current offset in the <code>blogevent_offset</code> table for each <code>PostAdded</code> event. Other event types are ignored.</p><p>Note how the prepared statements that were initialized in the <code>prepare</code> method are used here.</p><p>You can keep state in variables of the enclosing class and update that state safely from the event handlers. The events are processed sequentially, one at a time. An example of such state could be values for calculating a moving average.</p><p>If there is a failure when executing the statements the processor will be restarted after a backoff delay. This delay is increased exponentially in case of repeated failures.</p><h2 id="Raw-Stream-of-Events"><a class="section-marker" href="#Raw-Stream-of-Events">§</a>Raw Stream of Events</h2><p>There is another tool that can be used if you want to do something else with the events than updating tables in Cassandra. You can get a stream of the persistent events with the <code>eventStream</code> method of the <a href="api/java/index.html?com/lightbend/lagom/javadsl/persistence/PersistentEntityRegistry.html">PersistentEntityRegistry</a>.</p>
-<pre class="prettyprint"><code class="language-java">public ServiceCall&lt;NotUsed, NotUsed, Source&lt;PostSummary, ?&gt;&gt; newPosts() {
+<pre class="prettyprint"><code class="language-java">public ServiceCall&lt;NotUsed, Source&lt;PostSummary, ?&gt;&gt; newPosts() {
   final PartialFunction&lt;BlogEvent, PostSummary&gt; collectFunction =
       new PFBuilder&lt;BlogEvent, PostSummary&gt;()
       .match(PostAdded.class, evt -&gt;
          PostSummary.of(evt.getPostId(), evt.getContent().getTitle()))
       .build();
 
-  return (id, request) -&gt; {
+  return request -&gt; {
     Source&lt;PostSummary, ?&gt; stream = persistentEntityRegistry
       .eventStream(BlogEventTag.INSTANCE, Optional.empty())
         .map(pair -&gt; pair.first()).collect(collectFunction);

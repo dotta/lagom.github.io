@@ -1,10 +1,10 @@
+api
 com.lightbend.lagom.core
 com.lightbend.lagom.discovery
 com.lightbend.lagom.discovery.impl
 com.lightbend.lagom.gateway
 com.lightbend.lagom.javadsl.api
 com.lightbend.lagom.javadsl.api.deser
-com.lightbend.lagom.javadsl.api.paging
 com.lightbend.lagom.javadsl.api.security
 com.lightbend.lagom.javadsl.api.transport
 com.lightbend.lagom.javadsl.client
@@ -25,4 +25,5 @@ com.lightbend.lagom.sbt.run
 com.lightbend.lagom.sbt.scripted
 com.lightbend.lagom.sbt.server
 com.lightbend.lagom.serialization
+impl
 play.core.server

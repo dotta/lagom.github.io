@@ -91,14 +91,14 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">com.lightbend.lagom.javadsl.api</div>
-<h2 title="Class Descriptor.Call" class="title">Class Descriptor.Call&lt;Id,Request,Response&gt;</h2>
+<h2 title="Class Descriptor.Call" class="title">Class Descriptor.Call&lt;Request,Response&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>Object</li>
 <li>
 <ul class="inheritance">
-<li>com.lightbend.lagom.javadsl.api.Descriptor.Call&lt;Id,Request,Response&gt;</li>
+<li>com.lightbend.lagom.javadsl.api.Descriptor.Call&lt;Request,Response&gt;</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +111,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public static final class <span class="typeNameLabel">Descriptor.Call&lt;Id,Request,Response&gt;</span>
+<pre>public static final class <span class="typeNameLabel">Descriptor.Call&lt;Request,Response&gt;</span>
 extends Object</pre>
 <div class="block">Describes a service call.</div>
 </li>
@@ -159,68 +159,68 @@ extends Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#idSerializer--">idSerializer</a></span>()</code>
-<div class="block">Get the ID serializer.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,?&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#requestSerializer--">requestSerializer</a></span>()</code>
 <div class="block">Get the request message serializer.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>,?&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#responseSerializer--">responseSerializer</a></span>()</code>
 <div class="block">Get the response message serializer.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#serviceCall--">serviceCall</a></span>()</code>
-<div class="block">Get the service call itself.</div>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api">Descriptor.ServiceCallHolder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#serviceCallHolder--">serviceCallHolder</a></span>()</code>
+<div class="block">A holder for the service call.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.Descriptor.CallId-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.CallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.CallId</a>&nbsp;callId)</code>
+<div class="block">Return a copy of this call descriptor with the given service call ID configured.</div>
+</td>
+</tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>&gt;&nbsp;idSerializer)</code>
-<div class="block">Return a copy of this call descriptor with the given ID serializer configured.</div>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.Descriptor.ServiceCallHolder-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api">Descriptor.ServiceCallHolder</a>&nbsp;serviceCallHolder)</code>
+<div class="block">Return a copy of this call descriptor with the given service call holder configured.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.ServiceCall-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;serviceCall)</code>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#with-com.lightbend.lagom.javadsl.api.ServiceCall-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;serviceCall)</code>
 <div class="block">Return a copy of this call descriptor with the given service call
  configured.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#withAutoAcl-boolean-">withAutoAcl</a></span>(boolean&nbsp;autoAcl)</code>
 <div class="block">Return a copy of this call descriptor with autoAcl configured.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#withCircuitBreaker-com.lightbend.lagom.javadsl.api.Descriptor.CircuitBreakerId-">withCircuitBreaker</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.CircuitBreakerId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.CircuitBreakerId</a>&nbsp;breakerId)</code>
 <div class="block">Return a copy of this call descriptor with the given circuit breaker
  identifier configured.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#withRequestSerializer-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">withRequestSerializer</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,?&gt;&nbsp;requestSerializer)</code>
 <div class="block">Return a copy of this call descriptor with the given request message
  serializer configured.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html#withResponseSerializer-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">withResponseSerializer</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>,?&gt;&nbsp;responseSerializer)</code>
 <div class="block">Return a copy of this call descriptor with the given response message
  serializer configured.</div>
@@ -262,31 +262,19 @@ extends Object</pre>
 </dl>
 </li>
 </ul>
-<a name="serviceCall--">
+<a name="serviceCallHolder--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>serviceCall</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;serviceCall()</pre>
-<div class="block">Get the service call itself.</div>
+<h4>serviceCallHolder</h4>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api">Descriptor.ServiceCallHolder</a>&nbsp;serviceCallHolder()</pre>
+<div class="block">A holder for the service call.
+
+ This holds a reference to the service call, in an implementation specific way.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The service call.</dd>
-</dl>
-</li>
-</ul>
-<a name="idSerializer--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>idSerializer</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>&gt;&nbsp;idSerializer()</pre>
-<div class="block">Get the ID serializer.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The ID serializer.</dd>
+<dd>The service call holder.</dd>
 </dl>
 </li>
 </ul>
@@ -347,17 +335,33 @@ extends Object</pre>
 </dl>
 </li>
 </ul>
-<a name="with-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">
+<a name="with-com.lightbend.lagom.javadsl.api.Descriptor.CallId-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>with</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>&gt;&nbsp;idSerializer)</pre>
-<div class="block">Return a copy of this call descriptor with the given ID serializer configured.</div>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.CallId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.CallId</a>&nbsp;callId)</pre>
+<div class="block">Return a copy of this call descriptor with the given service call ID configured.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>idSerializer</code> - The ID serializer.</dd>
+<dd><code>callId</code> - The call id.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A copy of this call descriptor.</dd>
+</dl>
+</li>
+</ul>
+<a name="with-com.lightbend.lagom.javadsl.api.Descriptor.ServiceCallHolder-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>with</h4>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api">Descriptor.ServiceCallHolder</a>&nbsp;serviceCallHolder)</pre>
+<div class="block">Return a copy of this call descriptor with the given service call holder configured.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>serviceCallHolder</code> - The service call holder.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A copy of this call descriptor.</dd>
 </dl>
@@ -369,7 +373,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>withRequestSerializer</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withRequestSerializer(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,?&gt;&nbsp;requestSerializer)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withRequestSerializer(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,?&gt;&nbsp;requestSerializer)</pre>
 <div class="block">Return a copy of this call descriptor with the given request message
  serializer configured.</div>
 <dl>
@@ -386,7 +390,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>withResponseSerializer</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withResponseSerializer(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>,?&gt;&nbsp;responseSerializer)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withResponseSerializer(<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>,?&gt;&nbsp;responseSerializer)</pre>
 <div class="block">Return a copy of this call descriptor with the given response message
  serializer configured.</div>
 <dl>
@@ -403,7 +407,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>with</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;serviceCall)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;serviceCall)</pre>
 <div class="block">Return a copy of this call descriptor with the given service call
  configured.</div>
 <dl>
@@ -420,7 +424,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>withCircuitBreaker</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withCircuitBreaker(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.CircuitBreakerId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.CircuitBreakerId</a>&nbsp;breakerId)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withCircuitBreaker(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.CircuitBreakerId.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.CircuitBreakerId</a>&nbsp;breakerId)</pre>
 <div class="block">Return a copy of this call descriptor with the given circuit breaker
  identifier configured.</div>
 <dl>
@@ -437,7 +441,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>withAutoAcl</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withAutoAcl(boolean&nbsp;autoAcl)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;&nbsp;withAutoAcl(boolean&nbsp;autoAcl)</pre>
 <div class="block">Return a copy of this call descriptor with autoAcl configured.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

@@ -111,21 +111,6 @@ extends <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html"
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.com.lightbend.lagom.javadsl.api.Service">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from interface&nbsp;com.lightbend.lagom.javadsl.api.<a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></h3>
-<code><a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">Service.SelfDescribingServiceCall</a>&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Id</a>,<a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Request</a>,<a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="type parameter in Service.SelfDescribingServiceCall">Response</a>&gt;</code></li>
-</ul>
-</li>
-</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -139,13 +124,13 @@ extends <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html"
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.NotUsed,akka.stream.javadsl.Source&lt;java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;,?&gt;&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.stream.javadsl.Source&lt;java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;,?&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/server/status/MetricsService.html#circuitBreakers--">circuitBreakers</a></span>()</code>
 <div class="block">Stream of circuit breaker status</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.NotUsed,java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/server/status/MetricsService.html#currentCircuitBreakers--">currentCircuitBreakers</a></span>()</code>
 <div class="block">Snapshot of current circuit breaker status</div>
 </td>
@@ -162,7 +147,7 @@ extends <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html"
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.lightbend.lagom.javadsl.api.<a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api">Service</a></h3>
-<code><a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.Descriptor.CallId-com.lightbend.lagom.javadsl.api.ServiceCall-">call</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.ServiceCall-">call</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#named-java.lang.String-">named</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">namedCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-com.lightbend.lagom.javadsl.api.ServiceCall-">restCall</a></code></li>
+<code><a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#call-akka.japi.function.Creator-">call</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#call-com.lightbend.lagom.javadsl.api.Descriptor.CallId-java.lang.Object-">call</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#call-java.lang.reflect.Method-">call</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#named-java.lang.String-">named</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-akka.japi.function.Creator-">namedCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#namedCall-java.lang.String-java.lang.reflect.Method-">namedCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Creator-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function10-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function11-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function2-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function3-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function4-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function5-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function6-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function7-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function8-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-akka.japi.function.Function9-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#pathCall-java.lang.String-java.lang.reflect.Method-">pathCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Creator-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function10-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function11-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function2-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function3-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function4-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function5-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function6-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function7-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function8-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-akka.japi.function.Function9-">restCall</a>, <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html#restCall-com.lightbend.lagom.javadsl.api.transport.Method-java.lang.String-java.lang.reflect.Method-">restCall</a></code></li>
 </ul>
 </li>
 </ul>
@@ -184,7 +169,7 @@ extends <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html"
 <ul class="blockList">
 <li class="blockList">
 <h4>currentCircuitBreakers</h4>
-<pre><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.NotUsed,java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;&gt;&nbsp;currentCircuitBreakers()</pre>
+<pre><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;&gt;&nbsp;currentCircuitBreakers()</pre>
 <div class="block">Snapshot of current circuit breaker status</div>
 </li>
 </ul>
@@ -194,7 +179,7 @@ extends <a href="../../../../../../com/lightbend/lagom/javadsl/api/Service.html"
 <ul class="blockList">
 <li class="blockList">
 <h4>circuitBreakers</h4>
-<pre><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.NotUsed,akka.stream.javadsl.Source&lt;java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;,?&gt;&gt;&nbsp;circuitBreakers()</pre>
+<pre><a href="../../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;akka.NotUsed,akka.stream.javadsl.Source&lt;java.util.List&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/server/status/CircuitBreakerStatus.html" title="class in com.lightbend.lagom.javadsl.server.status">CircuitBreakerStatus</a>&gt;,?&gt;&gt;&nbsp;circuitBreakers()</pre>
 <div class="block">Stream of circuit breaker status</div>
 </li>
 </ul>

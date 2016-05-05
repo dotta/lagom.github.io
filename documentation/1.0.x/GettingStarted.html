@@ -82,14 +82,15 @@
   <li>The service interface is always placed in the api project. For instance, the service interface for the <code>helloworld</code> service can be found in the <code>helloworld-api</code> project (look for the <code>HelloService.java</code> source file).</li>
 </ul>
 <pre class="prettyprint"><code class="language-java">public interface HelloService extends Service {
+
+  ServiceCall&lt;NotUsed, String&gt; hello(String id);
+
   @Override
   default Descriptor descriptor() {
     return named(&quot;helloservice&quot;).with(
-        restCall(Method.GET,  &quot;/api/hello/:id&quot;, hello())
+        restCall(Method.GET,  &quot;/api/hello/:id&quot;, this::hello)
       ).withAutoAcl(true);
   }
-
-  ServiceCall&lt;String, NotUsed, String&gt; hello();
 }</code></pre>
 <ul>
   <li><p>The service interface needs to inherit from <a href="api/java/index.html?com/lightbend/lagom/javadsl/api/Service.html"><code>Service</code></a> and provide an implementation of <a href="api/java/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--"><code>Service#descriptor</code></a> method.</p></li>
@@ -107,8 +108,8 @@
   }
 
   @Override
-  public ServiceCall&lt;String, NotUsed, String&gt; hello() {
-    return (id, request) -&gt; {
+  public ServiceCall&lt;NotUsed, String&gt; hello(String id) {
+    return request -&gt; {
       // Look up the hello world entity for the given ID.
       PersistentEntityRef&lt;HelloCommand&gt; ref = persistentEntityRegistry.refFor(HelloWorld.class, id);
       // Ask the entity the Hello command.

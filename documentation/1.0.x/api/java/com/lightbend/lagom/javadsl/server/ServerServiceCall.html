@@ -91,7 +91,7 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">com.lightbend.lagom.javadsl.server</div>
-<h2 title="Interface ServerServiceCall" class="title">Interface ServerServiceCall&lt;Id,Request,Response&gt;</h2>
+<h2 title="Interface ServerServiceCall" class="title">Interface ServerServiceCall&lt;Request,Response&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -99,11 +99,11 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Id,Request,Response&gt;</dd>
+<dd><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Request,Response&gt;</dd>
 </dl>
 <dl>
 <dt>All Known Subinterfaces:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a>&lt;Id,Request,Response&gt;</dd>
+<dd><a href="../../../../../com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">HeaderServiceCall</a>&lt;Request,Response&gt;</dd>
 </dl>
 <dl>
 <dt>Functional Interface:</dt>
@@ -112,14 +112,14 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@FunctionalInterface
-public interface <span class="typeNameLabel">ServerServiceCall&lt;Id,Request,Response&gt;</span>
-extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Id,Request,Response&gt;</pre>
+public interface <span class="typeNameLabel">ServerServiceCall&lt;Request,Response&gt;</span>
+extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Request,Response&gt;</pre>
 <div class="block">A server implementation of a service call.
 
  While the server implementation of the service doesn't have to make use of this type, what this type does is it
  allows the supply and composition of request and response headers.  When working with and or composing server
- service calls, it is almost never a good idea to call <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-"><code>ServiceCall.invoke(Object, Object)</code></a>, rather,
- <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-"><code>invokeWithHeaders(RequestHeader, Object, Object)</code></a> should be called. Invocation of the former may result in
+ service calls, it is almost never a good idea to call <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-"><code>ServiceCall.invoke(Object)</code></a>, rather,
+ <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-"><code>invokeWithHeaders(RequestHeader, Object)</code></a> should be called. Invocation of the former may result in
  an <code>UnsupportedOperationException</code> being thrown.
 
  In some cases, where the underlying transport doesn't allow sending a header after the request message has been
@@ -131,7 +131,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 
  If you want to actually handle the headers in a service call, it is recommended that rather than implementing this
  interface, you use <a href="../../../../../com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server"><code>HeaderServiceCall</code></a>, which makes the
- <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-"><code>invokeWithHeaders(RequestHeader, Object, Object)</code></a> method abstract so that it can be implemented with a
+ <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-"><code>invokeWithHeaders(RequestHeader, Object)</code></a> method abstract so that it can be implemented with a
  lambda.</div>
 </li>
 </ul>
@@ -152,21 +152,20 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></td>
+<td class="colFirst"><code>default <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a></span>(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</code>
 <div class="block">Make any modifications necessary to the request header.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>default &lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,T&gt;</code></td>
+<td class="colFirst"><code>default &lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a></span>(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>,T&gt;&nbsp;handler)</code>
 <div class="block">Transform the response using the given function that takes the response header and the response.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>default java.util.concurrent.CompletionStage&lt;akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-">invokeWithHeaders</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&nbsp;requestHeader,
-                 <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>&nbsp;id,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html#invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-">invokeWithHeaders</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&nbsp;requestHeader,
                  <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>&nbsp;request)</code>
 <div class="block">Invoke the given action with the request and response headers.</div>
 </td>
@@ -177,7 +176,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.lightbend.lagom.javadsl.api.<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a></h3>
-<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke--">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#withResponseHeader--">withResponseHeader</a></code></li>
+<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke--">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#withResponseHeader--">withResponseHeader</a></code></li>
 </ul>
 </li>
 </ul>
@@ -193,22 +192,20 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-java.lang.Object-java.lang.Object-">
+<a name="invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-java.lang.Object-">
 <!--   -->
-</a><a name="invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Id-Request-">
+</a><a name="invokeWithHeaders-com.lightbend.lagom.javadsl.api.transport.RequestHeader-Request-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>invokeWithHeaders</h4>
 <pre>default&nbsp;java.util.concurrent.CompletionStage&lt;akka.japi.Pair&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;&gt;&nbsp;invokeWithHeaders(<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&nbsp;requestHeader,
-                                                                                                        <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>&nbsp;id,
                                                                                                         <a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>&nbsp;request)</pre>
 <div class="block">Invoke the given action with the request and response headers.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>requestHeader</code> - The request header.</dd>
-<dd><code>id</code> - The id of the request.</dd>
 <dd><code>request</code> - The request message.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A future of the response header and response message.</dd>
@@ -221,7 +218,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <ul class="blockList">
 <li class="blockList">
 <h4>handleResponseHeader</h4>
-<pre>default&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,T&gt;&nbsp;handleResponseHeader(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>,T&gt;&nbsp;handler)</pre>
+<pre>default&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,T&gt;&nbsp;handleResponseHeader(java.util.function.BiFunction&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">ResponseHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>,T&gt;&nbsp;handler)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">ServiceCall</a></code></span></div>
 <div class="block">Transform the response using the given function that takes the response header and the response.
 
@@ -236,7 +233,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
  implementation.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></dd>
+<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>handler</code> - The handler.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -250,7 +247,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>handleRequestHeader</h4>
-<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;&nbsp;handleRequestHeader(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</pre>
+<pre>default&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server">ServerServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;&nbsp;handleRequestHeader(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a>&gt;&nbsp;handler)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">ServiceCall</a></code></span></div>
 <div class="block">Make any modifications necessary to the request header.
 
@@ -265,7 +262,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
  <tt>ServerServiceCall</tt>, which provides an appropriate implementation.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></dd>
+<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="type parameter in ServerServiceCall">Response</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>handler</code> - A function that takes in the request header representing the request, and transforms it.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>

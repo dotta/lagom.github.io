@@ -37,16 +37,18 @@
 <li><a href="com/lightbend/lagom/javadsl/api/Descriptor.NamedCallId.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">Descriptor.NamedCallId</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/Descriptor.PathCallId.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">Descriptor.PathCallId</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/Descriptor.RestCallId.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">Descriptor.RestCallId</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api" target="classFrame"><span class="interfaceName">Descriptor.ServiceCallHolder</span></a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/deser/DeserializationException.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">DeserializationException</a></li>
 <li><a href="com/lightbend/lagom/sbt/DynamicProjectAdder.html" title="class in com.lightbend.lagom.sbt" target="classFrame">DynamicProjectAdder</a></li>
 <li><a href="com/lightbend/lagom/sbt/DynamicProjectAdder$.html" title="class in com.lightbend.lagom.sbt" target="classFrame">DynamicProjectAdder$</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">ExceptionMessage</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser" target="classFrame"><span class="interfaceName">ExceptionSerializer</span></a></li>
+<li><a href="impl/FooModule.html" title="class in impl" target="classFrame">FooModule</a></li>
+<li><a href="api/FooService.html" title="interface in api" target="classFrame"><span class="interfaceName">FooService</span></a></li>
+<li><a href="impl/FooServiceImpl.html" title="class in impl" target="classFrame">FooServiceImpl</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/Forbidden.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">Forbidden</a></li>
 <li><a href="com/lightbend/lagom/javadsl/server/HeaderServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server" target="classFrame"><span class="interfaceName">HeaderServiceCall</span></a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/HeaderTransformer.html" title="interface in com.lightbend.lagom.javadsl.api.transport" target="classFrame"><span class="interfaceName">HeaderTransformer</span></a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser" target="classFrame"><span class="interfaceName">IdSerializer</span></a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/deser/IdSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">IdSerializers</a></li>
 <li><a href="com/lightbend/lagom/javadsl/immutable/ImmutableStyle.html" title="annotation in com.lightbend.lagom.javadsl.immutable" target="classFrame">ImmutableStyle</a></li>
 <li><a href="com/lightbend/lagom/sbt/Internal.html" title="class in com.lightbend.lagom.sbt" target="classFrame">Internal</a></li>
 <li><a href="com/lightbend/lagom/sbt/Internal$.html" title="class in com.lightbend.lagom.sbt" target="classFrame">Internal$</a></li>
@@ -97,7 +99,8 @@
 <li><a href="com/lightbend/lagom/sbt/NonBlockingInteractionMode.NullLogger$.html" title="class in com.lightbend.lagom.sbt" target="classFrame">NonBlockingInteractionMode.NullLogger$</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/NotAcceptable.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">NotAcceptable</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/NotFound.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">NotFound</a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/paging/Page.html" title="class in com.lightbend.lagom.javadsl.api.paging" target="classFrame">Page</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser" target="classFrame"><span class="interfaceName">PathParamSerializer</span></a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/deser/PathParamSerializers.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">PathParamSerializers</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/PathVersionedProtocolNegotiationStrategy.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">PathVersionedProtocolNegotiationStrategy</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/transport/PayloadTooLarge.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">PayloadTooLarge</a></li>
 <li><a href="com/lightbend/lagom/javadsl/persistence/PersistenceModule.html" title="class in com.lightbend.lagom.javadsl.persistence" target="classFrame">PersistenceModule</a></li>
@@ -156,9 +159,6 @@
 <li><a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html" title="class in com.lightbend.lagom.javadsl.pubsub" target="classFrame">PubSubRef</a></li>
 <li><a href="com/lightbend/lagom/javadsl/pubsub/PubSubRegistry.html" title="interface in com.lightbend.lagom.javadsl.pubsub" target="classFrame"><span class="interfaceName">PubSubRegistry</span></a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">RawExceptionMessage</a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/deser/RawId.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">RawId</a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/deser/RawId.PathParam.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">RawId.PathParam</a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/deser/RawIdDescriptor.html" title="class in com.lightbend.lagom.javadsl.api.deser" target="classFrame">RawIdDescriptor</a></li>
 <li><a href="com/lightbend/lagom/sbt/server/ReloadableServer.html" title="class in com.lightbend.lagom.sbt.server" target="classFrame">ReloadableServer</a></li>
 <li><a href="com/lightbend/lagom/sbt/run/Reloader.html" title="class in com.lightbend.lagom.sbt.run" target="classFrame">Reloader</a></li>
 <li><a href="com/lightbend/lagom/sbt/run/Reloader$.html" title="class in com.lightbend.lagom.sbt.run" target="classFrame">Reloader$</a></li>
@@ -174,6 +174,12 @@
 <li><a href="com/lightbend/lagom/javadsl/api/transport/ResponseHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport" target="classFrame">ResponseHeader</a></li>
 <li><a href="com/lightbend/lagom/sbt/run/RunSupport.html" title="class in com.lightbend.lagom.sbt.run" target="classFrame">RunSupport</a></li>
 <li><a href="com/lightbend/lagom/sbt/run/RunSupport$.html" title="class in com.lightbend.lagom.sbt.run" target="classFrame">RunSupport$</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaService.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaService</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaService$.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaService$</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaServiceSupport</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport$.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaServiceSupport$</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaServiceSupport.ScalaMethodCall</a></li>
+<li><a href="com/lightbend/lagom/javadsl/api/ScalaServiceSupport.ScalaMethodCall$.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ScalaServiceSupport.ScalaMethodCall$</a></li>
 <li><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.html" title="class in com.lightbend.lagom.sbt.scripted" target="classFrame">ScriptedTools</a></li>
 <li><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools$.html" title="class in com.lightbend.lagom.sbt.scripted" target="classFrame">ScriptedTools$</a></li>
 <li><a href="com/lightbend/lagom/sbt/scripted/ScriptedTools.autoImport$.html" title="class in com.lightbend.lagom.sbt.scripted" target="classFrame">ScriptedTools.autoImport$</a></li>
@@ -188,7 +194,6 @@
 <li><a href="com/lightbend/lagom/sbt/run/Servers.ServiceLocator$.html" title="class in com.lightbend.lagom.sbt.run" target="classFrame">Servers.ServiceLocator$</a></li>
 <li><a href="com/lightbend/lagom/javadsl/server/ServerServiceCall.html" title="interface in com.lightbend.lagom.javadsl.server" target="classFrame"><span class="interfaceName">ServerServiceCall</span></a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/Service.html" title="interface in com.lightbend.lagom.javadsl.api" target="classFrame"><span class="interfaceName">Service</span></a></li>
-<li><a href="com/lightbend/lagom/javadsl/api/Service.SelfDescribingServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api" target="classFrame"><span class="interfaceName">Service.SelfDescribingServiceCall</span></a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/ServiceAcl.html" title="class in com.lightbend.lagom.javadsl.api" target="classFrame">ServiceAcl</a></li>
 <li><a href="com/lightbend/lagom/discovery/ServiceAlreadyRegistered.html" title="class in com.lightbend.lagom.discovery" target="classFrame">ServiceAlreadyRegistered</a></li>
 <li><a href="com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api" target="classFrame"><span class="interfaceName">ServiceCall</span></a></li>

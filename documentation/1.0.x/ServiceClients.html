@@ -92,8 +92,8 @@ public class Module extends AbstractModule implements ServiceGuiceSupport {
   }
 
   @Override
-  public ServiceCall&lt;NotUsed, NotUsed, String&gt; sayHelloLagom() {
-    return (id, msg) -&gt; {
+  public ServiceCall&lt;NotUsed, String&gt; sayHelloLagom() {
+    return msg -&gt; {
       CompletionStage&lt;String&gt; response = helloService.sayHello().invoke(&quot;Lagom&quot;);
       return response.thenApply(answer -&gt;
           &quot;Hello service said: &quot; + answer
@@ -119,8 +119,8 @@ public class Module extends AbstractModule implements ServiceGuiceSupport {
 <pre class="prettyprint"><code class="language-java">@Override
 default Descriptor descriptor() {
     return named(&quot;hello&quot;).with(
-      namedCall(&quot;hi&quot;, sayHi()),
-      namedCall(&quot;hiAgain&quot;, hiAgain())
+      namedCall(&quot;hi&quot;, this::sayHi),
+      namedCall(&quot;hiAgain&quot;, this::hiAgain)
        .withCircuitBreaker(new CircuitBreakerId(&quot;hello2&quot;))
     );
 }</code></pre><p>In the above example the default identifer is used for the <code>sayHi</code> method, since no specific identifier is given. The default identifier is the same as the service name, i.e. <code>&quot;hello&quot;</code> in this example. The <code>hiAgain</code> method will use another circuit breaker instance, since <code>&quot;hello2&quot;</code> is specified as circuit breaker identifier.</p><p>On the client side you can configure the circuit breakers. The default configuration is:</p>

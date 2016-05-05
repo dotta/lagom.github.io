@@ -91,7 +91,7 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">com.lightbend.lagom.javadsl.server</div>
-<h2 title="Interface PlayServiceCall" class="title">Interface PlayServiceCall&lt;Id,Request,Response&gt;</h2>
+<h2 title="Interface PlayServiceCall" class="title">Interface PlayServiceCall&lt;Request,Response&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Id,Request,Response&gt;</dd>
+<dd><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Request,Response&gt;</dd>
 </dl>
 <dl>
 <dt>Functional Interface:</dt>
@@ -108,8 +108,8 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@FunctionalInterface
-public interface <span class="typeNameLabel">PlayServiceCall&lt;Id,Request,Response&gt;</span>
-extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Id,Request,Response&gt;</pre>
+public interface <span class="typeNameLabel">PlayServiceCall&lt;Request,Response&gt;</span>
+extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;Request,Response&gt;</pre>
 <div class="block">An ID service call implementation that allows plugging directly into Play's request handling.</div>
 </li>
 </ul>
@@ -131,15 +131,13 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>play.mvc.EssentialAction</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Id-java.util.function.Function-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>&nbsp;id,
-      java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;,play.mvc.EssentialAction&gt;&nbsp;wrapCall)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-java.util.function.Function-">invoke</a></span>(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;,play.mvc.EssentialAction&gt;&nbsp;wrapCall)</code>
 <div class="block">Low level hook for implementing service calls directly in Play.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>default java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Id-Request-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>&nbsp;id,
-      <a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>&nbsp;request)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html#invoke-Request-">invoke</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>&nbsp;request)</code>
 <div class="block">Invoke the service call.</div>
 </td>
 </tr>
@@ -149,7 +147,7 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.lightbend.lagom.javadsl.api.<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a></h3>
-<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke--">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#withResponseHeader--">withResponseHeader</a></code></li>
+<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleRequestHeader-java.util.function.Function-">handleRequestHeader</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#handleResponseHeader-java.util.function.BiFunction-">handleResponseHeader</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke--">invoke</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#withResponseHeader--">withResponseHeader</a></code></li>
 </ul>
 </li>
 </ul>
@@ -165,45 +163,39 @@ extends <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="invoke-java.lang.Object-java.lang.Object-">
+<a name="invoke-java.lang.Object-">
 <!--   -->
-</a><a name="invoke-Id-Request-">
+</a><a name="invoke-Request-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>invoke</h4>
-<pre>default&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>&nbsp;id,
-                                                              <a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>&nbsp;request)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-">ServiceCall</a></code></span></div>
+<pre>default&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>&nbsp;request)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">ServiceCall</a></code></span></div>
 <div class="block">Invoke the service call.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Id-Request-">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;</code></dd>
+<dd><code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html#invoke-Request-">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>id</code> - The id of the entity.</dd>
 <dd><code>request</code> - The request entity.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A future of the response entity.</dd>
 </dl>
 </li>
 </ul>
-<a name="invoke-java.lang.Object-java.util.function.Function-">
-<!--   -->
-</a><a name="invoke-Id-java.util.function.Function-">
+<a name="invoke-java.util.function.Function-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>invoke</h4>
-<pre>play.mvc.EssentialAction&nbsp;invoke(<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>&nbsp;id,
-                                java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;,play.mvc.EssentialAction&gt;&nbsp;wrapCall)</pre>
+<pre>play.mvc.EssentialAction&nbsp;invoke(java.util.function.Function&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api">ServiceCall</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/server/PlayServiceCall.html" title="type parameter in PlayServiceCall">Response</a>&gt;,play.mvc.EssentialAction&gt;&nbsp;wrapCall)</pre>
 <div class="block">Low level hook for implementing service calls directly in Play.
 
  This can only be used to hook into plain HTTP calls, it can't be used to hook into WebSocket calls.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>id</code> - The ID extracted from the URI.</dd>
 <dd><code>wrapCall</code> - A function that takes a service call, and converts it to an EssentialAction.  This action can
                  then be composed to modify any part of the request and or response, including request and
                  response headers and the request and response body.  This does not have to be invoked at all if

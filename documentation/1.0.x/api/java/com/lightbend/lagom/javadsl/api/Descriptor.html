@@ -134,7 +134,7 @@ extends Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Id</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</span></code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Request</a>,<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="type parameter in Descriptor.Call">Response</a>&gt;</span></code>
 <div class="block">Describes a service call.</div>
 </td>
 </tr>
@@ -166,6 +166,12 @@ extends Object</pre>
 <div class="block">A REST call ID.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code>static interface&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.ServiceCallHolder.html" title="interface in com.lightbend.lagom.javadsl.api">Descriptor.ServiceCallHolder</a></span></code>
+<div class="block">Holds the service call itself.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -194,7 +200,7 @@ extends Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;&gt;</code></td>
+<td class="colFirst"><code>org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#calls--">calls</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -202,22 +208,22 @@ extends Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#exceptionSerializer--">exceptionSerializer</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#idSerializers--">idSerializers</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#locatableService--">locatableService</a></span>()</code>
 <div class="block">Whether this is a locatable service.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;?,?&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#messageSerializers--">messageSerializers</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#name--">name</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#pathParamSerializers--">pathParamSerializers</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/transport/HeaderTransformer.html" title="interface in com.lightbend.lagom.javadsl.api.transport">HeaderTransformer</a></code></td>
@@ -231,20 +237,20 @@ extends Object</pre>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllCalls-org.pcollections.PSequence-">replaceAllCalls</a></span>(org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;&gt;&nbsp;calls)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllCalls-org.pcollections.PSequence-">replaceAllCalls</a></span>(org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&gt;&nbsp;calls)</code>
 <div class="block">Replace all the service calls provided by this descriptor with the the given service calls.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllIdSerializers-org.pcollections.PMap-">replaceAllIdSerializers</a></span>(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&gt;&nbsp;idSerializers)</code>
-<div class="block">Replace all the id serializers registered with this descriptor with the the given id serializers.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllMessageSerializers-org.pcollections.PMap-">replaceAllMessageSerializers</a></span>(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;?,?&gt;&gt;&nbsp;messageSerializers)</code>
+<div class="block">Replace all the message serializers registered with this descriptor with the the given message serializers.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllMessageSerializers-org.pcollections.PMap-">replaceAllMessageSerializers</a></span>(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;?,?&gt;&gt;&nbsp;messageSerializers)</code>
-<div class="block">Replace all the message serializers registered with this descriptor with the the given message serializers.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#replaceAllPathParamSerializers-org.pcollections.PMap-">replaceAllPathParamSerializers</a></span>(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&gt;&nbsp;pathParamSerializers)</code>
+<div class="block">Replace all the path param serializers registered with this descriptor with the the given path param serializers.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -257,21 +263,21 @@ extends Object</pre>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with</a></span>(Class&lt;T&gt;&nbsp;idType,
-    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;T&gt;&nbsp;idSerializer)</code>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
-</td>
-</tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with</a></span>(Class&lt;T&gt;&nbsp;messageType,
     <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;T,?&gt;&nbsp;messageSerializer)</code>
 <div class="block">Provide a custom MessageSerializer for the given message type.</div>
 </td>
 </tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">with</a></span>(Class&lt;T&gt;&nbsp;pathParamType,
+    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;T&gt;&nbsp;pathParamSerializer)</code>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
+</td>
+</tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.Descriptor.Call...-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;...&nbsp;calls)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-com.lightbend.lagom.javadsl.api.Descriptor.Call...-">with</a></span>(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;...&nbsp;calls)</code>
 <div class="block">Add the given service calls to this service.</div>
 </td>
 </tr>
@@ -295,16 +301,16 @@ extends Object</pre>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">with</a></span>(java.lang.reflect.Type&nbsp;idType,
-    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&nbsp;idSerializer)</code>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with</a></span>(java.lang.reflect.Type&nbsp;messageType,
+    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;?,?&gt;&nbsp;messageSerializer)</code>
+<div class="block">Provide a custom MessageSerializer for the given message type.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.MessageSerializer-">with</a></span>(java.lang.reflect.Type&nbsp;messageType,
-    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/MessageSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">MessageSerializer</a>&lt;?,?&gt;&nbsp;messageSerializer)</code>
-<div class="block">Provide a custom MessageSerializer for the given message type.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html#with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">with</a></span>(java.lang.reflect.Type&nbsp;pathParamType,
+    <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&nbsp;pathParamSerializer)</code>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
 </td>
 </tr>
 <tr id="i23" class="rowColor">
@@ -365,16 +371,16 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>calls</h4>
-<pre>public&nbsp;org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;&gt;&nbsp;calls()</pre>
+<pre>public&nbsp;org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&gt;&nbsp;calls()</pre>
 </li>
 </ul>
-<a name="idSerializers--">
+<a name="pathParamSerializers--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>idSerializers</h4>
-<pre>public&nbsp;org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&gt;&nbsp;idSerializers()</pre>
+<h4>pathParamSerializers</h4>
+<pre>public&nbsp;org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&gt;&nbsp;pathParamSerializers()</pre>
 </li>
 </ul>
 <a name="messageSerializers--">
@@ -456,37 +462,37 @@ extends Object</pre>
  metrics.</div>
 </li>
 </ul>
-<a name="with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">
+<a name="with-java.lang.Class-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>with</h4>
-<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(Class&lt;T&gt;&nbsp;idType,
-                           <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;T&gt;&nbsp;idSerializer)</pre>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(Class&lt;T&gt;&nbsp;pathParamType,
+                           <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;T&gt;&nbsp;pathParamSerializer)</pre>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>idType</code> - The type of the ID.</dd>
-<dd><code>idSerializer</code> - The ID serializer for that type.</dd>
+<dd><code>pathParamType</code> - The path param type.</dd>
+<dd><code>pathParamSerializer</code> - The path param serializer.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A copy of this descriptor.</dd>
 </dl>
 </li>
 </ul>
-<a name="with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.IdSerializer-">
+<a name="with-java.lang.reflect.Type-com.lightbend.lagom.javadsl.api.deser.PathParamSerializer-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>with</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(java.lang.reflect.Type&nbsp;idType,
-                       <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&nbsp;idSerializer)</pre>
-<div class="block">Provide a custom IdSerializer for the given ID type.</div>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(java.lang.reflect.Type&nbsp;pathParamType,
+                       <a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&nbsp;pathParamSerializer)</pre>
+<div class="block">Provide a custom path param serializer for the given path param type.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>idType</code> - The type of the ID.</dd>
-<dd><code>idSerializer</code> - The ID serializer for that type.</dd>
+<dd><code>pathParamType</code> - The path param type.</dd>
+<dd><code>pathParamSerializer</code> - The path param serializer.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A copy of this descriptor.</dd>
 </dl>
@@ -534,7 +540,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>with</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;...&nbsp;calls)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;with(<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;...&nbsp;calls)</pre>
 <div class="block">Add the given service calls to this service.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -550,7 +556,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>replaceAllCalls</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;replaceAllCalls(org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?,?&gt;&gt;&nbsp;calls)</pre>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;replaceAllCalls(org.pcollections.PSequence&lt;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&gt;&nbsp;calls)</pre>
 <div class="block">Replace all the service calls provided by this descriptor with the the given service calls.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -560,19 +566,19 @@ extends Object</pre>
 </dl>
 </li>
 </ul>
-<a name="replaceAllIdSerializers-org.pcollections.PMap-">
+<a name="replaceAllPathParamSerializers-org.pcollections.PMap-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>replaceAllIdSerializers</h4>
-<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;replaceAllIdSerializers(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/IdSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">IdSerializer</a>&lt;?&gt;&gt;&nbsp;idSerializers)</pre>
-<div class="block">Replace all the id serializers registered with this descriptor with the the given id serializers.</div>
+<h4>replaceAllPathParamSerializers</h4>
+<pre>public&nbsp;<a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor</a>&nbsp;replaceAllPathParamSerializers(org.pcollections.PMap&lt;java.lang.reflect.Type,<a href="../../../../../com/lightbend/lagom/javadsl/api/deser/PathParamSerializer.html" title="interface in com.lightbend.lagom.javadsl.api.deser">PathParamSerializer</a>&lt;?&gt;&gt;&nbsp;pathParamSerializers)</pre>
+<div class="block">Replace all the path param serializers registered with this descriptor with the the given path param serializers.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>idSerializers</code> - The id serializers to replace the existing ones with.</dd>
+<dd><code>pathParamSerializers</code> - The path param serializers to replace the existing ones with.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>A copy of this descriptor with the new id serializers.</dd>
+<dd>A copy of this descriptor with the new path param serializers.</dd>
 </dl>
 </li>
 </ul>
