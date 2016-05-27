@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":18,"i2":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -99,12 +99,20 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/api/ConfigurationServiceLocator.html" title="class in com.lightbend.lagom.javadsl.api">ConfigurationServiceLocator</a></dd>
+<dd><a href="../../../../../com/lightbend/lagom/javadsl/client/CircuitBreakingServiceLocator.html" title="class in com.lightbend.lagom.javadsl.client">CircuitBreakingServiceLocator</a>, <a href="../../../../../com/lightbend/lagom/javadsl/api/ConfigurationServiceLocator.html" title="class in com.lightbend.lagom.javadsl.api">ConfigurationServiceLocator</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">ServiceLocator</span></pre>
-<div class="block">Locates services.</div>
+<div class="block">Locates services.
+
+ The service locator is responsible for two things, one is locating services according to the passed in name and
+ service call information, the other is to implement circuit breaking functionality when
+ <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#doWithService-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-java.util.function.Function-"><code>doWithService(String, Descriptor.Call, Function)</code></a> is invoked.
+
+ The reason circuit breaking is a service locator concern is that generally, the service locator will want to be aware
+ of when a circuit breaker is open, and respond accordingly.  For example, it may decide to pull that node from its
+ routing pool, or it may decide to notify some up stream service registry that that node is no longer responding.</div>
 </li>
 </ul>
 </div>
@@ -118,21 +126,29 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>&lt;T&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;T&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#doWithService-java.lang.String-java.util.function.Function-">doWithService</a></span>(String&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#doWithService-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-java.util.function.Function-">doWithService</a></span>(String&nbsp;name,
+             <a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&nbsp;serviceCall,
              java.util.function.Function&lt;java.net.URI,java.util.concurrent.CompletionStage&lt;T&gt;&gt;&nbsp;block)</code>
 <div class="block">Do the given action with the given service.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;</code></td>
+<td class="colFirst"><code>default java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#locate-java.lang.String-">locate</a></span>(String&nbsp;name)</code>
+<div class="block">Locate a service with the given name.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#locate-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-">locate</a></span>(String&nbsp;name,
+      <a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&nbsp;serviceCall)</code>
 <div class="block">Locate a service with the given name.</div>
 </td>
 </tr>
@@ -157,7 +173,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>locate</h4>
-<pre>java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;&nbsp;locate(String&nbsp;name)</pre>
+<pre>default&nbsp;java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;&nbsp;locate(String&nbsp;name)</pre>
 <div class="block">Locate a service with the given name.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -167,21 +183,44 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="doWithService-java.lang.String-java.util.function.Function-">
+<a name="locate-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>locate</h4>
+<pre>java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.net.URI&gt;&gt;&nbsp;locate(String&nbsp;name,
+                                                                              <a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&nbsp;serviceCall)</pre>
+<div class="block">Locate a service with the given name.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - The name of the service.</dd>
+<dd><code>serviceCall</code> - The service call descriptor that this lookup is for.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The URI for that service, if it exists.</dd>
+</dl>
+</li>
+</ul>
+<a name="doWithService-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-java.util.function.Function-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>doWithService</h4>
 <pre>&lt;T&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;T&gt;&gt;&nbsp;doWithService(String&nbsp;name,
+                                                                              <a href="../../../../../com/lightbend/lagom/javadsl/api/Descriptor.Call.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.Call</a>&lt;?,?&gt;&nbsp;serviceCall,
                                                                               java.util.function.Function&lt;java.net.URI,java.util.concurrent.CompletionStage&lt;T&gt;&gt;&nbsp;block)</pre>
 <div class="block">Do the given action with the given service.
 
- This should be used in preference to <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#locate-java.lang.String-"><code>locate(String)</code></a> when possible as it will allow the service
- locator update its caches in case there's a problem with the service it returned.</div>
+ This should be used in preference to <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceLocator.html#locate-java.lang.String-com.lightbend.lagom.javadsl.api.Descriptor.Call-"><code>locate(String, Descriptor.Call)</code></a> when possible as it will allow the
+ service locator to add in things like circuit breakers.
+
+ It is required that the service locator will, based on the service call circuit breaker configuration, wrap the
+ invocation of the passed in block with a circuit breaker.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - The name of the service.</dd>
+<dd><code>serviceCall</code> - The service call descriptor that this lookup is for.</dd>
 <dd><code>block</code> - A block of code that takes the URI for the service, and returns a future of some work done on the
               service. This will only be executed if the service was found.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>

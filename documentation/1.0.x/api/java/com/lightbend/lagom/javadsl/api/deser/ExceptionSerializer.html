@@ -104,6 +104,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">ExceptionSerializer</span></pre>
+<div class="block">Handles the serialization and deserialization of exceptions.</div>
 </li>
 </ul>
 </div>
@@ -151,12 +152,16 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>Throwable</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html#deserialize-com.lightbend.lagom.javadsl.api.deser.RawExceptionMessage-">deserialize</a></span>(<a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a>&nbsp;message)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html#deserialize-com.lightbend.lagom.javadsl.api.deser.RawExceptionMessage-">deserialize</a></span>(<a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a>&nbsp;message)</code>
+<div class="block">Deserialize an exception message into an exception.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/ExceptionSerializer.html#serialize-java.lang.Throwable-java.util.Collection-">serialize</a></span>(Throwable&nbsp;exception,
-         java.util.Collection&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageProtocol</a>&gt;&nbsp;accept)</code>&nbsp;</td>
+         java.util.Collection&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageProtocol</a>&gt;&nbsp;accept)</code>
+<div class="block">Serialize the given exception to an exception message.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -211,6 +216,19 @@ var activeTableTab = "activeTableTab";
 <h4>serialize</h4>
 <pre><a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a>&nbsp;serialize(Throwable&nbsp;exception,
                               java.util.Collection&lt;<a href="../../../../../../com/lightbend/lagom/javadsl/api/transport/MessageProtocol.html" title="class in com.lightbend.lagom.javadsl.api.transport">MessageProtocol</a>&gt;&nbsp;accept)</pre>
+<div class="block">Serialize the given exception to an exception message.
+
+ The raw exception message consists of an error code, a message protocol, and a message entity to send across the
+ wire.
+
+ The exception serializer may attempt to match one of the protocols passed into the accept parameter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>exception</code> - The exception to serialize.</dd>
+<dd><code>accept</code> - The accepted protocols.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The raw exception message.</dd>
+</dl>
 </li>
 </ul>
 <a name="deserialize-com.lightbend.lagom.javadsl.api.deser.RawExceptionMessage-">
@@ -220,6 +238,17 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>deserialize</h4>
 <pre>Throwable&nbsp;deserialize(<a href="../../../../../../com/lightbend/lagom/javadsl/api/deser/RawExceptionMessage.html" title="class in com.lightbend.lagom.javadsl.api.deser">RawExceptionMessage</a>&nbsp;message)</pre>
+<div class="block">Deserialize an exception message into an exception.
+
+ The exception serializer should make a best effort attempt at deserializing the message, but should not expect
+ the message to be in any particular format.  If it cannot deserialize the message, it should return a generic
+ exception, it should not itself throw an exception.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>message</code> - The message to deserialize.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The deserialized exception.</dd>
+</dl>
 </li>
 </ul>
 </li>
