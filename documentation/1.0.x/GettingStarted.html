@@ -87,7 +87,7 @@
 
   @Override
   default Descriptor descriptor() {
-    return named(&quot;helloservice&quot;).with(
+    return named(&quot;helloservice&quot;).withCalls(
         restCall(Method.GET,  &quot;/api/hello/:id&quot;, this::hello)
       ).withAutoAcl(true);
   }

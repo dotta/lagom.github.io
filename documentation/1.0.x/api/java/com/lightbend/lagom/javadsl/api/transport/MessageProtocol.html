@@ -118,7 +118,7 @@ extends Object</pre>
  specific content type, such as <tt>application/vnd.myservice+json</tt>.  It could also contain protocol versioning
  information, such as <tt>application/vnd.github.v3+json</tt>.  During the protocol negotiation process, the
  content type may be transformed, for example, if the content type contains a version, the configured
- <a href="../../../../../../com/lightbend/lagom/javadsl/api/transport/HeaderTransformer.html" title="interface in com.lightbend.lagom.javadsl.api.transport"><code>HeaderTransformer</code></a> will be expected to extract that version
+ <a href="../../../../../../com/lightbend/lagom/javadsl/api/transport/HeaderFilter.html" title="interface in com.lightbend.lagom.javadsl.api.transport"><code>HeaderFilter</code></a> will be expected to extract that version
  out into the <tt>version</tt>, leaving a <tt>contentType</tt> that will be understood by the message serializer.
 
  The <tt>charset</tt> applies to text messages, if the message is not in a text format, then no <tt>charset</tt>

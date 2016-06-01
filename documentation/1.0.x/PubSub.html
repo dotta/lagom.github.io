@@ -82,7 +82,7 @@
 
   @Override
   default Descriptor descriptor() {
-    return named(&quot;/sensorservice&quot;).with(
+    return named(&quot;/sensorservice&quot;).withCalls(
       pathCall(&quot;/device/:id/temperature&quot;, this::registerTemperature),
       pathCall(&quot;/device/:id/temperature/stream&quot;, this::temperatureStream)
     );

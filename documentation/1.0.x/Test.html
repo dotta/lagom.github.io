@@ -178,7 +178,7 @@ public class AdvancedHelloServiceTest {
   ServiceCall&lt;Source&lt;String, NotUsed&gt;, Source&lt;String, NotUsed&gt;&gt; echo();
 
   default Descriptor descriptor() {
-    return named(&quot;echo&quot;).with(
+    return named(&quot;echo&quot;).withCalls(
       namedCall(&quot;echo&quot;, this::echo)
     );
   }

@@ -119,7 +119,7 @@ public class Module extends AbstractModule implements ServiceGuiceSupport {
 </ul><p>All service calls with Lagom service clients are by default using circuit breakers. Circuit Breakers are used and configured on the client side, but the granularity and configuration identifiers are defined by the service provider. By default, one circuit breaker instance is used for all calls (methods) to another service. It is possible to set a unique circuit breaker identifier for each method to use a separate circuit breaker instance for each method. It is also possible to group related methods by using the same identifier on several methods.</p>
 <pre class="prettyprint"><code class="language-java">@Override
 default Descriptor descriptor() {
-    return named(&quot;hello&quot;).with(
+    return named(&quot;hello&quot;).withCalls(
       namedCall(&quot;hi&quot;, this::sayHi),
       namedCall(&quot;hiAgain&quot;, this::hiAgain)
        .withCircuitBreaker(CircuitBreaker.identifiedBy(&quot;hello2&quot;))
@@ -132,7 +132,7 @@ default Descriptor descriptor() {
 lagom.circuit-breaker {
 
   # Default configuration that is used if a configuration section
-  # with the circuit breaker identifier is not defined. 
+  # with the circuit breaker identifier is not defined.
   default {
     # Possibility to disable a given circuit breaker.
     enabled = on
