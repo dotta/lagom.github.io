@@ -1,12 +1,14 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html class="noios">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Lagom contributor guidelines</title>
         <meta name="description" content="Lagom">
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
@@ -94,88 +96,113 @@
                     </div>
 
                     
-    <div class="fw-wrapper lgm-purple hero-banner">
+
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Lagom contributor guidelines</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <article class="fw-wrapper page-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+    <h2><a href="#reporting-issues" name="reporting-issues">Reporting issues</a></h2>
+<p>If you wish to report an issue for Lagom Framework, please ensure you have done the following things:</p>
+<ul>
+  <li>If it is a documentation issue with a simple fix, don&rsquo;t raise an issue, just edit the documentation yourself directly in GitHub and submit a pull request. This will be quicker for you and everybody.</li>
+  <li>If you are not 100% sure that it is a bug, then ask about it on <a href="https://gitter.im/lagom/lagom">Gitter channel</a> first. You will get a lot more help a lot quicker on the mailing list if you raise it there. The issue tracker is for verified bugs, not for questions.</li>
+  <li>If you have a feature request, please raise it on the <a href="https://gitter.im/lagom/contributors">contributors Gitter channel</a> first. The Gitter channel is the best forum to discuss new features, and it may be that Lagom already provides something to achieve what you want to achieve and you didn&rsquo;t realise.</li>
+  <li>If you are sure you have found a bug, then raise an issue. Please be as specific as possible, including sample code that reproduces the problem, stack traces if there are any exceptions thrown, and versions of Lagom, OS, Java, etc.</li>
+</ul>
+<p>When the above guidelines are not followed, a Lagom integrator may close the issue, directing you to the appropriate forum for further discussion.</p>
+<h2><a href="#contributing-changes" name="contributing-changes">Contributing changes</a></h2>
+<h3><a href="#prerequisites" name="prerequisites">Prerequisites</a></h3>
+<p>Before making a contribution, it is important to make sure that the change you wish to make and the approach you wish to take will likely be accepted, otherwise you may end up doing a lot of work for nothing. If the change is only small, for example, if it&rsquo;s a documentation change or a simple bugfix, then it&rsquo;s likely to be accepted with no prior discussion. However, new features, or bigger refactorings should first be discussed in the <a href="https://gitter.im/lagom/contributors">contributors</a>. Additionally, any issues with the <a href="https://github.com/lagom/lagom/labels/community">community label</a> have been agreed to be a change that will likely be accepted.</p>
+<h3><a href="#procedure" name="procedure">Procedure</a></h3>
+<ol>
+  <li>Make sure you have signed the <a href="http://www.lightbend.com/contribute/cla">Lightbend CLA</a>; if not, sign it online.</li>
+  <li>Ensure that your contribution meets the following guidelines:
+    <ol>
+      <li>Live up to the current code standard:
+        <ul>
+          <li>Not violate <a href="http://programmer.97things.oreilly.com/wiki/index.php/Don%27t_Repeat_Yourself">DRY</a>.</li>
+          <li><a href="http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule">Boy Scout Rule</a> needs to have been applied.</li>
+        </ul>
+      </li>
+      <li>Regardless of whether the code introduces new features or fixes bugs or regressions, it must have comprehensive tests. This includes when modifying existing code that isn&rsquo;t tested.</li>
+      <li>The code must be well documented using the Play flavour of markdown with extracted code snippets (see the <a href="https://playframework.com/documentation/latest/Documentation">Play documentation guidelines</a>.) Each API change must have the corresponding documentation change.</li>
+      <li>Implementation-wise, the following things should be avoided as much as possible:
+        <ul>
+          <li>Global state</li>
+          <li>Public mutable state</li>
+          <li>Implicit conversions</li>
+          <li>ThreadLocal</li>
+          <li>Locks</li>
+          <li>Casting</li>
+          <li>Introducing new, heavy external dependencies</li>
+        </ul>
+      </li>
+      <li>The Lagom API design rules are the following:
+        <ul>
+          <li>Features are forever, always think about whether a new feature really belongs to the core framework or if it should be implemented as a module</li>
+          <li>Code must conform to standard style guidelines and pass all tests</li>
+        </ul>
+      </li>
+      <li>New files must:
+        <ul>
+          <li>Have a Lightbend copyright header in the style of <code>Copyright (C) 2009-2016 Lightbend Inc. &lt;https://www.lightbend.com&gt;</code>.</li>
+          <li>Not use <code>@author</code> tags since it does not encourage <a href="http://www.extremeprogramming.org/rules/collective.html">Collective Code Ownership</a>.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Ensure that your commits are squashed. See the <a href="https://playframework.com/documentation/latest/WorkingWithGit">Play working with git guide</a> for more information.</li>
+  <li>Submit a pull request.</li>
+</ol>
+<p>If the pull request does not meet the above requirements then the code should <strong>not</strong> be merged into master, or even reviewed - regardless of how good or important it is. No exceptions.</p>
+<h2><a href="#backporting-policy" name="backporting-policy">Backporting policy</a></h2>
+<p>Generally, all bug fixes, improvements and new features will go to the master branch. Backports and other commits to stable branches will only be accepted if they meet the following conditions:</p>
+<ul>
+  <li>The change only affects the documentation</li>
+  <li>The change fixes a regression that was introduced in a previous stable release from that branch</li>
+  <li>The change fixes a bug that impacts significant number of members of the open source community with no simple work arounds available</li>
+  <li>Any other reason that Typesafe deems appropriate</li>
+</ul>
+<p>All backports and other commits to stable branches, in addition to satisfying the regular contributor guidelines, must also be binary and source compatible with previous releases on that branch. The only exception to this is if a serious bug is impossible to fix without breaking the API, for example, a particular feature is not possible to use due to flaws in the API.</p>
+
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="show-for-medium small-12 large-4 columns">
+                <nav class="side-menu">
+                    
+
+<h3>Documentation</h3>
+<ul>
+    <li><a href="/documentation/1.0.x/java/Installation.html">Installing</a></li>
+    <li><a href="/documentation/1.0.x/java/GettingStarted.html">Getting started</a></li>
+    <li><a href="/documentation/1.0.x/java/Home.html">Full documentation</a></li>
+</ul>
+<h3>Find help</h3>
+<ul>
+    <li><a href="https://gitter.im/lagom/lagom">Gitter channel</a></li>
+    <li><a href="https://stackoverflow.com/questions/tagged/lagom">Stack overflow</a></li>
+    <li><a href="https://www.lightbend.com/services/expert-support">Professional support</a></li>
+</ul>
+<h3>Contribute</h3>
+<ul>
+    <li><a href="/get-involved.html">Get involved</a></li>
+    <li><a href="/conduct.html">Code of conduct</a></li>
+    <li><a href="/community-process.html">Community process</a></li>
+    <li><a href="/contributing.html">Contributor guidelines</a></li>
+</ul>
+
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
     </article>
+
 
 
                     <footer>

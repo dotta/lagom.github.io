@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Polyglot systems with Lagom</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/PolyglotSystems.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,129 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Polyglot systems with Lagom</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="CoreConcepts.html">Lagom core concepts</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Polyglot-systems-with-Lagom"><a class="section-marker" href="#Polyglot-systems-with-Lagom">§</a><a href="#polyglot-systems-with-lagom" name="polyglot-systems-with-lagom">Polyglot systems with Lagom</a></h1>
+<p>If you use Lagom, do you have to write all of your services in Lagom? The answer is no.</p>
+<p>It&rsquo;s true that Lagom does offer an especially seamless experience when multiple Lagom services are talking to each other. In this scenario, service location, communication protocols, and other issues are handled by Lagom transparently. This maximizes developer convenience and productivity.</p>
+<p>However, in a microservice based system, not every service is expected to be a Lagom service. After all, a big advantage of using microservices in the first place is to allow the construction of polyglot systems, selecting the right language and the right technology on a service by service basis.</p>
+<p>So while Lagom does provide a great experience when all the services are Lagom services, we do not want to imply that all services should be Lagom services. (In fact, if a large system was implemented using only Lagom services, then perhaps the technical merits of that system should be questioned&hellip;?)</p>
+<p>Consequently, Lagom is designed to work well in a polyglot environment. Central to ensuring this is the idiomatic usage of standard protocols.</p><h2 id="Lagom-communication-protocols"><a class="section-marker" href="#Lagom-communication-protocols">§</a><a href="#lagom-communication-protocols" name="lagom-communication-protocols">Lagom communication protocols</a></h2>
+<p>Lagom service calls map down to ordinary, standard HTTP and WebSocket requests: plain HTTP for synchronous communication, WebSockets for streaming and asynchronous messaging.</p>
+<p>A service&rsquo;s API specifies how that service uses HTTP. REST service calls are identified by an HTTP method and URI. Request and response headers can be customized.</p>
+<p>Lagom messages are serialised, by default, to ordinary JSON, using idiomatic mapping libraries that make it transparent how the JSON will be represented on the wire.</p>
+<p>The use of ordinary HTTP, WebSockets, and JSON means that any language or framework that supports these protocols can easily consume a Lagom service. Conversely, a Lagom service can easily talk to any service that offers a REST API.</p><h2 id="Design-driven-APIs"><a class="section-marker" href="#Design-driven-APIs">§</a><a href="#design-driven-apis" name="design-driven-apis">Design driven APIs</a></h2>
+<p>Lagom&rsquo;s interface specifications are designed to be compatible with design driven API approaches to system development.</p><h3 id="Future-plans"><a class="section-marker" href="#Future-plans">§</a><a href="#future-plans" name="future-plans">Future plans</a></h3>
+<p>Currently Lagom does not include any specific support for design driven API development, aside from using the same interfaces in Lagom to Lagom service communication.</p>
+<p>It is on our roadmap, though, to implement support for popular design driven API technologies. This means in future it will be possible to generate Lagom service interfaces from specifications in these technologies, allowing transparent integration across any framework that supports these technologies.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/concepts/PolyglotSystems.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/PolyglotSystems.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Lagom core concepts</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Microservices.html">Microservices in Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="PolyglotSystems.html">Polyglot systems with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="Technologies.html">Lagom component technologies</a></li>
+                            
+                        
+                            
+                                <li><a href="BuildConcepts.html">Lagom build philosophy</a></li>
+                            
+                        
+                            
+                                <li><a href="Immutable.html">Immutable Objects</a></li>
+                            
+                        
+                            
+                                <li><a href="ES_CQRS.html">Event Sourcing and CQRS</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +312,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

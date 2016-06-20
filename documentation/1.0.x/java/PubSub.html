@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Publish-Subscribe</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/PubSub.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,294 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Publish-Subscribe</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="ReferenceGuide.html">Lagom reference guide</a>
+                        
+                            &raquo; <a href="PersistentEntity.html">Writing persistent and clustered services</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Publish-Subscribe"><a class="section-marker" href="#Publish-Subscribe">§</a>Publish-Subscribe</h1>
+<p><a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html">Publish–subscribe</a> is a well known messaging pattern. Senders of messages, called publishers, do not target the messages directly to specific receivers, but instead publish messages to topics without knowledge of which receivers, called subscribers, if any, there may be. Similarly, a subscriber express interest in a topic and receive messages published to that topic, without knowledge of which publishers, if any, there are.</p><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a><a href="#dependency" name="dependency">Dependency</a></h2>
+<p>To use this feature add the following in your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslPubSub</code></pre><h2 id="Usage-from-Service-Implementation"><a class="section-marker" href="#Usage-from-Service-Implementation">§</a><a href="#usage-from-service-implementation" name="usage-from-service-implementation">Usage from Service Implementation</a></h2>
+<p>Let&rsquo;s look at an example of a service that publishes temperature measurements of hardware devices. A device can submit its current temperature and interested parties can get a stream of the temperature samples.</p>
+<p>The service API is defined as:</p>
+<pre class="prettyprint"><code class="language-java">public interface SensorService extends Service {
+
+  ServiceCall&lt;Temperature, NotUsed&gt; registerTemperature(String id);
+
+  ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id);
+
+  @Override
+  default Descriptor descriptor() {
+    return named(&quot;/sensorservice&quot;).withCalls(
+      pathCall(&quot;/device/:id/temperature&quot;, this::registerTemperature),
+      pathCall(&quot;/device/:id/temperature/stream&quot;, this::temperatureStream)
+    );
+  }
+}</code></pre>
+<p>The implementation of this interface looks like:</p>
+<pre class="prettyprint"><code class="language-java">import akka.NotUsed;
+import com.lightbend.lagom.javadsl.api.ServiceCall;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
+import com.lightbend.lagom.javadsl.pubsub.TopicId;
+import java.util.concurrent.CompletableFuture;
+import javax.inject.Inject;
+import akka.stream.javadsl.Source;
+
+public class SensorServiceImpl implements SensorService {
+
+  private final PubSubRegistry pubSub;
+
+  @Inject
+  public SensorServiceImpl(PubSubRegistry pubSub) {
+    this.pubSub = pubSub;
+  }
+
+  @Override
+  public ServiceCall&lt;Temperature, NotUsed&gt; registerTemperature(String id) {
+    return temperature -&gt; {
+      final PubSubRef&lt;Temperature&gt; topic =
+          pubSub.refFor(TopicId.of(Temperature.class, id));
+      topic.publish(temperature);
+      return CompletableFuture.completedFuture(NotUsed.getInstance());
+    };
+  }
+
+  @Override
+  public ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id) {
+    return request -&gt; {
+      final PubSubRef&lt;Temperature&gt; topic =
+          pubSub.refFor(TopicId.of(Temperature.class, id));
+      return CompletableFuture.completedFuture(topic.subscriber());
+    };
+  }
+}</code></pre>
+<p>When a device submit its current temperature it is published to a topic that is unique for that device. Note that the topic where the message is published to is defined by the message class, here <code>Temperature</code>, and an optional classifier, here the device id. The messages of this topic will be instances of the message class or subclasses thereof. The qualifier can be used to distinguish topics that are using the same message class. The empty string can be used as qualifier if the message class is enough to define the topic identity.</p>
+<p>Use the method <code>publish</code> of the <a href="api/index.html?com/lightbend/lagom/javadsl/pubsub/PubSubRef.html">PubSubRef</a> representing a given topic to publish a single message, see <code>registerTemperature</code> in the above code.</p>
+<p>Use the method <code>subscriber</code> of the <a href="api/index.html?com/lightbend/lagom/javadsl/pubsub/PubSubRef.html">PubSubRef</a> to acquire a stream <code>Source</code> of messages published to a given topic, see <code>temperatureStream</code> in the above code.</p>
+<p>It is also possible to publish a stream of messages to a topic as is illustrated by this variant of the <code>SensorService</code>:</p>
+<pre class="prettyprint"><code class="language-java">import akka.NotUsed;
+import com.lightbend.lagom.javadsl.api.ServiceCall;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
+import com.lightbend.lagom.javadsl.pubsub.TopicId;
+import java.util.concurrent.CompletableFuture;
+import javax.inject.Inject;
+import akka.stream.Materializer;
+import akka.stream.javadsl.Source;
+
+public class SensorServiceImpl2 implements SensorService2 {
+
+  private final PubSubRegistry pubSub;
+  private final Materializer materializer;
+
+  @Inject
+  public SensorServiceImpl2(PubSubRegistry pubSub, Materializer mat) {
+    this.pubSub = pubSub;
+    this.materializer = mat;
+  }
+
+  @Override
+  public ServiceCall&lt;Source&lt;Temperature, ?&gt;, NotUsed&gt; registerTemperatures(String id) {
+    return request -&gt; {
+      final PubSubRef&lt;Temperature&gt; topic =
+          pubSub.refFor(TopicId.of(Temperature.class, id));
+      request.runWith(topic.publisher(), materializer);
+      return CompletableFuture.completedFuture(NotUsed.getInstance());
+    };
+  }
+
+  @Override
+  public ServiceCall&lt;NotUsed, Source&lt;Temperature, ?&gt;&gt; temperatureStream(String id) {
+    return request -&gt; {
+      final PubSubRef&lt;Temperature&gt; topic =
+          pubSub.refFor(TopicId.of(Temperature.class, id));
+      return CompletableFuture.completedFuture(topic.subscriber());
+    };
+  }
+}</code></pre>
+<p>Note how the incoming <code>Source</code> in <code>registerTemperature</code> is connected to the <code>publisher</code> <code>Sink</code> of the topic with the <code>runWith</code> method using the <code>Materializer</code> that is injected in the constructor. You can of course apply ordinary stream transformations of the incoming stream before connecting it to the <code>publisher</code>.</p><h2 id="Usage-from-Persistent-Entity"><a class="section-marker" href="#Usage-from-Persistent-Entity">§</a><a href="#usage-from-persistent-entity" name="usage-from-persistent-entity">Usage from Persistent Entity</a></h2>
+<p>You can publish messages from a <a href="PersistentEntity.html">Persistent Entity</a>. First you must inject the <a href="api/index.html?com/lightbend/lagom/javadsl/pubsub/PubSubRegistry.html">PubSubRegistry</a> to get hold of a <code>PubSubRef</code> for a given topic.</p>
+<pre class="prettyprint"><code class="language-java">private final PubSubRef&lt;PostPublished&gt; publishedTopic;
+
+@Inject
+public Post4(PubSubRegistry pubSub) {
+  publishedTopic = pubSub.refFor(TopicId.of(PostPublished.class, &quot;&quot;));
+}</code></pre>
+<p>A command handler that publishes messages, in this case the <code>PostPublished</code> event, may look like this:</p>
+<pre class="prettyprint"><code class="language-java">b.setCommandHandler(Publish.class,
+    (cmd, ctx) -&gt; ctx.thenPersist(PostPublished.of(entityId()), evt -&gt; {
+        ctx.reply(Done.getInstance());
+        publishedTopic.publish(evt);
+      }));</code></pre>
+<p>To complete the picture, a service method that delivers these <code>PostPublished</code> events as a stream:</p>
+<pre class="prettyprint"><code class="language-java">import akka.NotUsed;
+import com.lightbend.lagom.javadsl.api.ServiceCall;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
+import com.lightbend.lagom.javadsl.pubsub.TopicId;
+import java.util.concurrent.CompletableFuture;
+import javax.inject.Inject;
+
+import akka.stream.javadsl.Source;
+
+public class BlogServiceImpl4 implements BlogService4 {
+
+  private final PubSubRef&lt;PostPublished&gt; publishedTopic;
+
+  @Inject
+  public BlogServiceImpl4(PubSubRegistry pubSub) {
+    publishedTopic = pubSub.refFor(TopicId.of(PostPublished.class, &quot;&quot;));
+  }
+
+  @Override
+  public ServiceCall&lt;NotUsed, Source&lt;PostPublished, ?&gt;&gt; getNewPosts() {
+    return request -&gt;
+      CompletableFuture.completedFuture(publishedTopic.subscriber());
+  }
+}</code></pre><h2 id="Limitations"><a class="section-marker" href="#Limitations">§</a><a href="#limitations" name="limitations">Limitations</a></h2>
+<p>It is only possible to publish and subscribe within a single service. It is not possible to publish messages in one service and subscribe to them in another service. We will probably provide publish-subscribe across services in a future release of Lagom.</p>
+<p>Published messages may be lost. For example in case of networks problems messages might not be delivered to all subscribers. We might provide publish-subscribe with at-least-once delivery in a future release of Lagom.</p>
+<p>The registry of subscribers is eventually consistent, i.e. new subscribers are not immediately visible at other nodes, but typically the information will be fully replicated to all other nodes after a few seconds.</p><h2 id="Serialization"><a class="section-marker" href="#Serialization">§</a><a href="#serialization" name="serialization">Serialization</a></h2>
+<p>The published messages must be serializable since they will be sent across the nodes in the cluster of the service. JSON is the recommended serialization format for these messages. The <a href="Serialization.html">Serialization</a> section describes how to add Jackson serialization support to such message classes.</p><h2 id="Underlying-Implementation"><a class="section-marker" href="#Underlying-Implementation">§</a><a href="#underlying-implementation" name="underlying-implementation">Underlying Implementation</a></h2>
+<p>It is implemented with <a href="http://doc.akka.io/docs/akka/2.4.4/java/distributed-pub-sub.html">Akka Distributed Publish Subscribe</a>.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/guide/cluster/PubSub.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/PubSub.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Writing persistent and clustered services</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="PersistentEntity.html">Persistent Entity</a></li>
+                            
+                        
+                            
+                                <li><a href="ReadSide.html">Persistent Read-Side</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="PubSub.html">Publish-Subscribe</a></li>
+                            
+                        
+                            
+                                <li><a href="Serialization.html">Serialization</a></li>
+                            
+                        
+                            
+                                <li><a href="Cluster.html">Cluster</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Lagom reference guide</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Reference Guide</a></li>
+                            
+                        
+                            
+                                <li><a href="LagomBuild.html">Defining a Lagom build</a></li>
+                            
+                        
+                            
+                                <li><a href="DevEnvironment.html">Running Lagom in development</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceDescriptors.html">Writing Lagom services</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="PersistentEntity.html">Writing persistent and clustered services</a></li>
+                            
+                        
+                            
+                                <li><a href="Overview.html">Running Lagom in production</a></li>
+                            
+                        
+                            
+                                <li><a href="Logging.html">Logging</a></li>
+                            
+                        
+                            
+                                <li><a href="Akka.html">Advanced topics</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +477,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Lagom component technologies</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/Technologies.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,143 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Lagom component technologies</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="CoreConcepts.html">Lagom core concepts</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Lagom-component-technologies"><a class="section-marker" href="#Lagom-component-technologies">§</a><a href="#lagom-component-technologies" name="lagom-component-technologies">Lagom component technologies</a></h1>
+<p>As a complete microservices platform, Lagom assembles a collection of technologies and adds value on top of them.</p>
+<p>Some of these libraries and tools were developed at Lightbend, others are third-party and open-source.</p><h2 id="Architectural-concepts"><a class="section-marker" href="#Architectural-concepts">§</a><a href="#architectural-concepts" name="architectural-concepts">Architectural concepts</a></h2><h3 id="Immutability"><a class="section-marker" href="#Immutability">§</a><a href="#immutability" name="immutability">Immutability</a></h3>
+<p>Lagom makes heavy use of immutable values, for example to represent commands, events, and states. We recommend using the third-party <a href="https://immutables.github.io">Immutables</a> library to define immutable objects in Java.</p>
+<p>For immutable collections, we recommend PCollections, but you may also use another library such as Guava collections.</p>
+<p>In this manual, see <a href="Immutable.html">Immutable Objects</a> for more details.</p><h3 id="Event-sourcing"><a class="section-marker" href="#Event-sourcing">§</a><a href="#event-sourcing" name="event-sourcing">Event sourcing</a></h3>
+<p>Lagom services that persist data are encouraged, but not required, to use an event-sourced architecture. In this manual, see <a href="ES_CQRS.html">Event Sourcing and CQRS</a> for a high-level explanation of what event sourcing is and why it is valuable and <a href="PersistentEntity.html">Persistent Entity</a> for an introduction to Lagom&rsquo;s implementation of event sourcing.</p><h2 id="Java-and-Scala"><a class="section-marker" href="#Java-and-Scala">§</a><a href="#java-and-scala" name="java-and-scala">Java and Scala</a></h2>
+<p>The first version of Lagom provides a Java API for writing microservices. Before long, a subsequent version will add a Scala API.</p>
+<p>Lagom&rsquo;s Java APIs target Java 8. They assume familiarity with Java 8 features such as lambdas, default methods, and <code>Optional</code>.</p>
+<p>Most of Lagom is implemented in Scala. (This is an implementation detail that doesn&rsquo;t normally concern Java programmers using Lagom APIs.)</p><h2 id="sbt-build-tool"><a class="section-marker" href="#sbt-build-tool">§</a><a href="#sbt-build-tool" name="sbt-build-tool">sbt build tool</a></h2>
+<p>One place where some light Scala coding is required, even for Java users, is in Lagom build definitions, which must be written using sbt&rsquo;s Scala DSL. In this manual, <a href="BuildConcepts.html">Build Concepts</a> explains why we use and require sbt.</p><h2 id="Serialization"><a class="section-marker" href="#Serialization">§</a><a href="#serialization" name="serialization">Serialization</a></h2>
+<p>Lagom&rsquo;s recommended serialization format is JSON. The default engine used for JSON serialization and deserialization is <a href="https://github.com/FasterXML/jackson">Jackson</a>.</p>
+<p>Other serialization formats are also supported.</p><h2 id="Cassandra"><a class="section-marker" href="#Cassandra">§</a><a href="#cassandra" name="cassandra">Cassandra</a></h2>
+<p>By default, Lagom services needing to persist data use Cassandra as database. For convenience, the development environment embeds a Cassandra server. In this manual, <a href="CassandraServer.html">Cassandra Server</a> describes Lagom&rsquo;s Cassandra support further.</p>
+<p>Lagom services are also free to use an existing Cassandra database, or another database solution entirely.</p><h2 id="Play-framework"><a class="section-marker" href="#Play-framework">§</a><a href="#play-framework" name="play-framework">Play framework</a></h2>
+<p>Lagom is implemented on top of Play Framework, Lightbend&rsquo;s web framework. This is an implementation detail that will not directly concern simple microservices. More advanced users may wish to use some Play APIs directly.</p>
+<p>Play is in turn built on the popular, standard <a href="http://netty.io">netty</a> network transport library.</p>
+<p>If you have an existing Play Framework application that you want to add microservices to, we provide a sbt plugin (PlayLagom) to help you.</p><h2 id="Guice"><a class="section-marker" href="#Guice">§</a><a href="#guice" name="guice">Guice</a></h2>
+<p>Like Play, Lagom uses Guice for dependency injection.</p><h2 id="Akka"><a class="section-marker" href="#Akka">§</a><a href="#akka" name="akka">Akka</a></h2>
+<p>Lagom <a href="PersistentEntity.html">Persistence</a>, <a href="PubSub.html">Publish-Subscribe</a>, and <a href="Cluster.html">Cluster</a> are implemented on top of Akka, Lightbend&rsquo;s toolkit for building concurrent, distributed, and resilient message-driven applications. This is an implementation detail that will not directly concern simple microservices. More advanced users may wish to use some Akka APIs <a href="Akka.html">directly</a>.</p><h2 id="Akka-Streams"><a class="section-marker" href="#Akka-Streams">§</a><a href="#akka-streams" name="akka-streams">Akka Streams</a></h2>
+<p>A Lagom service may be &ldquo;simple&rdquo; or &ldquo;streamed&rdquo;; this is described further under <a href="ServiceImplementation.html">Implementing services</a>. Streaming, asynchronous Lagom services are built on top of <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/index.html">Akka Streams</a>.</p>
+<p>Communication with browser-based clients is via WebSockets.</p><h2 id="Clustering"><a class="section-marker" href="#Clustering">§</a><a href="#clustering" name="clustering">Clustering</a></h2>
+<p>If you want to scale your microservices out across multiple servers, Lagom provides clustering via <a href="http://doc.akka.io/docs/akka/2.4.4/java/cluster-usage.html">Akka Cluster</a>.</p>
+<p>Customers of Lightbend&rsquo;s <a href="http://www.lightbend.com/products/lightbend-reactive-platform">Reactive Platform</a> can additionally use <a href="ConductR.html">Lightbend ConductR</a> and Akka&rsquo;s <a href="http://doc.akka.io/docs/akka/rp-16s01p03/scala/split-brain-resolver.html">Split Brain Resolver</a> for deployment and cluster management and <a href="http://www.lightbend.com/products/monitoring">Lightbend Monitoring</a> for monitoring production systems.</p>
+<p>See <a href="Cluster.html">Cluster</a> in this manual for more details.</p><h2 id="Configuration"><a class="section-marker" href="#Configuration">§</a><a href="#configuration" name="configuration">Configuration</a></h2>
+<p>Lagom and many of its component technologies are configured using the <a href="https://github.com/typesafehub/config">Typesafe Config</a> library. The configuration file format is <a href="https://github.com/typesafehub/config/blob/master/HOCON.md">HOCON</a>, a powerful and expressive superset of JSON.</p><h2 id="Logging"><a class="section-marker" href="#Logging">§</a><a href="#logging" name="logging">Logging</a></h2>
+<p>Lagom uses SLF4J for logging, backed by <a href="http://logback.qos.ch/">Logback</a> as its default logging engine.<br/>See the <a href="Logging.html">Logging</a> section of this manual for more information.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/concepts/Technologies.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/Technologies.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Lagom core concepts</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Microservices.html">Microservices in Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="PolyglotSystems.html">Polyglot systems with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Technologies.html">Lagom component technologies</a></li>
+                            
+                        
+                            
+                                <li><a href="BuildConcepts.html">Lagom build philosophy</a></li>
+                            
+                        
+                            
+                                <li><a href="Immutable.html">Immutable Objects</a></li>
+                            
+                        
+                            
+                                <li><a href="ES_CQRS.html">Event Sourcing and CQRS</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +326,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

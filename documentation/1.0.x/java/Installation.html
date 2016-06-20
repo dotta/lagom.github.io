@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Installing Lagom</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/Installation.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,145 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Installing Lagom</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="Installation.html">Getting started with Lagom</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Installation"><a class="section-marker" href="#Installation">§</a><a href="#installation" name="installation">Installation</a></h1>
+<p>Lagom consists of:</p>
+<ul>
+  <li>an <a href="http://www.scala-sbt.org">sbt</a> plugin</li>
+  <li>libraries</li>
+  <li>optional <a href="https://www.lightbend.com/activator/">Activator</a> project templates</li>
+</ul><h2 id="Activator-and-sbt"><a class="section-marker" href="#Activator-and-sbt">§</a><a href="#activator-and-sbt" name="activator-and-sbt">Activator and sbt</a></h2>
+<p><a href="http://www.scala-sbt.org">sbt</a> is a build tool for Java and Scala. Activator adds a few features to sbt, notably the ability to start new projects from templates available online.</p>
+<p>Because Activator includes sbt, you don&rsquo;t need to install anything except a JDK and Activator. Activator will retrieve the Lagom plugin and libraries for use within your project.</p>
+<p>Note that if you aren&rsquo;t using the optional project templates, you don&rsquo;t strictly need Activator; sbt itself is enough. The examples in this manual always show the <code>activator</code> command, but unless the command is <code>activator new</code>, you can always substitute <code>activator</code> by <code>sbt</code>.</p><h2 id="Activator-version-(Read-me!)"><a class="section-marker" href="#Activator-version-(Read-me!)">§</a>Activator version (Read me!)</h2>
+<p>Older installations of Activator may cause OutOfMemoryException when using the Lagom development environment. To avoid this issue, make sure you are using the Activator package version 1.3.10+. Here is how you can check what version of the Activator package you are using on Linux systems (for Windows users, just check what&rsquo;s in your <code>%PATH%</code> environment variable):</p>
+<pre class="prettyprint"><code class="language-console">$ which activator
+/opt/activator-1.3.10-minimal/bin/activator
+</code></pre>
+<p>The important bit is that the <version> appended after <code>activator-&lt;version&gt;</code> must be at least 1.13.10 for Lagom to properly work. </p>
+<p>Follow <a href="https://www.lightbend.com/activator/download">this link</a> to download the latest activator bundle.</p><h2 id="Quick-setup"><a class="section-marker" href="#Quick-setup">§</a><a href="#quick-setup" name="quick-setup">Quick setup</a></h2>
+<p>If you already have Activator and JDK 8, you can skip ahead to <a href="GettingStarted.html">Getting Started</a>.</p>
+<p>Otherwise, follow these steps:</p>
+<ol>
+  <li><strong>Ensure</strong> you have Oracle JDK 8 installed on your system.</li>
+  <li><strong>Download</strong> latest <a href="https://www.lightbend.com/activator/download">Activator</a></li>
+  <li><strong>Extract</strong> it to a location where you have access.</li>
+  <li><strong>Add</strong> the Activator installation directory to your <code>PATH</code>.</li>
+</ol>
+<p>Some package managers can handle steps 2, 3, and 4 for you. For example, if you use Homebrew on Mac OS X, then <code>brew install typesafe-activator</code> and you&rsquo;re done.</p>
+<p>More detailed information on these steps follows.</p><h3 id="JDK-details"><a class="section-marker" href="#JDK-details">§</a><a href="#jdk-details" name="jdk-details">JDK details</a></h3>
+<p>Lagom requires JDK 8 or later. Early JDK 8 releases had bugs that could affect Lagom, so you&rsquo;ll want to use a recent build.</p>
+<p>You can check whether you have JDK 8 by running <code>java</code> and <code>javac</code> from the command line:</p>
+<pre class="prettyprint"><code>$ java -version
+java version &quot;1.8.0_74&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_74-b02)
+Java HotSpot(TM) 64-Bit Server VM (build 25.74-b02, mixed mode)
+$ javac -version
+javac 1.8.0_74
+</code></pre>
+<p>If you don&rsquo;t have java and javac, you can get it from the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle Java downloads page</a>.</p><h3 id="Activator-details"><a class="section-marker" href="#Activator-details">§</a><a href="#activator-details" name="activator-details">Activator details</a></h3>
+<p>To install Activator, download the <a href="https://www.lightbend.com/activator/download">latest version</a> and extract it to a location that you have write access to.</p>
+<p>Activator needs write access to its installation directory. On Linux/Unix installations, this means that you shouldn&rsquo;t extract it to somewhere that you don&rsquo;t have write access to, for example <code>/opt</code> or <code>/usr/local</code>.</p>
+<p>The <code>activator</code> script needs to be executable. If not, you can make it executable by running <code>chmod u+x /path/to/activator</code>.</p><h4 id="Adding-the-activator-installation-to-your-PATH"><a class="section-marker" href="#Adding-the-activator-installation-to-your-PATH">§</a><a href="#adding-the-activator-installation-to-your-path" name="adding-the-activator-installation-to-your-path">Adding the activator installation to your PATH</a></h4>
+<p>For convenience, you should add the Activator installation directory to your system <code>PATH</code>:</p>
+<ul>
+  <li>On Linux/Unix, this can be done by adding <code>export PATH=/path/to/activator:$PATH</code> to your <code>.bashrc</code> file.</li>
+  <li>On Windows, add <code>;C:\path\to\activator</code> to your <code>PATH</code> environment variable. Do not use a path with spaces.</li>
+</ul><h4 id="Proxy-Setup"><a class="section-marker" href="#Proxy-Setup">§</a><a href="#proxy-setup" name="proxy-setup">Proxy Setup</a></h4>
+<p>If you can only access the web through a proxy, set the <code>HTTP_PROXY</code> environment variable to your proxy&rsquo;s URL, for example, <code>HTTP_PROXY=http://&lt;host&gt;:&lt;port&gt;</code>.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/gettingstarted/Installation.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/Installation.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Getting started with Lagom</h3>
+                        <ul>
+                        
+                            
+                                <li class="current-page"><a href="Installation.html">Installing Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="GettingStarted.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="IDEs.html">Import a Lagom build in your IDE</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +328,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Event Sourcing and CQRS</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/ES_CQRS.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,146 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Event Sourcing and CQRS</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="CoreConcepts.html">Lagom core concepts</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Event-Sourcing-and-CQRS"><a class="section-marker" href="#Event-Sourcing-and-CQRS">§</a><a href="#event-sourcing-and-cqrs" name="event-sourcing-and-cqrs">Event Sourcing and CQRS</a></h1>
+<p>Event sourcing and CQRS (Command Query Responsibility Segregation) are fundamental concepts behind Lagom&rsquo;s support for services that store information.</p><h2 id="Why-event-sourcing?"><a class="section-marker" href="#Why-event-sourcing?">§</a><a href="#why-event-sourcing-" name="why-event-sourcing-">Why event sourcing?</a></h2>
+<p>If a service stores information, a core principle is that each service should own its data and it is only the service itself that should have direct access to the database. Other services must use the Service API to interact with the data. There must be no sharing of databases across different services since that would result in a too tight coupling between the services. This is like a <a href="http://martinfowler.com/bliki/BoundedContext.html">Bounded Context</a> in Domain-Driven Design terminology. Each service defines a Bounded Context.</p>
+<p>To achieve this, Lagom&rsquo;s persistence module advocates the use of <a href="https://msdn.microsoft.com/en-us/library/jj591559.aspx">event sourcing</a> and <a href="https://msdn.microsoft.com/en-us/library/jj591573.aspx">CQRS</a> (Command Query Responsibility Segregation).</p><h2 id="What-is-event-sourcing?"><a class="section-marker" href="#What-is-event-sourcing?">§</a><a href="#what-is-event-sourcing-" name="what-is-event-sourcing-">What is event sourcing?</a></h2>
+<p>When using event sourcing, we capture all changes as domain events, which are immutable facts of things that have happened. For example &ldquo;the seat was reserved by Alice&rdquo;. The events are stored and the current state can be derived from the events.</p><h2 id="Advantages-of-event-sourcing"><a class="section-marker" href="#Advantages-of-event-sourcing">§</a><a href="#advantages-of-event-sourcing" name="advantages-of-event-sourcing">Advantages of event sourcing</a></h2>
+<p>Here are some advantages of using event sourcing:</p>
+<ul>
+  <li>
+  <p>There is no need for advanced mapping between domain objects and database representation since we only append events to a <a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">log</a>. The events themselves are an important part of the domain model.</p></li>
+  <li>
+  <p>The history of how we reached the current state is entirely in the stored events. Consistency between transactional data and audit data is assured, because these are actually the same data.</p></li>
+  <li>
+  <p>We can analyze the event stream and derive important business information from it &ndash; perhaps things that were not even thought about when the events were designed. We can add new views on our system&rsquo;s activity without making the write-side more complicated.</p></li>
+  <li>
+  <p>We can get very good write performance, since we only append the events to the data store. There are no updates and no deletes.</p></li>
+  <li>
+  <p>Event-sourced systems are easy to test and debug. Commands and events can be simulated for test purposes. We can also use the event log for debugging. If an issue is detected in production, we can replay the event log in a controlled environment to understand how we reached the bad state.</p></li>
+</ul><h3 id="Aggregate-Root-and-CQRS"><a class="section-marker" href="#Aggregate-Root-and-CQRS">§</a><a href="#aggregate-root-and-cqrs" name="aggregate-root-and-cqrs">Aggregate Root and CQRS</a></h3>
+<p>Event Sourcing is used for an <a href="http://martinfowler.com/bliki/DDD_Aggregate.html">Aggregate Root</a>. For example, a customer with a given customer identifier. The write-side is fully consistent within an aggregate. This makes it easy to reason about things like maintaining invariants and validating incoming commands.</p>
+<p>The aggregate can reply to queries for a specific identifier but it cannot be used for serving queries that span more than one aggregate. Therefore you need to create another view of the data that is tailored to the queries that the service provides.</p>
+<p>This separation of the write-side and the read-side of the persistent data is often referred to as the <a href="https://msdn.microsoft.com/en-us/library/jj591573.aspx">CQRS</a> (Command Query Responsibility Segregation) pattern.</p><h3 id="Write-side-vs.-read-side"><a class="section-marker" href="#Write-side-vs.-read-side">§</a>Write-side vs. read-side</h3>
+<p>A benefit of this pattern is the separation of concerns between the write and the read-side. Then the entities can focus on the updating commands and the read-side can be optimized for various queries and reporting jobs. A single conceptual model that tries to encapsulate both read and write operations may do neither well.</p>
+<p>It is important to realize that the write-side has completely different needs from the read-side, and separating those concerns makes it possible to offer the best experience for the write and read-sides independently.</p>
+<p>For example, in a bidding system it is important to &ldquo;take the write&rdquo; and respond to the bidder that we have accepted the bid as soon as possible, which means that write-throughput is of highest importance for the write-side.</p>
+<p>On the other hand the same application may have some complex statistics view or we may have analysts working with the data to figure out best bidding strategies and trends – this often requires some kind of expressive query capabilities and a different data model than the write-side.</p>
+<p>This separation is also great for scalability, since the read-side can be scaled out to many nodes independently of the write-side, and its often on the read-side that you need massive scalability.</p>
+<p>A consequence of separating the read-side is that it is eventually consistent, i.e. it may take a few seconds until an update to the write-side is visible on the read-side.</p><h2 id="Further-reading"><a class="section-marker" href="#Further-reading">§</a><a href="#further-reading" name="further-reading">Further reading</a></h2>
+<p>The <a href="https://msdn.microsoft.com/en-us/library/jj554200.aspx">CQRS Journey</a> is a great resource for learning more about CQRS and Event Sourcing.</p><h2 id="What-if-I-dont-want-to-use-Event-Sourcing-and-CQRS?"><a class="section-marker" href="#What-if-I-dont-want-to-use-Event-Sourcing-and-CQRS?">§</a>What if I don&rsquo;t want to use Event Sourcing and CQRS?</h2>
+<p>Then you should probably use something else than the Persistence module in Lagom. You can implement your Lagom services with whatever data store solution you like. Keep in mind that you should prefer asynchronous APIs to achieve best scalability. If you are using blocking APIs, such JDBC or JPA, you should carefully manage the blocking by using dedicated thread pools of fixed/limited size for the components that are calling those blocking APIs. Never cascade the blocking through several asynchronous calls, such as Service API calls.</p>
+<p>The <a href="api/index.html?com/lightbend/lagom/javadsl/persistence/cassandra/CassandraSession.html">CassandraSession</a> in the Lagom Persistence module provides an asynchronous API that you can use for Cassandra even though you have chosen to not use Event Sourcing and CQRS.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/concepts/ES_CQRS.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/ES_CQRS.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Lagom core concepts</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Microservices.html">Microservices in Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="PolyglotSystems.html">Polyglot systems with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="Technologies.html">Lagom component technologies</a></li>
+                            
+                        
+                            
+                                <li><a href="BuildConcepts.html">Lagom build philosophy</a></li>
+                            
+                        
+                            
+                                <li><a href="Immutable.html">Immutable Objects</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ES_CQRS.html">Event Sourcing and CQRS</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +329,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

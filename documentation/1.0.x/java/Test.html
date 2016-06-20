@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Testing Services</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/Test.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,313 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Testing Services</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="ReferenceGuide.html">Lagom reference guide</a>
+                        
+                            &raquo; <a href="ServiceDescriptors.html">Writing Lagom services</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Testing-Services"><a class="section-marker" href="#Testing-Services">§</a><a href="#testing-services" name="testing-services">Testing Services</a></h1><h2 id="Running-tests"><a class="section-marker" href="#Running-tests">§</a><a href="#running-tests" name="running-tests">Running tests</a></h2>
+<p>You can run tests from the Activator console.</p>
+<ul>
+  <li>To run all tests, run <code>test</code>.</li>
+  <li>To run only one test class, run <code>testOnly</code> followed by the name of the class i.e. <code>testOnly my.namespace.MyTest</code>.</li>
+  <li>To run only the tests that have failed, run <code>testQuick</code>.</li>
+  <li>To run tests continually, run a command with a tilde in front, i.e. <code>~testQuick</code>.</li>
+</ul><h2 id="JUnit"><a class="section-marker" href="#JUnit">§</a><a href="#junit" name="junit">JUnit</a></h2>
+<p>The recommended test framework for Lagom is <a href="http://junit.org/">JUnit</a></p>
+<pre class="prettyprint"><code class="language-java">import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class SimpleTest {
+
+  @Test
+  public void testSum() {
+    int a = 1 + 1;
+    assertEquals(2, a);
+  }
+
+  @Test
+  public void testString() {
+    String str = &quot;Hello world&quot;;
+    assertFalse(str.isEmpty());
+  }
+
+}</code></pre><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a><a href="#dependency" name="dependency">Dependency</a></h2>
+<p>To use this feature add the following in your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslTestKit</code></pre>
+<p>When using Cassandra the tests must be forked, which is enabled by adding the following in your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">.settings(lagomForkedTestSettings: _*)</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a><a href="#how-to-test-one-service" name="how-to-test-one-service">How to test one service</a></h2>
+<p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/ServiceTest.html">ServiceTest</a>.</p>
+<pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class HelloServiceTest {
+
+  @Test
+  public void shouldSayHello() throws Exception {
+    withServer(defaultSetup(), server -&gt; {
+      HelloService service = server.client(HelloService.class);
+
+      String msg = service.sayHello().invoke(&quot;Alice&quot;).toCompletableFuture().get(5, SECONDS);
+      assertEquals(&quot;Hello Alice&quot;, msg);
+    });
+  }
+
+}</code></pre>
+<p>Dependencies to other services must be replaced by stub or mock implementations by overriding the bindings of the <code>GuiceApplicationBuilder</code> in the <code>Setup</code>. If we are writing a test for the <code>HelloService</code> and that has a dependency to a <code>GreetingService</code> we must create an implementation of the <code>GreetingService</code> that can be used for the test without running the real <code>GreetingService</code>. Something like this:</p>
+<pre class="prettyprint"><code class="language-java">static class GreetingStub implements GreetingService {
+  @Override
+  public ServiceCall&lt;String, String&gt; greeting() {
+    return req -&gt; CompletableFuture.completedFuture(&quot;Hello&quot;);
+  }
+}
+
+private final Setup setup = defaultSetup()
+    .withConfigureBuilder(b -&gt; b.overrides(
+        bind(GreetingService.class).to(GreetingStub.class)));
+
+</code></pre>
+<p>Note how the dependency is overridden when constructing the test <code>Setup</code> object, which then can be used as parameter to the <code>withServer</code> method instead of the <code>defaultSetup()</code> in the above <code>HelloServiceTest</code>.</p>
+<p>The server is by default running with <a href="PersistentEntity.html">persistence</a>, <a href="PubSub.html">pubsub</a> and <a href="Cluster.html">cluster</a> features enabled. Cassandra is also started before the test server is started. If your service does not use these features you can disable them in the <code>Setup</code>, which will reduce the startup time.</p>
+<p>Disable persistence, including Cassandra startup:</p>
+<pre class="prettyprint"><code class="language-java">private final Setup setup1 = defaultSetup().withPersistence(false);</code></pre>
+<p>If cluster is disabled the persistence is also disabled, since cluster is a prerequisite for persistence. Disable cluster and pubsub:</p>
+<pre class="prettyprint"><code class="language-java">private final Setup setup2 = defaultSetup().withCluster(false);</code></pre>
+<p>There are two different styles that can be used when writing the tests. It is most convenient to use <code>withServer</code> as illustrated in the above <code>HelloServiceTest</code>. It automatically starts and stops the server before and after the given lambda.</p>
+<p>When your test have several test methods, and especially when using persistence, it is faster to only start the server once in a static method annotated with <code>@BeforeClass</code> and stop it in a method annotated with <code>@AfterClass</code>.</p>
+<pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class AdvancedHelloServiceTest {
+
+  private static TestServer server;
+
+  @BeforeClass
+  public static void setUp() {
+    server = startServer(defaultSetup().withCluster(false));
+  }
+
+  @AfterClass
+  public static void tearDown() {
+    if (server != null) {
+      server.stop();
+      server = null;
+    }
+  }
+
+  @Test
+  public void shouldSayHello() throws Exception {
+    HelloService service = server.client(HelloService.class);
+    String msg = service.sayHello().invoke(&quot;Alice&quot;).toCompletableFuture().get(5, SECONDS);
+    assertEquals(&quot;Hello Alice&quot;, msg);
+  }
+
+  @Test
+  public void shouldSayHelloAgain() throws Exception {
+    HelloService service = server.client(HelloService.class);
+    String msg = service.sayHello().invoke(&quot;Bob&quot;).toCompletableFuture().get(5, SECONDS);
+    assertEquals(&quot;Hello Bob&quot;, msg);
+  }
+
+}</code></pre><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a><a href="#how-to-test-several-services" name="how-to-test-several-services">How to test several services</a></h2>
+<p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a><a href="#how-to-test-streamed-request-response" name="how-to-test-streamed-request-response">How to test streamed request/response</a></h2>
+<p>Let&rsquo;s say we have a service that have streaming request and/or response parameters. For example an <code>EchoService</code> like this:</p>
+<pre class="prettyprint"><code class="language-java">public interface EchoService extends Service {
+
+  ServiceCall&lt;Source&lt;String, NotUsed&gt;, Source&lt;String, NotUsed&gt;&gt; echo();
+
+  default Descriptor descriptor() {
+    return named(&quot;echo&quot;).withCalls(
+      namedCall(&quot;echo&quot;, this::echo)
+    );
+  }
+}</code></pre>
+<p>When writing tests for that the <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a> is very useful. We use the Streams TestKit together with the Lagom <code>ServiceTest</code> utilities:</p>
+<pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import java.util.Arrays;
+import org.junit.Test;
+import akka.NotUsed;
+import akka.stream.javadsl.Source;
+import akka.stream.testkit.TestSubscriber.Probe;
+import akka.stream.testkit.javadsl.TestSink;
+
+public class EchoServiceTest {
+
+  @Test
+  public void shouldEchoStream() throws Exception {
+    withServer(defaultSetup().withCluster(false), server -&gt; {
+      EchoService service = server.client(EchoService.class);
+
+      // Use a source that never terminates (concat Source.maybe) so we
+      // don&#39;t close the upstream, which would close the downstream
+      Source&lt;String, NotUsed&gt; input =
+          Source.from(Arrays.asList(&quot;msg1&quot;, &quot;msg2&quot;, &quot;msg3&quot;))
+          .concat(Source.maybe());
+      Source&lt;String, NotUsed&gt; output = service.echo().invoke(input)
+          .toCompletableFuture().get(5, SECONDS);
+      Probe&lt;String&gt; probe = output.runWith(TestSink.probe(server.system()),
+          server.materializer());
+      probe.request(10);
+      probe.expectNext(&quot;msg1&quot;);
+      probe.expectNext(&quot;msg2&quot;);
+      probe.expectNext(&quot;msg3&quot;);
+      probe.cancel();
+    });
+  }
+
+}</code></pre>
+<p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-PersistentEntity"><a class="section-marker" href="#How-to-test-PersistentEntity">§</a><a href="#how-to-test-persistententity" name="how-to-test-persistententity">How to test PersistentEntity</a></h2>
+<p><a href="PersistentEntity.html">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p>
+<p>This is described in the documentation of <a href="PersistentEntity.html#Unit-Testing">Persistent Entity</a></p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/guide/services/Test.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/Test.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Writing Lagom services</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="ServiceDescriptors.html">Service descriptors</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceImplementation.html">Implementing services</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceClients.html">Consuming services</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Test.html">Testing Services</a></li>
+                            
+                        
+                            
+                                <li><a href="MessageSerializers.html">Message serializers</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceErrorHandling.html">Error handling</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Lagom reference guide</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Reference Guide</a></li>
+                            
+                        
+                            
+                                <li><a href="LagomBuild.html">Defining a Lagom build</a></li>
+                            
+                        
+                            
+                                <li><a href="DevEnvironment.html">Running Lagom in development</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ServiceDescriptors.html">Writing Lagom services</a></li>
+                            
+                        
+                            
+                                <li><a href="PersistentEntity.html">Writing persistent and clustered services</a></li>
+                            
+                        
+                            
+                                <li><a href="Overview.html">Running Lagom in production</a></li>
+                            
+                        
+                            
+                                <li><a href="Logging.html">Logging</a></li>
+                            
+                        
+                            
+                                <li><a href="Akka.html">Advanced topics</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +496,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

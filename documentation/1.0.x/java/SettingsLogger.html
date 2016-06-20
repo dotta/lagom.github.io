@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Configuring Logging</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/SettingsLogger.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,274 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Configuring Logging</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="ReferenceGuide.html">Lagom reference guide</a>
+                        
+                            &raquo; <a href="Logging.html">Logging</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Configuring-Logging"><a class="section-marker" href="#Configuring-Logging">§</a><a href="#configuring-logging" name="configuring-logging">Configuring Logging</a></h1>
+<p>Lagom uses SLF4J for logging, backed by <a href="http://logback.qos.ch/">Logback</a> as its default logging engine. See the <a href="http://logback.qos.ch/manual/configuration.html">Logback documentation</a> for details on configuration.</p><h2 id="Default-configuration"><a class="section-marker" href="#Default-configuration">§</a><a href="#default-configuration" name="default-configuration">Default configuration</a></h2>
+<p>If you don&rsquo;t provide your own Logback configuration, Lagom uses the following default configuration in development:</p>
+<pre class="prettyprint"><code class="language-xml">&lt;!--
+  ~ Copyright (C) 2016 Lightbend Inc. &lt;http://www.lightbend.com&gt;
+  --&gt;
+&lt;!-- The default logback configuration that Lagom uses in dev mode if no other configuration is provided --&gt;
+&lt;configuration&gt;
+
+  &lt;conversionRule conversionWord=&quot;coloredLevel&quot; converterClass=&quot;com.lightbend.lagom.internal.logback.ColoredLevel&quot; /&gt;
+
+  &lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt;
+     &lt;file&gt;${application.home:-.}/logs/application.log&lt;/file&gt;
+     &lt;encoder&gt;
+       &lt;pattern&gt;%date [%level] from %logger in %thread - %message%n%xException&lt;/pattern&gt;
+     &lt;/encoder&gt;
+   &lt;/appender&gt;
+
+  &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+    &lt;encoder&gt;
+      &lt;pattern&gt;%coloredLevel %logger{15} - %message%n%xException{10}&lt;/pattern&gt;
+    &lt;/encoder&gt;
+  &lt;/appender&gt;
+  
+  &lt;!-- Set logging for all Play library classes to INFO --&gt;
+  &lt;logger name=&quot;play&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Set logging for all Akka library classes to WARN --&gt;
+  &lt;logger name=&quot;akka&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Set logging for all Lagom library classes to WARN --&gt;
+  &lt;logger name=&quot;com.lightbend.lagom&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Cassandra and the datasta driver are used by the Lagom event sourcing modules --&gt;
+  &lt;logger name=&quot;org.apache.cassandra&quot; level=&quot;ERROR&quot; /&gt;
+  &lt;logger name=&quot;com.datastax.driver&quot; level=&quot;ERROR&quot; /&gt;
+  &lt;!-- Turning off connection error logging to avoid noise when services are forcely stopped --&gt;
+  &lt;logger name=&quot;com.datastax.driver.core.ControlConnection&quot; level=&quot;OFF&quot; /&gt;
+
+  &lt;root level=&quot;INFO&quot;&gt;
+    &lt;appender-ref ref=&quot;STDOUT&quot; /&gt;
+    &lt;appender-ref ref=&quot;FILE&quot; /&gt;
+  &lt;/root&gt;
+  
+&lt;/configuration&gt;</code></pre>
+<p>While it uses the following one in production:</p>
+<pre class="prettyprint"><code class="language-xml">&lt;!--
+  ~ Copyright (C) 2016 Lightbend Inc. &lt;http://www.lightbend.com&gt;
+  --&gt;
+&lt;!-- The default logback configuration that Lagom uses if no other configuration is provided --&gt;
+&lt;configuration&gt;
+    
+  &lt;conversionRule conversionWord=&quot;coloredLevel&quot; converterClass=&quot;com.lightbend.lagom.internal.logback.ColoredLevel&quot; /&gt;
+
+  &lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt;
+     &lt;file&gt;${application.home:-.}/logs/application.log&lt;/file&gt;
+     &lt;encoder&gt;
+       &lt;pattern&gt;%date [%level] from %logger in %thread - %message%n%xException&lt;/pattern&gt;
+     &lt;/encoder&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+    &lt;encoder&gt;
+      &lt;pattern&gt;%coloredLevel %logger{15} - %message%n%xException{10}&lt;/pattern&gt;
+    &lt;/encoder&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;ASYNCFILE&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;
+    &lt;appender-ref ref=&quot;FILE&quot; /&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;ASYNCSTDOUT&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;
+    &lt;appender-ref ref=&quot;STDOUT&quot; /&gt;
+  &lt;/appender&gt;
+
+  &lt;!-- Set logging for all Play library classes to INFO --&gt;
+  &lt;logger name=&quot;play&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Set logging for all Akka library classes to WARN --&gt;
+  &lt;logger name=&quot;akka&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Set logging for all Lagom library classes to WARN --&gt;
+  &lt;logger name=&quot;com.lightbend.lagom&quot; level=&quot;WARN&quot; /&gt;
+  &lt;!-- Cassandra and the datasta driver are used by the Lagom event sourcing modules --&gt;
+  &lt;logger name=&quot;org.apache.cassandra&quot; level=&quot;ERROR&quot; /&gt;
+  &lt;logger name=&quot;com.datastax.driver&quot; level=&quot;ERROR&quot; /&gt;
+
+  &lt;root level=&quot;WARN&quot;&gt;
+    &lt;appender-ref ref=&quot;ASYNCFILE&quot; /&gt;
+    &lt;appender-ref ref=&quot;ASYNCSTDOUT&quot; /&gt;
+  &lt;/root&gt;
+  
+&lt;/configuration&gt;</code></pre>
+<p>A few things to note:</p>
+<ul>
+  <li>A file appender that writes to <code>logs/application.log</code> is declared.</li>
+  <li>The file logger logs full exception stack traces, while the console logger only logs 10 lines of an exception stack trace.</li>
+  <li>Lagom uses ANSI color codes by default in level messages.</li>
+  <li>In production, Lagom puts both the console and the file logger behind the logback <a href="http://logback.qos.ch/manual/appenders.html#AsyncAppender">AsyncAppender</a>. For details on the performance implications on this, see this <a href="https://blog.takipi.com/how-to-instantly-improve-your-java-logging-with-7-logback-tweaks/">blog post</a>.</li>
+</ul><h2 id="Custom-configuration"><a class="section-marker" href="#Custom-configuration">§</a><a href="#custom-configuration" name="custom-configuration">Custom configuration</a></h2>
+<p>For any custom configuration, you need to provide your own Logback configuration file.</p><h3 id="Using-a-configuration-file-from-project-source"><a class="section-marker" href="#Using-a-configuration-file-from-project-source">§</a><a href="#using-a-configuration-file-from-project-source" name="using-a-configuration-file-from-project-source">Using a configuration file from project source</a></h3>
+<p>You can provide a default logging configuration by creating a <code>logback.xml</code> file in the project&rsquo;s resource folder. Furthermore, for testing purposes, you can also create a <code>logback-test.xml</code> and place it in the <code>src/test/resources</code> directory of your project. When both <code>logback.xml</code> and <code>logback-test.xml</code> are in the classpath, the latter has higher precedence.</p><h3 id="Using-an-external-configuration-file"><a class="section-marker" href="#Using-an-external-configuration-file">§</a><a href="#using-an-external-configuration-file" name="using-an-external-configuration-file">Using an external configuration file</a></h3>
+<p>You can also specify a configuration file via a System property. This is particularly useful for production environments where the configuration file may be managed outside of your application source.</p>
+<blockquote>
+  <p>Note: The logging system gives top preference to configuration files specified by system properties, secondly to files in the resource directory, and lastly to the default. This allows you to customize your application&rsquo;s logging configuration and still override it for specific environments or developer setups.</p>
+</blockquote><h4 id="Using--Dlogger.resource"><a class="section-marker" href="#Using--Dlogger.resource">§</a>Using <code>-Dlogger.resource</code></h4>
+<p>To specify a configuration file to be loaded from the classpath use the system property <code>-Dlogger.resource</code>, e.g., <code>-Dlogger.resource=prod-logger.xml</code>.</p><h4 id="Using--Dlogger.file"><a class="section-marker" href="#Using--Dlogger.file">§</a>Using <code>-Dlogger.file</code></h4>
+<p>To specify a configuration file to be loaded from the file system use the system property <code>-Dlogger.file</code>, e.g., <code>-Dlogger.file=/opt/prod/logger.xml</code>.</p><h2 id="Play-Lagom-applications"><a class="section-marker" href="#Play-Lagom-applications">§</a><a href="#play-lagom-applications" name="play-lagom-applications">Play Lagom applications</a></h2>
+<p>When integrating a Play application in Lagom via the <code>LagomPlay</code> sbt plugin, the default Play logging module is used. The main difference, with respect to the Lagom logging module, is that the Play logging module provides different default logback configurations. Read the Play framework <a href="https://www.playframework.com/documentation/2.5.x/SettingsLogger">Configuring Logging</a> documentation for details.</p><h2 id="Internal-framework-logging"><a class="section-marker" href="#Internal-framework-logging">§</a><a href="#internal-framework-logging" name="internal-framework-logging">Internal framework logging</a></h2>
+<p>It can be useful at times to gain more visibility on what&rsquo;s happening inside Lagom.</p><h3 id="Lagom-logging-configuration"><a class="section-marker" href="#Lagom-logging-configuration">§</a><a href="#lagom-logging-configuration" name="lagom-logging-configuration">Lagom logging configuration</a></h3>
+<p>Lagom system logging can be done by changing the <code>com.lightbend.lagom</code> logger to DEBUG.</p>
+<pre class="prettyprint"><code class="language-xml">&lt;!-- Set logging for all Lagom library classes to DEBUG --&gt;
+&lt;logger name=&quot;com.lightbend.lagom&quot; level=&quot;DEBUG&quot; /&gt;
+</code></pre><h3 id="Akka-logging-configuration"><a class="section-marker" href="#Akka-logging-configuration">§</a><a href="#akka-logging-configuration" name="akka-logging-configuration">Akka logging configuration</a></h3>
+<p>Akka system logging can be done by changing the <code>akka</code> logger to DEBUG.</p>
+<pre class="prettyprint"><code class="language-xml">&lt;!-- Set logging for all Akka library classes to DEBUG --&gt;
+&lt;logger name=&quot;akka&quot; level=&quot;DEBUG&quot; /&gt;
+&lt;!-- Set a specific actor to DEBUG --&gt;
+&lt;logger name=&quot;actors.MyActor&quot; level=&quot;DEBUG&quot; /&gt;
+</code></pre>
+<p>And, you will also need to add the following in your project&rsquo;s <code>application.conf</code>:</p>
+<pre class="prettyprint"><code class="language-conf">akka.loglevel=DEBUG
+</code></pre>
+<p>Furthermore, you may also wish to configure an appender for the Akka loggers that includes useful properties such as thread and actor address. For more information about configuring Akka&rsquo;s logging, including details on Logback and Slf4j integration, see the <a href="http://doc.akka.io/docs/akka/2.4.4/scala/logging.html">Akka documentation</a>.</p><h3 id="Play-logging-configuration"><a class="section-marker" href="#Play-logging-configuration">§</a><a href="#play-logging-configuration" name="play-logging-configuration">Play logging configuration</a></h3>
+<p>Play system logging can be done by changing the <code>play</code> logger to DEBUG.</p>
+<pre class="prettyprint"><code class="language-xml">&lt;!-- Set logging for all Play library classes to DEBUG --&gt;
+&lt;logger name=&quot;play&quot; level=&quot;DEBUG&quot; /&gt;
+</code></pre><h2 id="Using-a-Custom-Logging-Framework"><a class="section-marker" href="#Using-a-Custom-Logging-Framework">§</a><a href="#using-a-custom-logging-framework" name="using-a-custom-logging-framework">Using a Custom Logging Framework</a></h2>
+<p>Lagom uses Logback by default, but it is possible to configure Lagom to use another logging framework, as long as there is an SLF4J adapter for it. To do this, the <code>LagomLogback</code> sbt plugin must be disabled using <code>disablePlugins</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">lazy val portfolioImpl = (project in file(&quot;portfolioImpl&quot;))
+  .enablePlugins(LagomJava)
+  .disablePlugins(LagomLogback) // this avoids that the Lagom logging module is addedd to the classpath</code></pre>
+<p>From there, a custom logging framework can be used. Here, Log4J 2 is used as an example.</p>
+<pre class="prettyprint"><code class="language-sbt">lazy val portfolioImpl = (project in file(&quot;portfolioImpl&quot;))
+  .enablePlugins(LagomJava)
+  .disablePlugins(LagomLogback) // this avoids that the Lagom logging module is addedd to the classpath
+  .settings(
+    libraryDependencies ++= Seq(
+      &quot;org.apache.logging.log4j&quot; % &quot;log4j-slf4j-impl&quot; % &quot;2.4.1&quot;,
+      &quot;org.apache.logging.log4j&quot; % &quot;log4j-api&quot; % &quot;2.4.1&quot;,
+      &quot;org.apache.logging.log4j&quot; % &quot;log4j-core&quot; % &quot;2.4.1&quot;
+    )
+  )</code></pre>
+<p>Once the libraries and the SLF4J adapter are loaded, the <code>log4j.configurationFile</code> system property can be set on the command line as usual.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/guide/logging/SettingsLogger.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/SettingsLogger.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Logging</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Logging.html">Logging</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="SettingsLogger.html">Configuring Logging</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Lagom reference guide</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Reference Guide</a></li>
+                            
+                        
+                            
+                                <li><a href="LagomBuild.html">Defining a Lagom build</a></li>
+                            
+                        
+                            
+                                <li><a href="DevEnvironment.html">Running Lagom in development</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceDescriptors.html">Writing Lagom services</a></li>
+                            
+                        
+                            
+                                <li><a href="PersistentEntity.html">Writing persistent and clustered services</a></li>
+                            
+                        
+                            
+                                <li><a href="Overview.html">Running Lagom in production</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Logging.html">Logging</a></li>
+                            
+                        
+                            
+                                <li><a href="Akka.html">Advanced topics</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +457,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

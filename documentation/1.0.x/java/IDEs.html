@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Import a Lagom build in your IDE</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/IDEs.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,167 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Import a Lagom build in your IDE</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="Installation.html">Getting started with Lagom</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Import-a-Lagom-build-in-your-IDE"><a class="section-marker" href="#Import-a-Lagom-build-in-your-IDE">§</a><a href="#import-a-lagom-build-in-your-ide" name="import-a-lagom-build-in-your-ide">Import a Lagom build in your IDE</a></h1>
+<p>Here you will learn how to import projects defined in a Lagom build into your preferred IDE.</p><h2 id="Eclipse"><a class="section-marker" href="#Eclipse">§</a><a href="#eclipse" name="eclipse">Eclipse</a></h2>
+<p><a href="https://github.com/typesafehub/sbteclipse">sbt-eclipse</a> is needed to generate the Eclipse project files, which are required to import all projects defined in your Lagom build into Eclipse.</p>
+<p>If your Lagom build file is in directory <code>helloworld</code>, create a <code>project/eclipse.sbt</code> with the following content:</p>
+<pre class="prettyprint"><code>addSbtPlugin(&quot;com.typesafe.sbteclipse&quot; % &quot;sbteclipse-plugin&quot; % &quot;3.0.0&quot;)
+</code></pre>
+<p>Save the file. Now, open the terminal, and <code>cd</code> to the <code>helloworld</code> directory, and type <code>activator</code>:</p>
+<pre class="prettyprint"><code>$ cd helloworld
+$ activator
+... (booting up)
+&gt;
+</code></pre>
+<p>If you have configured things correctly, typing <code>eclipse</code> will generate the Eclipse project files for all projects in your build:</p>
+<pre class="prettyprint"><code>&gt; eclipse
+...
+[info] Successfully created Eclipse project files for project(s):
+[info] helloworld-impl
+[info] helloworld-api
+[info] hellostream-impl
+[info] hellostream-api
+[info] lagom-internal-meta-project-service-locator
+[info] lagom-internal-meta-project-cassandra
+&gt;
+</code></pre>
+<p>Open Eclipse and follow the <a href="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm">Eclipse instructions</a> for importing existing projects. Also, mind that <code>lagom-internal-meta-project-service-locator</code> and <code>lagom-internal-meta-project-cassandra</code> are internal projects that you don&rsquo;t need to import, so just unselect them:</p>
+<p><a href="resources/gettingstarted/eclipse_import_unselect_synthetic_projects.png"><img src="resources/gettingstarted/eclipse_import_unselect_synthetic_projects.png"/></a></p>
+<p>One thing you&rsquo;ll notice after opening the imported projects in Eclipse is that a few unneeded source directories such as <code>src/main/scala</code> and <code>src/test/scala</code> have been created. It is possible to correct this behavior, but you will need to make a few changes in your Lagom build file. First, add the following definitions in your build (anywhere):</p>
+<pre class="prettyprint"><code>// All projects that you would like to import in Eclipse should use 
+// this factory.
+// Here is an usage example:
+// {{{
+//   lazy val userApi = project(&quot;user-api&quot;)
+//     .settings(libraryDependencies += lagomJavadslApi)
+//
+//   lazy val userImpl = project(&quot;user-impl&quot;)
+//     .settings(libraryDependencies += lagomJavadslServer)
+//     .dependsOn(userApi)
+// }}}
+def project(id: String) = Project(id, base = file(id))
+  .settings(eclipseSettings: _*)
+
+// Configuration of sbteclipse
+// Needed for importing the project into Eclipse
+lazy val eclipseSettings = Seq(
+  EclipseKeys.projectFlavor := EclipseProjectFlavor.Java,
+  EclipseKeys.withBundledScalaContainers := false,
+  EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource,
+  EclipseKeys.eclipseOutput := Some(&quot;.target&quot;),
+  // will automatically download and attach sources if available
+  EclipseKeys.withSource := true,
+  // will automatically download and attach javadoc if available
+  EclipseKeys.withJavadoc := true,
+  // avoid some scala specific source directories
+  unmanagedSourceDirectories in Compile := Seq((javaSource in Compile).value),
+  unmanagedSourceDirectories in Test := Seq((javaSource in Test).value)
+)
+</code></pre>
+<p>Now update all projects declarations in your Lagom build to use the newly created <code>project</code> method, so that the defined <code>eclipseSettings</code> are successfully applied to all projects.</p>
+<p>Finally, you will need to regenerate the Eclipse project files to account for the changes made in the build file. Go back to the activator console, type <code>reload</code> to reload the build file, and type <code>eclipse</code>. Once the <code>eclipse</code> task completes, go back to Eclipse, hit F5 to refresh all previously imported projects, and you are done.</p><h2 id="IntelliJ"><a class="section-marker" href="#IntelliJ">§</a><a href="#intellij" name="intellij">IntelliJ</a></h2>
+<p>Because the Lagom build file is written in sbt, we recommend to install the IntelliJ IDEA sbt plugin to facilitate importing projects. Unfortunately, for sbt plugin to properly work, you will need to install the Scala plugin as well. To do so, open the <code>Plugins</code> modal for installing plugins, search for the &ldquo;SBT&rdquo; plugin. If no match is found, you&rsquo;ll have to hit &ldquo;Browse&rdquo;.</p>
+<p><a href="resources/gettingstarted/idea_search_sbt_plugin.png"><img src="resources/gettingstarted/idea_search_sbt_plugin.png"/></a></p>
+<p>Select and install the plugin.</p>
+<p><a href="resources/gettingstarted/idea_install_sbt_plugin.png"><img src="resources/gettingstarted/idea_install_sbt_plugin.png"/></a></p>
+<p>Repeat the same process for the &ldquo;Scala&rdquo; plugin.</p>
+<p>After restarting IntelliJ IDEA, go to &ldquo;Import Project&rdquo;, and select your Lagom <code>build.sbt</code> file. An &ldquo;Import Project from SBT&rdquo; modal will open, and we suggest you to tick &ldquo;Use auto-import&rdquo;, and also tick the option to download sources and javadocs:</p>
+<p><a href="resources/gettingstarted/idea_sbt_project_import.png"><img src="resources/gettingstarted/idea_sbt_project_import.png"/></a></p>
+<p>Click &ldquo;OK&rdquo; and continue by importing all projects.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/gettingstarted/IDEs.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/IDEs.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Getting started with Lagom</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Installation.html">Installing Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="GettingStarted.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="IDEs.html">Import a Lagom build in your IDE</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +350,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>

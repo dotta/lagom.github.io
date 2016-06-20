@@ -6,13 +6,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lagom</title>
+        <title>Lagom - Cluster</title>
         <meta name="description" content="Lagom">
+        
+            <link rel="canonical" href="http://www.lagomframework.com/documentation/1.0.x/java/Cluster.html"/>
         
         <meta name="viewport" content="width=device-width,maximum-scale=1"/>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/all-styles-concat.css" type="text/css">
-        
+         
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+    
+
     </head>
     <body>
         <div class="off-canvas-wrapper">
@@ -93,89 +98,179 @@
                         </div>
                     </div>
 
-                    
-    <div class="fw-wrapper lgm-purple hero-banner">
+                      
+    <header class="fw-wrapper lgm-purple page-title">
         <div class="row">
             <div class="small-12 columns">
-                <a href="/" class="logo"><img src="/images/logos/lagom-reverse.svg"></a>
-                <h1>The Opinionated Microservices Framework<br>
-                for moving away from the Monolith</h1>
+                <h1>Cluster</h1>
             </div>
         </div>
-    </div>
+    </header>
 
-    <article class="fw-wrapper lb-light-grey-ltr home-content">
-        <header class="row meet-lagom">
-            <div class="small-12 medium-10 large-8 small-centered columns text-center">
-                <h1>Meet Lagom</h1>
-                <p>Meet Lagom in this 3-minute overview or get started below.</p>
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/d1jT0UOVx9U?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
+    <div class="fw-wrapper documentation-content">
+        <div class="row">
+            <div class="small-12 large-7 columns">
+                
+                    <nav class="breadcrumbs">
+                        <a href="Home.html">Home</a>
+                        
+                            &raquo; <a href="ReferenceGuide.html">Lagom reference guide</a>
+                        
+                            &raquo; <a href="PersistentEntity.html">Writing persistent and clustered services</a>
+                        
+                    </nav>
+                
+
+                <article>
+                <h1 id="Cluster"><a class="section-marker" href="#Cluster">§</a><a href="#cluster" name="cluster">Cluster</a></h1>
+<p>Instances of the same service may run on multiple nodes, for scalability and redundancy. Nodes may be physical or virtual machines, grouped in a cluster.</p>
+<p>The underlying clustering technology is <a href="http://doc.akka.io/docs/akka/2.4.4/java/cluster-usage.html">Akka Cluster</a>.</p>
+<p>If instances of a service need to know about each other, they must join the same cluster. Within a cluster, services may use the <a href="PersistentEntity.html">Persistence</a> and <a href="PubSub.html">Publish-Subscribe</a> modules of Lagom.</p><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a><a href="#dependency" name="dependency">Dependency</a></h2>
+<p>The clustering feature is already included if you are using the <a href="PersistentEntity.html#Dependency">persistence</a> or <a href="PubSub.html#Dependency">pubsub</a> modules.</p>
+<p>If you want to enable it without those modules, add the following to your project&rsquo;s build:</p>
+<pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslCluster</code></pre><h2 id="Cluster-composition"><a class="section-marker" href="#Cluster-composition">§</a><a href="#cluster-composition" name="cluster-composition">Cluster composition</a></h2>
+<p>A cluster should only span nodes that are running the same service.</p>
+<p>You could imagine using cluster features across different services, but we recommend against that, because it would couple the services too tightly. Different services should only interact with each other through each service&rsquo;s API.</p><h2 id="Joining"><a class="section-marker" href="#Joining">§</a><a href="#joining" name="joining">Joining</a></h2>
+<p>A service instance joins a cluster when the service starts up.</p><h3 id="Joining-during-development"><a class="section-marker" href="#Joining-during-development">§</a><a href="#joining-during-development" name="joining-during-development">Joining during development</a></h3>
+<p>In development you are typically only running the service on one cluster node. No explicit joining is necessary; the <a href="DevEnvironment.html">Lagom Development Environment</a> handles it automatically.</p><h3 id="Joining-via-ConductR"><a class="section-marker" href="#Joining-via-ConductR">§</a><a href="#joining-via-conductr" name="joining-via-conductr">Joining via ConductR</a></h3>
+<p>In production, <a href="ConductR.html">Lightbend ConductR</a> automatically takes care of joining the nodes.</p><h3 id="Joining-without-ConductR"><a class="section-marker" href="#Joining-without-ConductR">§</a><a href="#joining-without-conductr" name="joining-without-conductr">Joining without ConductR</a></h3>
+<p>If you are not using ConductR, you need to implement the joining yourself as follows.</p>
+<p>First, define some initial contact points of the cluster, so-called seed nodes. You can define seed nodes in <code>application.conf</code>:</p>
+<pre class="prettyprint"><code>akka.cluster.seed-nodes = [
+  &quot;akka.tcp://MyService@host1:2552&quot;,
+  &quot;akka.tcp://MyService@host2:2552&quot;]
+</code></pre>
+<p>Alternatively, this can be defined as Java system properties when starting the JVM:</p>
+<pre class="prettyprint"><code>-Dakka.cluster.seed-nodes.0=akka.tcp://MyService@host1:2552
+-Dakka.cluster.seed-nodes.1=akka.tcp://MyService@host2:2552
+</code></pre>
+<p>The node that is configured first in the list of <code>seed-nodes</code> is special. Only that node that will join itself. It is used for bootstrapping the cluster.</p>
+<p>The reason for the special first seed node is to avoid forming separated islands when starting from an empty cluster. If the first seed node is restarted and there is an existing cluster it will try to join the other seed nodes, i.e. it will join the existing cluster.</p>
+<p>You can read more about cluster joining in the <a href="http://doc.akka.io/docs/akka/2.4.4/java/cluster-usage.html#Joining_to_Seed_Nodes">Akka documentation</a>.</p><h2 id="Downing"><a class="section-marker" href="#Downing">§</a><a href="#downing" name="downing">Downing</a></h2>
+<p>When operating a Lagom service cluster you must consider how to handle network partitions (a.k.a. split brain scenarios) and machine crashes (including JVM and hardware failures). This is crucial for correct behavior when using <a href="PersistentEntity.html">Persistent Entities</a>. Persistent entities must be single-writers, i.e. there must only be one active entity with a given entity identity. If the cluster is split in two halves and the wrong downing strategy is used there will be active entities with the the same identifiers in both clusters, writing to the same database. That will result in corrupt data.</p>
+<p>The naïve approach is to remove an unreachable node from the cluster membership after a timeout. This works great for crashes and short transient network partitions, but not for long network partitions. Both sides of the network partition will see the other side as unreachable and after a while remove it from its cluster membership. Since this happens on both sides the result is that two separate disconnected clusters have been created. This approach is provided by the opt-in (off by default) auto-down feature in the OSS version of Akka Cluster.</p>
+<p><strong>We strongly recommend against using the auto-down feature of Akka Cluster.</strong></p>
+<p>A pre-packaged solution for the downing problem is provided by <a href="http://doc.akka.io/docs/akka/rp-16s01p05/scala/split-brain-resolver.html">Split Brain Resolver</a>, which is part of the <a href="http://www.lightbend.com/products/lightbend-reactive-platform">Lightbend Reactive Platform</a>. The <code>keep-majority</code> strategy is configured to be enabled by default if you use Lagom with the Reactive Platform.</p>
+<p>See <a href="ReactivePlatform.html">Reactive Platform instructions</a> for how to enable Reactive Platform in the build of your project.</p>
+<p>If you don&rsquo;t use RP, you should anyway carefully read the documentation of the <a href="http://doc.akka.io/docs/akka/rp-16s01p05/scala/split-brain-resolver.html">Split Brain Resolver</a> and make sure that the solution you are using handles the concerns described there.</p><h2 id="Leaving"><a class="section-marker" href="#Leaving">§</a><a href="#leaving" name="leaving">Leaving</a></h2>
+<p>When using <a href="PersistentEntity.html">Persistent Entities</a> you can use <a href="api/index.html?com/lightbend/lagom/javadsl/persistence/PersistentEntityRegistry.html#gracefulShutdown">PersistentEntityRegistry.gracefulShutdown</a> to stop the persistent entities and leave the cluster in a graceful way. This is not mandatory but it can be good when you are doing a controlled shutdown of a service node. It will reduce the number of lost in-flight messages during the failover to another node.</p>
+                </article>
+
+                
+                    <p class="edit-source">Found an error in this documentation? The source code for this page can be found
+                        <a href="https://github.com/lagom/lagom/tree/master/docs/manual/guide/cluster/Cluster.md">here</a>. Please feel free to edit and contribute a pull request.</p>
+                
             </div>
-        </header>
-        <div class="row get-started">
-            <div class="small-12 small-centered columns text-center">
-                <h1>Get Started</h1>
-                <p>View getting started videos below or jump straight in with <a class="" href="/documentation/1.0.x/java/Home.html" target="_blank">Lagom documentation</a>.</p>
-            </div>
+            <aside class="small-12 large-4 columns">
+                <nav class="side-menu">
+
+                    <input type="text" id="docs-search" placeholder="Search"/>
+
+                    <label for="docs-version">Version:</label>
+                    <select id="docs-version">
+                    
+                        <option value="/documentation/1.0.x/java/Cluster.html" selected="selected">1.0.x</option>
+                    
+                    </select>
+
+                    <a href="/documentation/1.0.x/java/api/index.html" class="api-docs">API Documentation</a>
+
+                    
+                        <h3>Writing persistent and clustered services</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="PersistentEntity.html">Persistent Entity</a></li>
+                            
+                        
+                            
+                                <li><a href="ReadSide.html">Persistent Read-Side</a></li>
+                            
+                        
+                            
+                                <li><a href="PubSub.html">Publish-Subscribe</a></li>
+                            
+                        
+                            
+                                <li><a href="Serialization.html">Serialization</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="Cluster.html">Cluster</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Lagom reference guide</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="ReferenceGuide.html">Reference Guide</a></li>
+                            
+                        
+                            
+                                <li><a href="LagomBuild.html">Defining a Lagom build</a></li>
+                            
+                        
+                            
+                                <li><a href="DevEnvironment.html">Running Lagom in development</a></li>
+                            
+                        
+                            
+                                <li><a href="ServiceDescriptors.html">Writing Lagom services</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="PersistentEntity.html">Writing persistent and clustered services</a></li>
+                            
+                        
+                            
+                                <li><a href="Overview.html">Running Lagom in production</a></li>
+                            
+                        
+                            
+                                <li><a href="Logging.html">Logging</a></li>
+                            
+                        
+                            
+                                <li><a href="Akka.html">Advanced topics</a></li>
+                            
+                        
+                        </ul>
+                    
+                        <h3>Home</h3>
+                        <ul>
+                        
+                            
+                                <li><a href="Home.html">Home</a></li>
+                            
+                        
+                            
+                                <li><a href="WhatIsLagom.html">Welcome to Lagom</a></li>
+                            
+                        
+                            
+                                <li><a href="CoreConcepts.html">Lagom core concepts</a></li>
+                            
+                        
+                            
+                                <li><a href="Installation.html">Getting started with Lagom</a></li>
+                            
+                        
+                            
+                                <li class="current-page"><a href="ReferenceGuide.html">Lagom reference guide</a></li>
+                            
+                        
+                            
+                                <li><a href="ImmutablesInIDEs.html">Appendix</a></li>
+                            
+                        
+                        </ul>
+                    
+                </nav>
+            </aside>
         </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Introduction To Lagom</h1>
-                <h3>With James Roper (14 Min)</h3>
-                <p>Services are asynchronous. Intra-service communication is managed for you. Streaming is out of the box. Your microservices are resilient by nature.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/D9y2Ex3NN34?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Developer Setup</h1>
-                <h3>With Mirco Dotta (11 Min)</h3>
-                <p>Development is familiar. Use your favorite IDE and favorite dependency injection tools. You leverage the old to build something new.</p>
-                <br>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/1cOqYMe-Zm0?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 medium-push-6 large-push-7 columns">
-                <h1>Managing Data Persistence</h1>
-                <h3>With Patrik Nordwall (16 Min)</h3>
-                <p>Systems are distributed. Akka Cluster and Akka Persistence are under the hood. Cluster sharding is implicit. CQRS and event sourcing is made trivially easy. Your systems are cloud ready and elastic.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 medium-pull-6 large-pull-5 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/yj581pSRflQ?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="row video-repeater vertical-buffer-bottom-60">
-            <div class="small-12 medium-6 large-5 columns medium-text-right">
-                <h1>Lagom ConductR Deployment</h1>
-                <h3>With Christopher Hunt (13 Min)</h3>
-                <p>Deployment is seamless. Your services are already set up for production. With one command, you safely scale out in production.</p>
-            </div>
-            <div class="small-12 medium-6 large-7 columns">
-                <div class="flex-video widescreen">
-                    <iframe id="player" class="youtube-embed-player" src="//www.youtube.com/embed/0Z0UIZxW1aw?rel=0&amp;autohide=1&amp;modestbranding=0&amp;showinfo=1" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-
-    </article>
+   </div>
 
 
                     <footer>
@@ -267,5 +362,14 @@
     </body>
     <script src="/all-scripts-concat.js"></script>
 
+     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+        apiKey: "77ef1e29e6bddfca861f7a42cc51725e",
+        indexName: "lagomframework",
+        inputSelector: "#docs-search"
+    });
+    </script>
     
+
 </html>
